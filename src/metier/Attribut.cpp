@@ -59,6 +59,12 @@ void Attribut::setDescription(string desc)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
+ostream& operator<<(ostream & os, Attribut attr)
+{
+    os << attr.identifiant << " " << attr.unite << " " << attr.description;
+    return os;
+}
+
 Attribut &Attribut::operator=(const Attribut &autreAttribut)
 // Algorithme :
 //

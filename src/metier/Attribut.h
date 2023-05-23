@@ -36,6 +36,9 @@ public:
     // Contrat :
     //
 
+    friend ostream& operator<<(ostream &, Attribut);
+    
+
     string getIdentifiant();
 
     string getUnite();

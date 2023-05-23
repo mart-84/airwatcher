@@ -1,3 +1,4 @@
 *.o
 makefile_data/dependencies/
 airwatcher
+.vscode/
