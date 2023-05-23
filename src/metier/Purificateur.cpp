@@ -57,6 +57,15 @@ Purificateur::Purificateur()
 #endif
 } //----- Fin de Purificateur
 
+Purificateur::Purificateur(string unIdentifiant, string uneDateDebut, string uneDateFin, double uneLatitude, double uneLongitude)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Purificateur> sur " << this << endl;
+#endif
+} //----- Fin de Purificateur
+
 Purificateur::~Purificateur()
 // Algorithme :
 //

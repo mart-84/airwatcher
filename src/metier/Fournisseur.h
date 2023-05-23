@@ -1,9 +1,9 @@
 /*************************************************************************
                            Fournisseur  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Interface de la classe <Fournisseur> (fichier Fournisseur.h) ----------------
@@ -12,6 +12,8 @@
 
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
+#include <string>
+#include "Purificateur.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -55,6 +57,12 @@ public:
     // Contrat :
     //
 
+    Fournisseur(string id, Purificateur *purif);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     virtual ~Fournisseur();
     // Mode d'emploi :
     //
@@ -67,6 +75,8 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
+    string identifiant;
+    Purificateur *purificateur;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Fournisseur>

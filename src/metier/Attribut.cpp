@@ -1,9 +1,9 @@
 /*************************************************************************
                            Attribut  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Réalisation de la classe <Attribut> (fichier Attribut.cpp) ------------
@@ -49,6 +49,16 @@ Attribut::Attribut(const Attribut &autreAttribut)
 } //----- Fin de Attribut (constructeur de copie)
 
 Attribut::Attribut()
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Attribut> sur " << this << endl;
+#endif
+} //----- Fin de Attribut
+
+Attribut::Attribut(string id, string u, string desc)
+    : identifiant(id), unite(u), description(desc)
 // Algorithme :
 //
 {

@@ -1,9 +1,9 @@
 /*************************************************************************
                            Fournisseur  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Réalisation de la classe <Fournisseur> (fichier Fournisseur.cpp) ------------
@@ -49,6 +49,16 @@ Fournisseur::Fournisseur(const Fournisseur &autreFournisseur)
 } //----- Fin de Fournisseur (constructeur de copie)
 
 Fournisseur::Fournisseur()
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Fournisseur> sur " << this << endl;
+#endif
+} //----- Fin de Fournisseur
+
+Fournisseur::Fournisseur(string id, Purificateur *purif)
+    : identifiant(id), purificateur(purif)
 // Algorithme :
 //
 {

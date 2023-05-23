@@ -1,9 +1,9 @@
 /*************************************************************************
                            Particulier  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Interface de la classe <Particulier> (fichier Particulier.h) ----------------
@@ -13,10 +13,13 @@
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 #include <string>
+#include <vector>
+#include "Capteur.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+class Capteur;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Particulier>
@@ -77,7 +80,7 @@ protected:
     string identifiant;
     int points;
     bool estBanni;
-
+    vector<Capteur *> capteurs;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Particulier>
