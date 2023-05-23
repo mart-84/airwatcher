@@ -70,7 +70,7 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
-    std::vector<std::vector<std::string>> lines;
+    std::vector<std::vector<std::string>> m_lines;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Dao>

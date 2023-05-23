@@ -78,7 +78,7 @@ Dao::~Dao()
 #endif
 } //----- Fin de ~Dao
 
-void parse_csv(const std::string& path)
+void Dao::parse_csv(const std::string& path)
 {
     std::ifstream read(path);
 
@@ -87,11 +87,13 @@ void parse_csv(const std::string& path)
         std::string line;
         while(std::getline(read, line))
         {
+            m_lines.emplace_back();
+
             std::stringstream stream(line);
             std::string stoken;
             while(std::getline(stream, stoken, ",")) 
             {
-
+                m_lines.back().push_back(stoken);
             }
         }
     }
