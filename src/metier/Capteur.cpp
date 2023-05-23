@@ -88,10 +88,11 @@ void Capteur::setProprietaire(Particulier *part)
     proprietaire = part;
 }
 
-int Capteur::calculerSimilarite(Capteur &capteur)
+float Capteur::calculerSimilarite(Capteur &capteur)
 // Algorithme :
 //
 {
+    return 0.0;
 } //----- Fin de calculerSimilarite
 
 //------------------------------------------------- Surcharge d'opérateurs
