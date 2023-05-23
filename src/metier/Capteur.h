@@ -61,17 +61,11 @@ public:
 
     void setLongitude(double longi);
 
-    void setMesures(vector<Mesure *> mes);
-
     void setProprietaire(Particulier *part);
 
     void ajouterMesure(Mesure *mesure);
 
-    int calculerSimilarite(Capteur &capteur);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    float calculerSimilarite(Capteur &capteur);
 
     //------------------------------------------------- Surcharge d'opérateurs
     friend ostream &operator<<(ostream &, Capteur);
