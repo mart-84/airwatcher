@@ -73,7 +73,6 @@ void Dao::parse_csv(const std::string& path)
         std::string line;
         while(std::getline(read, line))
         {
-            std::cout << line << std::endl;
             m_lines.emplace_back();
 
             std::istringstream stream(line);
