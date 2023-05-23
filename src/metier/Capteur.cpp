@@ -97,7 +97,19 @@ int Capteur::calculerSimilarite(Capteur &capteur)
 //------------------------------------------------- Surcharge d'opérateurs
 ostream &operator<<(ostream &os, Capteur capteur)
 {
-    os << "id: " << capteur.identifiant << " fiabilité: " << capteur.estFiable << " latitude: " << capteur.latitude << " longitude: " << capteur.longitude << endl;
+    os << "id: " << capteur.identifiant
+       << " fiabilité: " << capteur.estFiable
+       << " latitude: " << capteur.latitude
+       << " longitude: " << capteur.longitude;
+    if (capteur.proprietaire != NULL)
+    {
+        os << " propriétaire: " << capteur.proprietaire->getIdentifiant();
+    }
+    else
+    {
+        os << " propriétaire: gouvernement";
+    }
+    os << "" << endl;
     return os;
 }
 

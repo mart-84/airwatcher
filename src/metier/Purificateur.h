@@ -57,6 +57,8 @@ public:
     void setLongitude(double lon);
 
     //------------------------------------------------- Surcharge d'opérateurs
+    friend ostream &operator<<(ostream &, Purificateur);
+
     Purificateur &operator=(const Purificateur &autrePurificateur);
     // Mode d'emploi :
     //
