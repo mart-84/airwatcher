@@ -1,9 +1,9 @@
 /*************************************************************************
                            Purificateur  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Interface de la classe <Purificateur> (fichier Purificateur.h) ----------------
@@ -11,6 +11,7 @@
 #define PURIFICATEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -54,6 +55,12 @@ public:
     // Contrat :
     //
 
+    Purificateur(string unIdentifiant, string uneDateDebut, string uneDateFin, double uneLatitude, double uneLongitude);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     virtual ~Purificateur();
     // Mode d'emploi :
     //
@@ -66,6 +73,11 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
+    string identifiant;
+    string dateDebut;
+    string dateFin;
+    double latitude;
+    double longitude;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Purificateur>
