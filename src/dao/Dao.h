@@ -62,12 +62,11 @@ public:
     // Contrat :
     //
 
-    void parse_csv(const std::string& path);
-
     //------------------------------------------------------------------ PRIVE
 
 protected:
     //----------------------------------------------------- Méthodes protégées
+    void parse_csv(const std::string& path);
 
     //----------------------------------------------------- Attributs protégés
     std::vector<std::vector<std::string>> m_lines;
