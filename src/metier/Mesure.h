@@ -38,6 +38,22 @@ public:
     // Contrat :
     //
 
+    string getDate();
+
+    int getValeur();
+
+    Attribut *getAttribut();
+
+    Capteur *getCapteur();
+
+    void setDate(string day);
+
+    void setValeur(int val);
+
+    void setAttribut(Attribut *attr);
+
+    void setCapteur(Capteur *capt);
+
     //------------------------------------------------- Surcharge d'opérateurs
     Mesure &operator=(const Mesure &autreMesure);
     // Mode d'emploi :

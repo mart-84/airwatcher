@@ -28,6 +28,66 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+string Capteur::getIdentifiant()
+{
+    return identifiant;
+}
+
+bool Capteur::getEstFiable()
+{
+    return estFiable;
+}
+
+double Capteur::getLatitude()
+{
+    return latitude;
+}
+
+double Capteur::getLongitude()
+{
+    return longitude;
+}
+
+vector<Mesure *> Capteur::getMesures()
+{
+    return mesures;
+}
+
+Particulier *Capteur::getProprietaire()
+{
+    return proprietaire;
+}
+
+void Capteur::setIdentifiant(string id)
+{
+    identifiant = id;
+}
+
+void Capteur::setEstFiable(bool fiable)
+{
+    estFiable = fiable;
+}
+
+void Capteur::setLatitude(double lat)
+{
+    latitude = lat;
+}
+
+void Capteur::setLongitude(double longi)
+{
+    longitude = longi;
+}
+
+void Capteur::ajouterMesure(Mesure *mesure)
+{
+    mesures.push_back(mesure);
+}
+
+void Capteur::setProprietaire(Particulier *part)
+{
+    proprietaire = part;
+}
+
 int Capteur::calculerSimilarite(Capteur &capteur)
 // Algorithme :
 //

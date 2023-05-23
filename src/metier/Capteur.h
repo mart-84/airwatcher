@@ -40,6 +40,32 @@ public:
     // Contrat :
     //
 
+    string getIdentifiant();
+
+    bool getEstFiable();
+
+    double getLatitude();
+
+    double getLongitude();
+
+    vector<Mesure *> getMesures();
+
+    Particulier *getProprietaire();
+
+    void setIdentifiant(string id);
+
+    void setEstFiable(bool fiable);
+
+    void setLatitude(double lat);
+
+    void setLongitude(double longi);
+
+    void setMesures(vector<Mesure *> mes);
+
+    void setProprietaire(Particulier *part);
+
+    void ajouterMesure(Mesure *mesure);
+
     int calculerSimilarite(Capteur &capteur);
     // Mode d'emploi :
     //

@@ -35,6 +35,18 @@ public:
     // Contrat :
     //
 
+    string getIdentifiant();
+
+    string getUnite();
+
+    string getDescription();
+
+    void setIdentifiant(string id);
+
+    void setUnite(string u);
+
+    void setDescription(string desc);
+
     //------------------------------------------------- Surcharge d'opérateurs
     Attribut &operator=(const Attribut &autreAttribut);
     // Mode d'emploi :

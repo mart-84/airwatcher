@@ -28,6 +28,26 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+string Fournisseur::getIdentifiant()
+{
+    return identifiant;
+}
+
+Purificateur *Fournisseur::getPurificateur()
+{
+    return purificateur;
+}
+
+void Fournisseur::setIdentifiant(string id)
+{
+    identifiant = id;
+}
+
+void Fournisseur::setPurificateur(Purificateur *purif)
+{
+    purificateur = purif;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Fournisseur &Fournisseur::operator=(const Fournisseur &autreFournisseur)
 // Algorithme :

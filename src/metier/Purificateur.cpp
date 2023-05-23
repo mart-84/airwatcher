@@ -28,6 +28,56 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+string Purificateur::getIdentifiant()
+{
+    return identifiant;
+}
+
+string Purificateur::getDateDebut()
+{
+    return dateDebut;
+}
+
+string Purificateur::getDateFin()
+{
+    return dateFin;
+}
+
+double Purificateur::getLatitude()
+{
+    return latitude;
+}
+
+double Purificateur::getLongitude()
+{
+    return longitude;
+}
+
+void Purificateur::setIdentifiant(string id)
+{
+    identifiant = id;
+}
+
+void Purificateur::setDateDebut(string date)
+{
+    dateDebut = date;
+}
+
+void Purificateur::setDateFin(string date)
+{
+    dateFin = date;
+}
+
+void Purificateur::setLatitude(double lat)
+{
+    latitude = lat;
+}
+
+void Purificateur::setLongitude(double longi)
+{
+    longitude = longi;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Purificateur &Purificateur::operator=(const Purificateur &autrePurificateur)
 // Algorithme :

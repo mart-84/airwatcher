@@ -28,6 +28,36 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+string Attribut::getIdentifiant()
+{
+    return identifiant;
+}
+
+string Attribut::getUnite()
+{
+    return unite;
+}
+
+string Attribut::getDescription()
+{
+    return description;
+}
+
+void Attribut::setIdentifiant(string id)
+{
+    identifiant = id;
+}
+
+void Attribut::setUnite(string u)
+{
+    unite = u;
+}
+
+void Attribut::setDescription(string desc)
+{
+    description = desc;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Attribut &Attribut::operator=(const Attribut &autreAttribut)
 // Algorithme :

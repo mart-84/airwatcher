@@ -38,6 +38,22 @@ public:
     // Contrat :
     //
 
+    string getIdentifiant();
+
+    int getPoints();
+
+    bool getEstBanni();
+
+    vector<Capteur *> getCapteurs();
+
+    void setIdentifiant(string id);
+
+    void setPoints(int pts);
+
+    void setEstBanni(bool banni);
+
+    void ajouterCapteur(Capteur *capt);
+
     //------------------------------------------------- Surcharge d'opérateurs
     Particulier &operator=(const Particulier &autreParticulier);
     // Mode d'emploi :

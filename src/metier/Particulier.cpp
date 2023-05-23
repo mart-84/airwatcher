@@ -28,6 +28,46 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+string Particulier::getIdentifiant()
+{
+    return identifiant;
+}
+
+int Particulier::getPoints()
+{
+    return points;
+}
+
+bool Particulier::getEstBanni()
+{
+    return estBanni;
+}
+
+vector<Capteur *> Particulier::getCapteurs()
+{
+    return capteurs;
+}
+
+void Particulier::setIdentifiant(string id)
+{
+    identifiant = id;
+}
+
+void Particulier::setPoints(int pts)
+{
+    points = pts;
+}
+
+void Particulier::setEstBanni(bool banni)
+{
+    estBanni = banni;
+}
+
+void Particulier::ajouterCapteur(Capteur *capteur)
+{
+    capteurs.push_back(capteur);
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Particulier &Particulier::operator=(const Particulier &autreParticulier)
 // Algorithme :

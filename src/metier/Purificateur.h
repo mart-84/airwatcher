@@ -35,6 +35,26 @@ public:
     // Contrat :
     //
 
+    string getIdentifiant();
+
+    string getDateDebut();
+
+    string getDateFin();
+
+    double getLatitude();
+
+    double getLongitude();
+
+    void setIdentifiant(string id);
+
+    void setDateDebut(string date);
+
+    void setDateFin(string date);
+
+    void setLatitude(double lat);
+
+    void setLongitude(double lon);
+
     //------------------------------------------------- Surcharge d'opérateurs
     Purificateur &operator=(const Purificateur &autrePurificateur);
     // Mode d'emploi :

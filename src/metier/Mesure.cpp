@@ -28,6 +28,46 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+string Mesure::getDate()
+{
+    return date;
+}
+
+int Mesure::getValeur()
+{
+    return valeur;
+}
+
+Attribut *Mesure::getAttribut()
+{
+    return attribut;
+}
+
+Capteur *Mesure::getCapteur()
+{
+    return capteur;
+}
+
+void Mesure::setDate(string day)
+{
+    date = day;
+}
+
+void Mesure::setValeur(int val)
+{
+    valeur = val;
+}
+
+void Mesure::setAttribut(Attribut *attr)
+{
+    attribut = attr;
+}
+
+void Mesure::setCapteur(Capteur *capt)
+{
+    capteur = capt;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Mesure &Mesure::operator=(const Mesure &autreMesure)
 // Algorithme :
