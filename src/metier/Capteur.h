@@ -12,10 +12,15 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
+#include <vector>
+#include "Mesure.h"
+#include "Particulier.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+class Mesure;
+class Particulier;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Capteur>
@@ -83,6 +88,8 @@ protected:
     bool estFiable;
     double latitude;
     double longitude;
+    vector<Mesure *> mesures;
+    Particulier *proprietaire;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Capteur>

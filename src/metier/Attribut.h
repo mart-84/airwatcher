@@ -55,6 +55,12 @@ public:
     // Contrat :
     //
 
+    Attribut(string id, string u, string desc);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     virtual ~Attribut();
     // Mode d'emploi :
     //
@@ -69,6 +75,7 @@ protected:
     //----------------------------------------------------- ATTRIBUTs protégés
     string identifiant;
     string unite;
+    string description;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Attribut>

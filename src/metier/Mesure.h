@@ -12,10 +12,13 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
+#include "Attribut.h"
+#include "Capteur.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+class Capteur;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Mesure>
@@ -55,7 +58,7 @@ public:
     // Contrat :
     //
 
-    Mesure(string day, int val);
+    Mesure(string day, int val, Attribut &attr, Capteur &capt);
     // Mode d'emploi :
     //
     // Contrat :
@@ -75,6 +78,8 @@ protected:
     //----------------------------------------------------- Attributs protégés
     string date;
     int valeur;
+    Attribut *attribut;
+    Capteur *capteur;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Mesure>

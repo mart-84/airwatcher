@@ -57,14 +57,15 @@ Mesure::Mesure()
 #endif
 } //----- Fin de Mesure
 
-Mesure::Mesure(string day, int val)
-    : date(day), valeur(val)
+Mesure::Mesure(string day, int val, Attribut &attr, Capteur &capt)
+    : date(day), valeur(val), attribut(&attr), capteur(&capt)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Mesure> sur " << this << endl;
 #endif
+
 } //----- Fin de Mesure
 
 Mesure::~Mesure()
