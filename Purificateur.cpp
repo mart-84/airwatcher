@@ -1,9 +1,9 @@
 /*************************************************************************
                            Purificateur  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Réalisation de la classe <Purificateur> (fichier Purificateur.cpp) ------------

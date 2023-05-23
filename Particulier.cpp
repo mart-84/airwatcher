@@ -1,9 +1,9 @@
 /*************************************************************************
                            Particulier  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Réalisation de la classe <Particulier> (fichier Particulier.cpp) ------------
@@ -49,6 +49,19 @@ Particulier::Particulier(const Particulier &autreParticulier)
 } //----- Fin de Particulier (constructeur de copie)
 
 Particulier::Particulier()
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Particulier> sur " << this << endl;
+#endif
+} //----- Fin de Particulier
+
+Particulier::Particulier(string id, int pts, bool banni)
+    : Particulier(identifiant
+                  : id, points
+                  : pts, banni
+                  : banni)
 // Algorithme :
 //
 {

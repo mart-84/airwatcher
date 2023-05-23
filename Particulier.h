@@ -11,6 +11,7 @@
 #define PARTICULIER_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -54,6 +55,12 @@ public:
     // Contrat :
     //
 
+    Particulier(string id, int pts, bool banni);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     virtual ~Particulier();
     // Mode d'emploi :
     //
@@ -66,6 +73,10 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
+    string identifiant;
+    int points;
+    bool estBanni;
+
 };
 
 //-------------------------------- Autres définitions dépendantes de <Particulier>
