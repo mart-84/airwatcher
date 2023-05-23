@@ -1,9 +1,9 @@
 /*************************************************************************
                            Capteur  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Interface de la classe <Capteur> (fichier Capteur.h) ----------------
@@ -11,6 +11,7 @@
 #define CAPTEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -29,6 +30,12 @@ class Capteur
 public:
     //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    int calculerSimilarite(Capteur &capteur);
     // Mode d'emploi :
     //
     // Contrat :
@@ -54,6 +61,12 @@ public:
     // Contrat :
     //
 
+    Capteur(string id, bool fiable, double lat, double longi);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     virtual ~Capteur();
     // Mode d'emploi :
     //
@@ -66,6 +79,10 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
+    string identifiant;
+    bool estFiable;
+    double latitude;
+    double longitude;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Capteur>

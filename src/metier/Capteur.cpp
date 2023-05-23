@@ -1,9 +1,9 @@
 /*************************************************************************
                            Capteur  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Réalisation de la classe <Capteur> (fichier Capteur.cpp) ------------
@@ -28,6 +28,12 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+int Capteur::calculerSimilarite(Capteur &capteur)
+// Algorithme :
+//
+{
+} //----- Fin de calculerSimilarite
+
 //------------------------------------------------- Surcharge d'opérateurs
 Capteur &Capteur::operator=(const Capteur &autreCapteur)
 // Algorithme :
@@ -49,6 +55,16 @@ Capteur::Capteur(const Capteur &autreCapteur)
 } //----- Fin de Capteur (constructeur de copie)
 
 Capteur::Capteur()
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Capteur> sur " << this << endl;
+#endif
+} //----- Fin de Capteur
+
+Capteur::Capteur(string id, bool fiable, double lat, double longi)
+    : identifiant(id), estFiable(fiable), latitude(lat), longitude(longi)
 // Algorithme :
 //
 {

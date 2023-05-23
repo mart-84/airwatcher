@@ -1,9 +1,9 @@
 /*************************************************************************
                            Attribut  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Interface de la classe <Attribut> (fichier Attribut.h) ----------------
@@ -11,6 +11,7 @@
 #define ATTRIBUT_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -66,6 +67,8 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- ATTRIBUTs protégés
+    string identifiant;
+    string unite;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Attribut>

@@ -1,9 +1,9 @@
 /*************************************************************************
                            Mesure  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Réalisation de la classe <Mesure> (fichier Mesure.cpp) ------------
@@ -49,6 +49,16 @@ Mesure::Mesure(const Mesure &autreMesure)
 } //----- Fin de Mesure (constructeur de copie)
 
 Mesure::Mesure()
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Mesure> sur " << this << endl;
+#endif
+} //----- Fin de Mesure
+
+Mesure::Mesure(string day, int val)
+    : date(day), valeur(val)
 // Algorithme :
 //
 {

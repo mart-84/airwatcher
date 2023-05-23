@@ -58,10 +58,7 @@ Particulier::Particulier()
 } //----- Fin de Particulier
 
 Particulier::Particulier(string id, int pts, bool banni)
-    : Particulier(identifiant
-                  : id, points
-                  : pts, banni
-                  : banni)
+    : identifiant(id), points(pts), estBanni(banni)
 // Algorithme :
 //
 {

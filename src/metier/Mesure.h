@@ -1,9 +1,9 @@
 /*************************************************************************
                            Mesure  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Interface de la classe <Mesure> (fichier Mesure.h) ----------------
@@ -11,6 +11,7 @@
 #define MESURE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -54,6 +55,12 @@ public:
     // Contrat :
     //
 
+    Mesure(string day, int val);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     virtual ~Mesure();
     // Mode d'emploi :
     //
@@ -66,6 +73,8 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
+    string date;
+    int valeur;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Mesure>
