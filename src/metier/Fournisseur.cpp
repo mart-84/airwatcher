@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Capteur  -  description
+                           Fournisseur  -  description
                              -------------------
     début                : 23/05/2023 
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               : 
 *************************************************************************/
 
-//---------- Réalisation de la classe <Capteur> (fichier Capteur.cpp) ------------
+//---------- Réalisation de la classe <Fournisseur> (fichier Fournisseur.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,56 +15,56 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Capteur.h"
+#include "Fournisseur.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Capteur::Méthode ( liste des paramètres )
+// type Fournisseur::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
 //------------------------------------------------- Surcharge d'opérateurs
-Capteur &Capteur::operator=(const Capteur &autreCapteur)
+Fournisseur &Fournisseur::operator=(const Fournisseur &autreFournisseur)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Capteur> sur " << this << " et " << &autreCapteur << endl;
+    cout << "Appel a l'operateur d'affectation de <Fournisseur> sur " << this << " et " << &autreFournisseur << endl;
 #endif
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Capteur::Capteur(const Capteur &autreCapteur)
+Fournisseur::Fournisseur(const Fournisseur &autreFournisseur)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Capteur> sur " << this << " et " << &autreCapteur << endl;
+    cout << "Appel au constructeur de copie de <Fournisseur> sur " << this << " et " << &autreFournisseur << endl;
 #endif
-} //----- Fin de Capteur (constructeur de copie)
+} //----- Fin de Fournisseur (constructeur de copie)
 
-Capteur::Capteur()
+Fournisseur::Fournisseur()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Capteur> sur " << this << endl;
+    cout << "Appel au constructeur de <Fournisseur> sur " << this << endl;
 #endif
-} //----- Fin de Capteur
+} //----- Fin de Fournisseur
 
-Capteur::~Capteur()
+Fournisseur::~Fournisseur()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Capteur> sur " << this << endl;
+    cout << "Appel au destructeur de <Fournisseur> sur " << this << endl;
 #endif
-} //----- Fin de ~Capteur
+} //----- Fin de ~Fournisseur
 
 //------------------------------------------------------------------ PRIVE
 

@@ -2,7 +2,7 @@
                            Particulier  -  description
                              -------------------
     début                : 23/05/2023
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               :
 *************************************************************************/
 

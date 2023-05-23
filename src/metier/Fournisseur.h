@@ -1,14 +1,14 @@
 /*************************************************************************
-                           Mesure  -  description
+                           Fournisseur  -  description
                              -------------------
     début                : 23/05/2023 
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               : 
 *************************************************************************/
 
-//---------- Interface de la classe <Mesure> (fichier Mesure.h) ----------------
-#if !defined(MESURE_H)
-#define MESURE_H
+//---------- Interface de la classe <Fournisseur> (fichier Fournisseur.h) ----------------
+#if !defined(FOURNISSEUR_H)
+#define FOURNISSEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,12 +17,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Mesure>
+// Rôle de la classe <Fournisseur>
 //
 //
 //------------------------------------------------------------------------
 
-class Mesure
+class Fournisseur
 {
     //----------------------------------------------------------------- PUBLIC
 
@@ -35,26 +35,26 @@ public:
     //
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Mesure &operator=(const Mesure &autreMesure);
+    Fournisseur &operator=(const Fournisseur &autreFournisseur);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Mesure(const Mesure &autreMesure);
+    Fournisseur(const Fournisseur &autreFournisseur);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Mesure();
+    Fournisseur();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Mesure();
+    virtual ~Fournisseur();
     // Mode d'emploi :
     //
     // Contrat :
@@ -68,6 +68,6 @@ protected:
     //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Mesure>
+//-------------------------------- Autres définitions dépendantes de <Fournisseur>
 
-#endif // MESURE_H
+#endif // FOURNISSEUR_H

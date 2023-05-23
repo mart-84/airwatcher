@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Attribut  -  description
+                           Purificateur  -  description
                              -------------------
-    début                : 23/05/2023 
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
-    e-mail               : 
+    début                : 23/05/2023
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
+    e-mail               :
 *************************************************************************/
 
-//---------- Réalisation de la classe <Attribut> (fichier Attribut.cpp) ------------
+//---------- Réalisation de la classe <Purificateur> (fichier Purificateur.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,56 +15,56 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Attribut.h"
+#include "Purificateur.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Attribut::Méthode ( liste des paramètres )
+// type Purificateur::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
 //------------------------------------------------- Surcharge d'opérateurs
-Attribut &Attribut::operator=(const Attribut &autreAttribut)
+Purificateur &Purificateur::operator=(const Purificateur &autrePurificateur)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Attribut> sur " << this << " et " << &autreAttribut << endl;
+    cout << "Appel a l'operateur d'affectation de <Purificateur> sur " << this << " et " << &autrePurificateur << endl;
 #endif
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Attribut::Attribut(const Attribut &autreAttribut)
+Purificateur::Purificateur(const Purificateur &autrePurificateur)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Attribut> sur " << this << " et " << &autreAttribut << endl;
+    cout << "Appel au constructeur de copie de <Purificateur> sur " << this << " et " << &autrePurificateur << endl;
 #endif
-} //----- Fin de Attribut (constructeur de copie)
+} //----- Fin de Purificateur (constructeur de copie)
 
-Attribut::Attribut()
+Purificateur::Purificateur()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Attribut> sur " << this << endl;
+    cout << "Appel au constructeur de <Purificateur> sur " << this << endl;
 #endif
-} //----- Fin de Attribut
+} //----- Fin de Purificateur
 
-Attribut::~Attribut()
+Purificateur::~Purificateur()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Attribut> sur " << this << endl;
+    cout << "Appel au destructeur de <Purificateur> sur " << this << endl;
 #endif
-} //----- Fin de ~Attribut
+} //----- Fin de ~Purificateur
 
 //------------------------------------------------------------------ PRIVE
 

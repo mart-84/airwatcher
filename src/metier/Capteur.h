@@ -1,14 +1,14 @@
 /*************************************************************************
-                           Attribut  -  description
+                           Capteur  -  description
                              -------------------
     début                : 23/05/2023 
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               : 
 *************************************************************************/
 
-//---------- Interface de la classe <Attribut> (fichier Attribut.h) ----------------
-#if !defined(ATTRIBUT_H)
-#define ATTRIBUT_H
+//---------- Interface de la classe <Capteur> (fichier Capteur.h) ----------------
+#if !defined(CAPTEUR_H)
+#define CAPTEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,12 +17,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Attribut>
+// Rôle de la classe <Capteur>
 //
 //
 //------------------------------------------------------------------------
 
-class Attribut
+class Capteur
 {
     //----------------------------------------------------------------- PUBLIC
 
@@ -35,26 +35,26 @@ public:
     //
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Attribut &operator=(const Attribut &autreAttribut);
+    Capteur &operator=(const Capteur &autreCapteur);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Attribut(const Attribut &autreAttribut);
+    Capteur(const Capteur &autreCapteur);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Attribut();
+    Capteur();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Attribut();
+    virtual ~Capteur();
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,9 +65,9 @@ public:
 protected:
     //----------------------------------------------------- Méthodes protégées
 
-    //----------------------------------------------------- ATTRIBUTs protégés
+    //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Attribut>
+//-------------------------------- Autres définitions dépendantes de <Capteur>
 
-#endif // ATTRIBUT_H
+#endif // CAPTEUR_H

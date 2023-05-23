@@ -1,14 +1,14 @@
 /*************************************************************************
-                           Fournisseur  -  description
+                           Service  -  description
                              -------------------
     début                : 23/05/2023 
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               : 
 *************************************************************************/
 
-//---------- Interface de la classe <Fournisseur> (fichier Fournisseur.h) ----------------
-#if !defined(FOURNISSEUR_H)
-#define FOURNISSEUR_H
+//---------- Interface de la classe <Service> (fichier Service.h) ----------------
+#if !defined(Service_H)
+#define Service_H
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,12 +17,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Fournisseur>
+// Rôle de la classe <Service>
 //
 //
 //------------------------------------------------------------------------
 
-class Fournisseur
+class Service
 {
     //----------------------------------------------------------------- PUBLIC
 
@@ -35,26 +35,26 @@ public:
     //
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Fournisseur &operator=(const Fournisseur &autreFournisseur);
+    Service &operator=(const Service &autreService);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Fournisseur(const Fournisseur &autreFournisseur);
+    Service(const Service &autreService);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Fournisseur();
+    Service();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Fournisseur();
+    virtual ~Service();
     // Mode d'emploi :
     //
     // Contrat :
@@ -68,6 +68,6 @@ protected:
     //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Fournisseur>
+//-------------------------------- Autres définitions dépendantes de <Service>
 
-#endif // FOURNISSEUR_H
+#endif // Service_H
