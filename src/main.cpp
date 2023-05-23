@@ -1,7 +1,7 @@
 #include <iostream>
 
 #ifdef MAP
-#include "metier/Capteur.h"
+#include "dao/CapteurDao.h"
 
 void test_dao();
 #endif
@@ -27,7 +27,6 @@ void test_dao()
     {
         std::cout << capteur << std::endl;
     }
-
     std::cout << "---fin test dao---" << std::endl;
 }
 #endif

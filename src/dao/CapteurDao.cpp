@@ -18,6 +18,7 @@ using namespace std;
 #include "CapteurDao.h"
 
 //------------------------------------------------------------- Constantes
+static const std::string CHEMIN = "dataset/sensors.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -49,21 +50,6 @@ CapteurDao::CapteurDao(const CapteurDao &autreCapteurDao)
 #endif
 } //----- Fin de CapteurDao (constructeur de copie)
 
-CapteurDao::CapteurDao() : Dao::Dao()
-// Algorithme :
-//
-{
-    for(auto&& line: m_lines) 
-    {
-        Capteur capteur(line[0], false, std::stol(line[1]), std::stol(line[2]));
-        m_capteurs.push_back(capteur);
-    }
-
-#ifdef MAP
-    cout << "Appel au constructeur de <CapteurDao> sur " << this << endl;
-#endif
-} //----- Fin de CapteurDao
-
 CapteurDao::CapteurDao()
 // Algorithme :
 //
@@ -71,6 +57,14 @@ CapteurDao::CapteurDao()
 #ifdef MAP
     cout << "Appel au constructeur de <CapteurDao> sur " << this << endl;
 #endif
+
+    this->parse_csv(CHEMIN);
+
+    for(auto&& line: m_lines) 
+    {
+        Capteur capteur(line[0], false, std::stol(line[1]), std::stol(line[2]));
+        m_capteurs.push_back(capteur);
+    }
 } //----- Fin de CapteurDao
 
 CapteurDao::~CapteurDao()
@@ -107,9 +101,3 @@ std::vector<Capteur>& CapteurDao::findAll()
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
-const std::string CapteurDao::get_path() const
-{
-    return "dataset/providers.csv";
-} // ----- Fin de Dao::get_path
-

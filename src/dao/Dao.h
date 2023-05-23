@@ -65,8 +65,6 @@ public:
     //------------------------------------------------------------------ PRIVE
 
 protected:
-    virtual const std::string get_path() const = 0;
-
     //----------------------------------------------------- Méthodes protégées
     void parse_csv(const std::string& path);
 

@@ -11,7 +11,7 @@ endif
 
 MAIN = src/main
 EXEC = airwatcher
-INT = src/metier/Attribut.h src/metier/Capteur.h src/metier/Fournisseur.h src/metier/Mesure.h src/metier/Particulier.h src/metier/Purificateur.h src/service/Service.h src/vue/Vue.h
+INT = src/metier/Attribut.h src/metier/Capteur.h src/metier/Fournisseur.h src/metier/Mesure.h src/metier/Particulier.h src/metier/Purificateur.h src/service/Service.h src/vue/Vue.h src/dao/CapteurDao.h src/dao/Dao.h
 REAL = $(INT:.h=.c)
 OBJ = $(INT:.h=.o) $(MAIN).o
 

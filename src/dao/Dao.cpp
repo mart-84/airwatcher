@@ -43,29 +43,10 @@ Dao &Dao::operator=(const Dao &autreDao)
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Dao::Dao(const Dao &autreDao)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Dao> sur " << this << " et " << &autreDao << endl;
-#endif
-} //----- Fin de Dao (constructeur de copie)
-
 Dao::Dao()
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <Dao> sur " << this << endl;
-#endif
-} //----- Fin de Dao
-
-Dao::Dao()
-// Algorithme :
-//
-{
-    parse_csv(get_path());
 #ifdef MAP
     cout << "Appel au constructeur de <Dao> sur " << this << endl;
 #endif
@@ -92,13 +73,19 @@ void Dao::parse_csv(const std::string& path)
         std::string line;
         while(std::getline(read, line))
         {
+            std::cout << line << std::endl;
             m_lines.emplace_back();
 
-            std::stringstream stream(line);
+            std::istringstream stream(line);
             std::string stoken;
-            while(std::getline(stream, stoken, ",")) 
+            while(std::getline(stream, stoken, ';')) 
             {
                 m_lines.back().push_back(stoken);
+            }
+
+            if(m_lines.back().empty())
+            {
+                m_lines.pop_back();
             }
         }
     }
