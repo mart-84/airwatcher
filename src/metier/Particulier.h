@@ -11,6 +11,7 @@
 #define PARTICULIER_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <string>
 
 //------------------------------------------------------------- Constantes
