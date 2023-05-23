@@ -95,7 +95,7 @@ endif
 
 depend : $(OBJ:%.o=$(DEPENDENCIES_FOLDER))
 	$(ECHO) ======= DEPENDENCIES : OK =======
-makefile_data$(PS)dependencies$(PS)
+
 $(DEPENDENCIES_FOLDER) : %.cpp
 	$(ECHO) Generation des dependances de $<
 	-@mkdir makefile_data > $(NULL_FILE) 2>&1 ||:
