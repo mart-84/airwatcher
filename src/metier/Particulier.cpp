@@ -75,7 +75,7 @@ ostream &operator<<(ostream &os, Particulier particulier)
        << " points : " << particulier.points
        << " banni : " << particulier.estBanni
        << " capteurs : " << endl;
-    for (int i = 0; i < particulier.capteurs.size(); i++)
+    for (size_t i = 0; i < particulier.capteurs.size(); i++)
     {
         os << "\t" << particulier.capteurs[i]->getIdentifiant() << endl;
     }
