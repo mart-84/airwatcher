@@ -44,7 +44,7 @@ public:
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Dao(const Dao &autreDao);
+    Dao(const Dao &autreDao) = delete;
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
@@ -65,6 +65,8 @@ public:
     //------------------------------------------------------------------ PRIVE
 
 protected:
+    virtual const std::string get_path() const = 0;
+
     //----------------------------------------------------- Méthodes protégées
     void parse_csv(const std::string& path);
 

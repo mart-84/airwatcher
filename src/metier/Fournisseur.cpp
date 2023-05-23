@@ -56,6 +56,7 @@ Fournisseur &Fournisseur::operator=(const Fournisseur &autreFournisseur)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Fournisseur> sur " << this << " et " << &autreFournisseur << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur

@@ -102,6 +102,7 @@ Capteur &Capteur::operator=(const Capteur &autreCapteur)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Capteur> sur " << this << " et " << &autreCapteur << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur

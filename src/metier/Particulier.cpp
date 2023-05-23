@@ -76,6 +76,7 @@ Particulier &Particulier::operator=(const Particulier &autreParticulier)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Particulier> sur " << this << " et " << &autreParticulier << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur

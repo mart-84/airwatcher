@@ -39,6 +39,7 @@ Dao &Dao::operator=(const Dao &autreDao)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Dao> sur " << this << " et " << &autreDao << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -64,6 +65,7 @@ Dao::Dao()
 // Algorithme :
 //
 {
+    parse_csv(get_path());
 #ifdef MAP
     cout << "Appel au constructeur de <Dao> sur " << this << endl;
 #endif
@@ -79,6 +81,9 @@ Dao::~Dao()
 } //----- Fin de ~Dao
 
 void Dao::parse_csv(const std::string& path)
+// Algorithme :
+// On lit chaque ligne du fichier dont le chemin est donné en paramètre
+// On sépare chaque ligne par une virgule
 {
     std::ifstream read(path);
 
@@ -101,7 +106,7 @@ void Dao::parse_csv(const std::string& path)
     {
         std::cerr << "Cannot open file: " << path << std::endl;
     }
-}
+} //----- Fin de parse_csv
 
 //------------------------------------------------------------------ PRIVE
 

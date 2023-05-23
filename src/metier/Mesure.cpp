@@ -76,6 +76,7 @@ Mesure &Mesure::operator=(const Mesure &autreMesure)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Mesure> sur " << this << " et " << &autreMesure << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
