@@ -11,7 +11,7 @@ endif
 
 MAIN = main
 EXEC = analog
-INT = LigneLog.h AnalyseurLogs.h Statistiques.h GenerateurGraphe.h Controleur.h VerificateurCommande.h
+INT = Attribut.h Capteur.h Fournisseur.h Mesure.h Particulier.h Purificateur.h
 REAL = $(INT:.h=.c)
 OBJ = $(INT:.h=.o) $(MAIN).o
 
