@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Purificateur  -  description
+                           Service  -  description
                              -------------------
     début                : 23/05/2023 
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               : 
 *************************************************************************/
 
-//---------- Réalisation de la classe <Purificateur> (fichier Purificateur.cpp) ------------
+//---------- Réalisation de la classe <Service> (fichier Service.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,56 +15,56 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Purificateur.h"
+#include "Service.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Purificateur::Méthode ( liste des paramètres )
+// type Service::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
 //------------------------------------------------- Surcharge d'opérateurs
-Purificateur &Purificateur::operator=(const Purificateur &autrePurificateur)
+Service &Service::operator=(const Service &autreService)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Purificateur> sur " << this << " et " << &autrePurificateur << endl;
+    cout << "Appel a l'operateur d'affectation de <Service> sur " << this << " et " << &autreService << endl;
 #endif
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Purificateur::Purificateur(const Purificateur &autrePurificateur)
+Service::Service(const Service &autreService)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Purificateur> sur " << this << " et " << &autrePurificateur << endl;
+    cout << "Appel au constructeur de copie de <Service> sur " << this << " et " << &autreService << endl;
 #endif
-} //----- Fin de Purificateur (constructeur de copie)
+} //----- Fin de Service (constructeur de copie)
 
-Purificateur::Purificateur()
+Service::Service()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Purificateur> sur " << this << endl;
+    cout << "Appel au constructeur de <Service> sur " << this << endl;
 #endif
-} //----- Fin de Purificateur
+} //----- Fin de Service
 
-Purificateur::~Purificateur()
+Service::~Service()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Purificateur> sur " << this << endl;
+    cout << "Appel au destructeur de <Service> sur " << this << endl;
 #endif
-} //----- Fin de ~Purificateur
+} //----- Fin de ~Service
 
 //------------------------------------------------------------------ PRIVE
 

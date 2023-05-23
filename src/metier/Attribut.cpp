@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Fournisseur  -  description
+                           Attribut  -  description
                              -------------------
     début                : 23/05/2023 
-    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               : 
 *************************************************************************/
 
-//---------- Réalisation de la classe <Fournisseur> (fichier Fournisseur.cpp) ------------
+//---------- Réalisation de la classe <Attribut> (fichier Attribut.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,56 +15,56 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Fournisseur.h"
+#include "Attribut.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Fournisseur::Méthode ( liste des paramètres )
+// type Attribut::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
 //------------------------------------------------- Surcharge d'opérateurs
-Fournisseur &Fournisseur::operator=(const Fournisseur &autreFournisseur)
+Attribut &Attribut::operator=(const Attribut &autreAttribut)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Fournisseur> sur " << this << " et " << &autreFournisseur << endl;
+    cout << "Appel a l'operateur d'affectation de <Attribut> sur " << this << " et " << &autreAttribut << endl;
 #endif
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Fournisseur::Fournisseur(const Fournisseur &autreFournisseur)
+Attribut::Attribut(const Attribut &autreAttribut)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Fournisseur> sur " << this << " et " << &autreFournisseur << endl;
+    cout << "Appel au constructeur de copie de <Attribut> sur " << this << " et " << &autreAttribut << endl;
 #endif
-} //----- Fin de Fournisseur (constructeur de copie)
+} //----- Fin de Attribut (constructeur de copie)
 
-Fournisseur::Fournisseur()
+Attribut::Attribut()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Fournisseur> sur " << this << endl;
+    cout << "Appel au constructeur de <Attribut> sur " << this << endl;
 #endif
-} //----- Fin de Fournisseur
+} //----- Fin de Attribut
 
-Fournisseur::~Fournisseur()
+Attribut::~Attribut()
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Fournisseur> sur " << this << endl;
+    cout << "Appel au destructeur de <Attribut> sur " << this << endl;
 #endif
-} //----- Fin de ~Fournisseur
+} //----- Fin de ~Attribut
 
 //------------------------------------------------------------------ PRIVE
 
