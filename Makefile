@@ -9,9 +9,9 @@ SUFFIX =.d
 CFLAGS := $(CFLAGS) -DMAP
 endif
 
-MAIN = main
-EXEC = analog
-INT = Attribut.h Capteur.h Fournisseur.h Mesure.h Particulier.h Purificateur.h
+MAIN = src/main
+EXEC = airwatcher
+INT = src/metier/Attribut.h src/metier/Capteur.h src/metier/Fournisseur.h src/metier/Mesure.h src/metier/Particulier.h src/metier/Purificateur.h src/service/Service.h src/vue/Vue.h
 REAL = $(INT:.h=.c)
 OBJ = $(INT:.h=.o) $(MAIN).o
 
@@ -95,12 +95,12 @@ endif
 
 depend : $(OBJ:%.o=$(DEPENDENCIES_FOLDER))
 	$(ECHO) ======= DEPENDENCIES : OK =======
-
+makefile_data$(PS)dependencies$(PS)
 $(DEPENDENCIES_FOLDER) : %.cpp
 	$(ECHO) Generation des dependances de $<
 	-@mkdir makefile_data > $(NULL_FILE) 2>&1 ||:
 	-@mkdir makefile_data$(PS)dependencies > $(NULL_FILE) 2>&1 ||:
-	-$(RM) "$@"  > $(NULL_FILE) 2>&1
-	$(GCC) -MM $< > "$@.tmp"
-	@sed "s,\($*\)\.o[ :]*,\1.o \1.make \1.d.o : ,g" < "$@.tmp" > "$@"
-	-$(RM) "$@.tmp" > $(NULL_FILE) 2>&1
+	-$(RM) "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@))"  > $(NULL_FILE) 2>&1
+	$(GCC) -MM $< > "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@)).tmp"
+	@sed "s,\($*\)\.o[ :]*,\1.o \1.make \1.d.o : ,g" < "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@)).tmp" > "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@))"
+	-$(RM) "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@)).tmp" > $(NULL_FILE) 2>&1
