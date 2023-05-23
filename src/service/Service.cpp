@@ -141,6 +141,7 @@ Service &Service::operator=(const Service &autreService)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Service> sur " << this << " et " << &autreService << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur

@@ -49,6 +49,13 @@ void Fournisseur::setPurificateur(Purificateur *purif)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
+ostream &operator<<(ostream &os, Fournisseur fournisseur)
+{
+    os << "Identifiant : " << fournisseur.getIdentifiant() << endl;
+    os << "Purificateur : " << fournisseur.getPurificateur() << endl;
+    return os;
+} //----- Fin de operator <<
+
 Fournisseur &Fournisseur::operator=(const Fournisseur &autreFournisseur)
 // Algorithme :
 //
@@ -56,6 +63,7 @@ Fournisseur &Fournisseur::operator=(const Fournisseur &autreFournisseur)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Fournisseur> sur " << this << " et " << &autreFournisseur << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur

@@ -68,6 +68,8 @@ public:
     float calculerSimilarite(Capteur &capteur);
 
     //------------------------------------------------- Surcharge d'opérateurs
+    friend ostream &operator<<(ostream &, Capteur);
+
     Capteur &operator=(const Capteur &autreCapteur);
     // Mode d'emploi :
     //

@@ -11,6 +11,11 @@
 #define CapteurDao_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <vector>
+#include <string>
+
+#include "../metier/Capteur.h"
+#include "Dao.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -22,18 +27,11 @@
 //
 //------------------------------------------------------------------------
 
-class CapteurDao
+class CapteurDao : public Dao
 {
     //----------------------------------------------------------------- PUBLIC
 
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     //------------------------------------------------- Surcharge d'opérateurs
     CapteurDao &operator=(const CapteurDao &autreCapteurDao);
     // Mode d'emploi :
@@ -60,12 +58,33 @@ public:
     // Contrat :
     //
 
+    //----------------------------------------------------- Méthodes publiques
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    Capteur* findById(const std::string& id);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    std::vector<Capteur>& findAll();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
     //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Méthodes protégées.
+    const std::string get_path() const;
 
     //----------------------------------------------------- Attributs protégés
+    std::vector<Capteur> m_capteurs;
 };
 
 //-------------------------------- Autres définitions dépendantes de <CapteurDao>

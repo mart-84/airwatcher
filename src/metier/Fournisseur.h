@@ -36,7 +36,6 @@ public:
     //
     // Contrat :
     //
-
     string getIdentifiant();
 
     Purificateur *getPurificateur();
@@ -46,6 +45,8 @@ public:
     void setPurificateur(Purificateur *purif);
 
     //------------------------------------------------- Surcharge d'opérateurs
+    friend ostream &operator<<(ostream &, Fournisseur);
+
     Fournisseur &operator=(const Fournisseur &autreFournisseur);
     // Mode d'emploi :
     //

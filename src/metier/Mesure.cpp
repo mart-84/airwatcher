@@ -69,6 +69,12 @@ void Mesure::setCapteur(Capteur *capt)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
+ostream &operator<<(ostream &os, Mesure mesure)
+{
+    os << "date: " << mesure.date << " valeur: " << mesure.valeur << " IDattribut: " << mesure.attribut->getIdentifiant() << " IDcapteur:" << mesure.capteur->getIdentifiant();
+    return os;
+}
+
 Mesure &Mesure::operator=(const Mesure &autreMesure)
 // Algorithme :
 //
@@ -76,6 +82,7 @@ Mesure &Mesure::operator=(const Mesure &autreMesure)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Mesure> sur " << this << " et " << &autreMesure << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
