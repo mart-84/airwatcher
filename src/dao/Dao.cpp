@@ -13,7 +13,9 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <ifstream>
+#include <fstream>
+#include <sstream>
+#include <exception>
 
 //------------------------------------------------------ Include personnel
 #include "Dao.h"
@@ -80,22 +82,22 @@ void parse_csv(const std::string& path)
 {
     std::ifstream read(path);
 
-    if(path)
+    if(read)
     {
         std::string line;
-        while(std::getline(path, line))
+        while(std::getline(read, line))
         {
             std::stringstream stream(line);
             std::string stoken;
             while(std::getline(stream, stoken, ",")) 
             {
-                
+
             }
         }
     }
     else 
     {
-        throw std::exception("Cannot read file: " + path);
+        std::cerr << "Cannot open file: " << path << std::endl;
     }
 }
 
