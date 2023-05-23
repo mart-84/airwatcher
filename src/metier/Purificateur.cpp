@@ -86,6 +86,7 @@ Purificateur &Purificateur::operator=(const Purificateur &autrePurificateur)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Purificateur> sur " << this << " et " << &autrePurificateur << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur

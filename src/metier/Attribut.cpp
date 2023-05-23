@@ -72,6 +72,7 @@ Attribut &Attribut::operator=(const Attribut &autreAttribut)
 #ifdef MAP
     cout << "Appel a l'operateur d'affectation de <Attribut> sur " << this << " et " << &autreAttribut << endl;
 #endif
+    return *this;
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
