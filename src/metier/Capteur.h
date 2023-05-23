@@ -11,6 +11,7 @@
 #define CAPTEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <string>
 #include <vector>
 #include "Mesure.h"
