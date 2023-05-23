@@ -1,0 +1,73 @@
+/*************************************************************************
+                           Attribut  -  description
+                             -------------------
+    début                : 23/05/2023 
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih, Alexis
+    e-mail               : 
+*************************************************************************/
+
+//---------- Interface de la classe <Attribut> (fichier Attribut.h) ----------------
+#if !defined(ATTRIBUT_H)
+#define ATTRIBUT_H
+
+//--------------------------------------------------- Interfaces utilisées
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <Attribut>
+//
+//
+//------------------------------------------------------------------------
+
+class Attribut
+{
+    //----------------------------------------------------------------- PUBLIC
+
+public:
+    //----------------------------------------------------- Méthodes publiques
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    //------------------------------------------------- Surcharge d'opérateurs
+    Attribut &operator=(const Attribut &autreAttribut);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    //-------------------------------------------- Constructeurs - destructeur
+    Attribut(const Attribut &autreAttribut);
+    // Mode d'emploi (constructeur de copie) :
+    //
+    // Contrat :
+    //
+
+    Attribut();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    virtual ~Attribut();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    //------------------------------------------------------------------ PRIVE
+
+protected:
+    //----------------------------------------------------- Méthodes protégées
+
+    //----------------------------------------------------- ATTRIBUTs protégés
+};
+
+//-------------------------------- Autres définitions dépendantes de <Attribut>
+
+#endif // ATTRIBUT_H
