@@ -95,6 +95,12 @@ int Capteur::calculerSimilarite(Capteur &capteur)
 } //----- Fin de calculerSimilarite
 
 //------------------------------------------------- Surcharge d'opérateurs
+ostream &operator<<(ostream &os, Capteur capteur)
+{
+    os << "id: " << capteur.identifiant << " fiabilité: " << capteur.estFiable << " latitude: " << capteur.latitude << " longitude: " << capteur.longitude << endl;
+    return os;
+}
+
 Capteur &Capteur::operator=(const Capteur &autreCapteur)
 // Algorithme :
 //

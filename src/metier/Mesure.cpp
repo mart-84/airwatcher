@@ -69,6 +69,12 @@ void Mesure::setCapteur(Capteur *capt)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
+ostream &operator<<(ostream &os, Mesure mesure)
+{
+    os << "date: " << mesure.date << " valeur: " << mesure.valeur << " IDattribut: " << mesure.attribut->getNom() << " IDcapteur:" << mesure.capteur->getIdentifiant();
+    return os;
+}
+
 Mesure &Mesure::operator=(const Mesure &autreMesure)
 // Algorithme :
 //

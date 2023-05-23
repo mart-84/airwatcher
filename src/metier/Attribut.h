@@ -36,9 +36,6 @@ public:
     // Contrat :
     //
 
-    friend ostream& operator<<(ostream &, Attribut);
-    
-
     string getIdentifiant();
 
     string getUnite();
@@ -52,6 +49,8 @@ public:
     void setDescription(string desc);
 
     //------------------------------------------------- Surcharge d'opérateurs
+    friend ostream &operator<<(ostream &, Attribut);
+
     Attribut &operator=(const Attribut &autreAttribut);
     // Mode d'emploi :
     //
