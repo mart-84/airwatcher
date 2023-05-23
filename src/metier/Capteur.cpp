@@ -88,16 +88,29 @@ void Capteur::setProprietaire(Particulier *part)
     proprietaire = part;
 }
 
-int Capteur::calculerSimilarite(Capteur &capteur)
+float Capteur::calculerSimilarite(Capteur &capteur)
 // Algorithme :
 //
 {
+    return 0.0;
 } //----- Fin de calculerSimilarite
 
 //------------------------------------------------- Surcharge d'opérateurs
 ostream &operator<<(ostream &os, Capteur capteur)
 {
-    os << "id: " << capteur.identifiant << " fiabilité: " << capteur.estFiable << " latitude: " << capteur.latitude << " longitude: " << capteur.longitude << endl;
+    os << "id: " << capteur.identifiant
+       << " fiabilité: " << capteur.estFiable
+       << " latitude: " << capteur.latitude
+       << " longitude: " << capteur.longitude;
+    if (capteur.proprietaire != NULL)
+    {
+        os << " propriétaire: " << capteur.proprietaire->getIdentifiant();
+    }
+    else
+    {
+        os << " propriétaire: gouvernement";
+    }
+    os << "" << endl;
     return os;
 }
 

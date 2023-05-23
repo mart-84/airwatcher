@@ -56,6 +56,8 @@ public:
     void ajouterCapteur(Capteur *capt);
 
     //------------------------------------------------- Surcharge d'opérateurs
+    friend ostream &operator<<(ostream &, Particulier);
+
     Particulier &operator=(const Particulier &autreParticulier);
     // Mode d'emploi :
     //

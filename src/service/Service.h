@@ -34,6 +34,8 @@ public:
     // Contrat :
     //
 
+    int calculerIndiceATMO(int o3, int so2, int no2, int pm10);
+
     //------------------------------------------------- Surcharge d'opérateurs
     Service &operator=(const Service &autreService);
     // Mode d'emploi :
