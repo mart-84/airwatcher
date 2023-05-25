@@ -11,11 +11,11 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <exception>
+using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Dao.h"
@@ -61,36 +61,36 @@ Dao::~Dao()
 #endif
 } //----- Fin de ~Dao
 
-void Dao::parse_csv(const std::string& path)
+void Dao::parse_csv(const string &path)
 // Algorithme :
 // On lit chaque ligne du fichier dont le chemin est donné en paramètre
 // On sépare chaque ligne par une virgule
 {
-    std::ifstream read(path);
+    ifstream read(path);
 
-    if(read)
+    if (read)
     {
-        std::string line;
-        while(std::getline(read, line))
+        string line;
+        while (getline(read, line))
         {
             m_lines.emplace_back();
 
-            std::istringstream stream(line);
-            std::string stoken;
-            while(std::getline(stream, stoken, ';')) 
+            istringstream stream(line);
+            string stoken;
+            while (getline(stream, stoken, ';'))
             {
                 m_lines.back().push_back(stoken);
             }
 
-            if(m_lines.back().empty())
+            if (m_lines.back().empty())
             {
                 m_lines.pop_back();
             }
         }
     }
-    else 
+    else
     {
-        std::cerr << "Cannot open file: " << path << std::endl;
+        cerr << "Cannot open file: " << path << endl;
     }
 } //----- Fin de parse_csv
 

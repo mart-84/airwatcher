@@ -11,8 +11,8 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
+using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Attribut.h"
@@ -59,7 +59,7 @@ void Attribut::setDescription(string desc)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-ostream& operator<<(ostream & os, Attribut attr)
+ostream &operator<<(ostream &os, Attribut attr)
 {
     os << attr.identifiant << " " << attr.unite << " " << attr.description;
     return os;

@@ -13,6 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include <string>
+using namespace std;
 
 #include "../metier/Capteur.h"
 #include "Dao.h"
@@ -65,13 +66,13 @@ public:
     // Contrat :
     //
 
-    Capteur* findById(const std::string& id);
+    Capteur *findById(const string &id);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    std::vector<Capteur>& findAll();
+    vector<Capteur> &findAll();
     // Mode d'emploi :
     //
     // Contrat :
@@ -83,7 +84,7 @@ protected:
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
-    std::vector<Capteur> m_capteurs;
+    vector<Capteur> m_capteurs;
 };
 
 //-------------------------------- Autres définitions dépendantes de <CapteurDao>

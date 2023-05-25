@@ -11,8 +11,8 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
+using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Capteur.h"
@@ -99,18 +99,17 @@ float Capteur::calculerSimilarite(Capteur &capteur)
 ostream &operator<<(ostream &os, Capteur capteur)
 {
     os << "id: " << capteur.identifiant
-       << " fiabilité: " << capteur.estFiable
-       << " latitude: " << capteur.latitude
-       << " longitude: " << capteur.longitude;
-    if (capteur.proprietaire != NULL)
+       << ",fiabilite: " << boolalpha << capteur.estFiable
+       << ",latitude: " << capteur.latitude
+       << ",longitude: " << capteur.longitude;
+    if (capteur.proprietaire != nullptr)
     {
-        os << " propriétaire: " << capteur.proprietaire->getIdentifiant();
+        os << ",proprietaire: " << capteur.proprietaire->getIdentifiant();
     }
     else
     {
-        os << " propriétaire: gouvernement";
+        os << ",proprietaire: agence gouvernementale";
     }
-    os << "" << endl;
     return os;
 }
 
@@ -125,14 +124,13 @@ Capteur &Capteur::operator=(const Capteur &autreCapteur)
 } //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
-Capteur::Capteur(const Capteur &autreCapteur)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Capteur> sur " << this << " et " << &autreCapteur << endl;
-#endif
-} //----- Fin de Capteur (constructeur de copie)
+// Capteur::Capteur(const Capteur &autreCapteur)
+// {
+// #ifdef MAP
+//     cout << "Appel au constructeur de copie de <Capteur> sur " << this << " et " << &autreCapteur << endl;
+// #endif
+
+// } //----- Fin de Capteur (constructeur de copie)
 
 Capteur::Capteur()
 // Algorithme :

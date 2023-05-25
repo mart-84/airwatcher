@@ -11,8 +11,9 @@
 #define FOURNISSEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
-using namespace std;
 #include <string>
+using namespace std;
+
 #include "Purificateur.h"
 
 //------------------------------------------------------------- Constantes

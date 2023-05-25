@@ -13,6 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include <string>
+using namespace std;
 
 //------------------------------------------------------------- Constantes
 
@@ -66,10 +67,10 @@ public:
 
 protected:
     //----------------------------------------------------- Méthodes protégées
-    void parse_csv(const std::string& path);
+    void parse_csv(const string &path);
 
     //----------------------------------------------------- Attributs protégés
-    std::vector<std::vector<std::string>> m_lines;
+    vector<vector<string>> m_lines;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Dao>

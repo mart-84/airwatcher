@@ -11,9 +11,10 @@
 #define CAPTEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
-using namespace std;
 #include <string>
 #include <vector>
+using namespace std;
+
 #include "Mesure.h"
 #include "Particulier.h"
 
@@ -77,7 +78,7 @@ public:
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Capteur(const Capteur &autreCapteur);
+    // Capteur(const Capteur &autreCapteur);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
@@ -112,7 +113,7 @@ protected:
     double latitude;
     double longitude;
     vector<Mesure *> mesures;
-    Particulier *proprietaire;
+    Particulier *proprietaire = nullptr;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Capteur>

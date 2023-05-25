@@ -1,32 +1,27 @@
 #include <iostream>
+using namespace std;
 
-#ifdef MAP
 #include "dao/CapteurDao.h"
 
 void test_dao();
-#endif
 
 int main(int argc, char **argv)
 {
-    std::cout << "AIRWATCHER 😋" << std::endl;
+    cout << "AIRWATCHER 😋" << endl;
 
-    #ifdef MAP
     test_dao();
-    #endif
 
     return 0;
 }
 
-#ifdef MAP
 void test_dao()
 {
-    std::cout << "---test dao---" << std::endl;
+    cout << "---test dao---" << endl;
     CapteurDao capteur_dao;
-    auto&& capteurs = capteur_dao.findAll();
-    for(auto&& capteur: capteurs)
+    vector<Capteur> &capteurs = capteur_dao.findAll();
+    for (Capteur &capteur : capteurs)
     {
-        std::cout << capteur << std::endl;
+        cout << capteur << endl;
     }
-    std::cout << "---fin test dao---" << std::endl;
+    cout << "---fin test dao---" << endl;
 }
-#endif

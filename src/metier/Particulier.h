@@ -11,9 +11,10 @@
 #define PARTICULIER_H
 
 //--------------------------------------------------- Interfaces utilisées
-using namespace std;
 #include <string>
 #include <vector>
+using namespace std;
+
 #include "Capteur.h"
 
 //------------------------------------------------------------- Constantes

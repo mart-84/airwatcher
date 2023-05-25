@@ -11,14 +11,14 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
+using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "CapteurDao.h"
 
 //------------------------------------------------------------- Constantes
-static const std::string CHEMIN = "dataset/sensors.csv";
+static const string CHEMIN = "dataset/sensors.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -60,9 +60,9 @@ CapteurDao::CapteurDao()
 
     this->parse_csv(CHEMIN);
 
-    for(auto&& line: m_lines) 
+    for (auto &&line : m_lines)
     {
-        Capteur capteur(line[0], false, std::stol(line[1]), std::stol(line[2]));
+        Capteur capteur(line[0], false, stol(line[1]), stol(line[2]));
         m_capteurs.push_back(capteur);
     }
 } //----- Fin de CapteurDao
@@ -76,13 +76,13 @@ CapteurDao::~CapteurDao()
 #endif
 } //----- Fin de ~CapteurDao
 
-Capteur* CapteurDao::findById(const std::string& id)
+Capteur *CapteurDao::findById(const string &id)
 // Algorithme :
 // Recherche par id simple
 {
-    for(auto&& capteur: m_capteurs)
+    for (auto &&capteur : m_capteurs)
     {
-        if(capteur.getIdentifiant() == id)
+        if (capteur.getIdentifiant() == id)
         {
             return &capteur;
         }
@@ -91,7 +91,7 @@ Capteur* CapteurDao::findById(const std::string& id)
     return nullptr;
 } //----- Fin de findById
 
-std::vector<Capteur>& CapteurDao::findAll()
+vector<Capteur> &CapteurDao::findAll()
 // Algorithme :
 // Retourne tous les capteurs
 {
