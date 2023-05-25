@@ -1,106 +1,62 @@
-DISPGCC = g++
-GCC = @$(DISPGCC)
-CFLAGS = -g -Wall -ansi -pedantic -std=c++11 -Ilib
-LDFLAGS = -g -Wall
-LIBS =
-SUFFIX = 
-ifneq ($(findstring debug, $(MAKECMDGOALS)),)
-SUFFIX =.d
-CFLAGS := $(CFLAGS) -DMAP
-endif
-
-MAIN = src/main
 EXEC = airwatcher
-INT = src/metier/Attribut.h src/metier/Capteur.h src/metier/Fournisseur.h src/metier/Mesure.h src/metier/Particulier.h src/metier/Purificateur.h src/service/Service.h src/vue/Vue.h src/dao/CapteurDao.h src/dao/Dao.h
-REAL = $(INT:.h=.c)
-OBJ = $(INT:.h=.o) $(MAIN).o
+SRCS = src/metier/Attribut.cpp src/metier/Capteur.cpp src/metier/Fournisseur.cpp \
+       src/metier/Mesure.cpp src/metier/Particulier.cpp src/metier/Purificateur.cpp \
+	   src/service/Service.cpp src/vue/Vue.cpp src/dao/CapteurDao.cpp src/dao/Dao.cpp \
+	   src/main.cpp
 
 PS = /
-RM = @rm -rf
-CP = @cp
-MV = @mv
-ECHO = @echo
-MEMCHECK = @valgrind --leak-check=full
-NULL_FILE = /dev/null # Utile pour la redirection de sortie
-DEPENDENCIES_FOLDER = makefile_data/dependencies/%.make
+OBJDIR := obj
+GCC = g++
+CFLAGS = -g -Wall
+LDFLAGS = -g -Wall
+
+MOVE = mv -f
+RM = rm -rf
+MKDIR = mkdir -p
+TOUCH = touch $(1)
+NULL_FILE = /dev/null
 
 ifeq ($(OS), Windows_NT) # Version spéciale Windows
 EXEC := $(EXEC).exe
 PS = \\
-RM = @del /Q /F /S
-CP = @copy
-MV = @move
-MEMCHECK = @drmemory -batch
+MOVE = move
+RM = del /Q /F /S
+MKDIR = md
+TOUCH = type nul >>$(1) & copy $(1) +,,
 NULL_FILE = nul
-DEPENDENCIES_FOLDER = makefile_data\\dependencies\\%.make
 else
 EXEC := ./$(EXEC)
 endif
 
+DEPDIR :=  $(OBJDIR)$(PS)dependencies
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)$(PS)$*.d
 
-all debug : $(EXEC)
-	$(ECHO) ======= BUILD : OK =======
+all: $(EXEC)
+	@echo Build finished
 
-
-$(EXEC) : depend $(OBJ:.o=$(SUFFIX).o)
-	$(ECHO) ======= COMPILATION : OK =======
-	$(ECHO) Edition des liens pour $@ avec \"$(DISPGCC) $(LDFLAGS) -o $@ $(OBJ:.o=$(SUFFIX).o) $(LIBS)\"
-	$(GCC) $(LDFLAGS) -o $@ $(OBJ:.o=$(SUFFIX).o) $(LIBS)
-	$(ECHO) ======= LINK EDITION : OK =======
-
-%.o %$(SUFFIX).o : %.cpp
-	$(ECHO) Compilation pour $@ avec \"$(DISPGCC) $(CFLAGS) -o $@ -c $<\"
-	$(GCC) $(CFLAGS) -o $@ -c $<
+$(EXEC): $(SRCS:%.cpp=$(OBJDIR)/%.o)
+	$(GCC) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 
-# Cibles spéciales qui ne correspondent pas à des fichiers
-.PHONY : all debug run memcheck rebuild clean clear full_clean depend test
+$(OBJDIR)/%.o : %.cpp $(DEPDIR)/%.d $(DEPDIR)
+	@$(MKDIR) $(subst /,$(PS), $(dir $@)) > $(NULL_FILE) 2>&1 ||:
+	@$(MKDIR) $(subst $(OBJDIR),$(DEPDIR),$(subst /,$(PS), $(dir $@))) > $(NULL_FILE) 2>&1 ||:
+	$(GCC) $(DEPFLAGS) $(CFLAGS) -c $< -o $@
 
-rebuild : clean all
+$(DEPDIR):
+	@$(MKDIR) $@ ||:
 
-run:
-ifneq ($(wildcard $(EXEC)), )
-	$(ECHO) ======= RUN EXEC =======
-	@$(EXEC)
-else
-	$(ECHO) Le fichier executable n'existe pas.
+DEPFILES := $(SRCS:%.cpp=$(DEPDIR)/%.d)
+$(DEPFILES):
+include $(wildcard $(DEPFILES))
+
+clean:
+ifeq ($(OS), Windows_NT) # Version spéciale Windows
+	rmdir /S /Q $(OBJDIR) > $(NULL_FILE) 2>&1 ||:
 endif
-
-memcheck:
-	$(MEMCHECK) $(EXEC)
-
-clean clear :
-	$(RM) $(EXEC) $(OBJ) $(OBJ:.o=.d.o) $(TEST_EXEC) $(TEST_OBJ) $(TEST_OBJ:.o=.d.o) \
-		$(subst /,$(PS),$(TEST_MAIN_OBJ)) $(subst /,$(PS),$(TEST_MAIN_OBJ:.o=.d.o)) core > $(NULL_FILE) 2>&1
-	$(ECHO) ======= CLEANING : OK =======
-
-full_clean: clean
-	$(RM) makefile_data$(PS)dependencies > $(NULL_FILE) 2>&1
-
-test: 
-	$(ECHO) ======= STARTING TESTS =======
-	@cd Tests; ./mktest.sh
+	$(RM) obj $(EXEC) > $(NULL_FILE) 2>&1 ||:
 
 
 ifneq ($(findstring create, $(MAKECMDGOALS)),)
 -include makefile_data$(PS)class_generator.make
 endif
-
-# Gestion des #include entre .cpp et h.
-# Crée des fichiers .make dans le dossier dependencies qui sont ensuite inclus dans ce makefile principal
-# Il n'est plus nécessaire de noter les règles de dépendance à la main
-ifeq ($(findstring clean, $(MAKECMDGOALS)),)
--include $(OBJ:%.o=$(DEPENDENCIES_FOLDER))
-endif
-
-depend : $(OBJ:%.o=$(DEPENDENCIES_FOLDER))
-	$(ECHO) ======= DEPENDENCIES : OK =======
-
-$(DEPENDENCIES_FOLDER) : %.cpp
-	$(ECHO) Generation des dependances de $<
-	-@mkdir makefile_data > $(NULL_FILE) 2>&1 ||:
-	-@mkdir makefile_data$(PS)dependencies > $(NULL_FILE) 2>&1 ||:
-	-$(RM) "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@))"  > $(NULL_FILE) 2>&1
-	$(GCC) -MM $< > "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@)).tmp"
-	@sed "s,\($*\)\.o[ :]*,\1.o \1.make \1.d.o : ,g" < "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@)).tmp" > "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@))"
-	-$(RM) "makefile_data$(PS)dependencies$(PS)$(lastword $(subst /, ,$@)).tmp" > $(NULL_FILE) 2>&1

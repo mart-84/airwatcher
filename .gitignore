@@ -1,4 +1,4 @@
-*.o
-makefile_data/dependencies/
+obj/*
 airwatcher
+airwatcher.exe
 .vscode/
