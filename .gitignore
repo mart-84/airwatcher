@@ -1,4 +1,7 @@
 obj/*
+obj_tests/*
 airwatcher
 airwatcher.exe
+test
+test.exe
 .vscode/
