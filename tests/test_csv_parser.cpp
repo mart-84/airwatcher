@@ -13,7 +13,6 @@ void test_empty_file()
     ifstream file(filename);
     vector<vector<string>> result = CsvParser::parse(file);
     assert(result.size() == 0);
-    cout << "test_empty_file passed" << endl;
 }
 
 void test_parse_one_line()
@@ -26,5 +25,21 @@ void test_parse_one_line()
     assert(result[0][0] == "aaaaa");
     assert(result[0][1] == "bbbbb");
     assert(result[0][2] == "ccccc");
-    cout << "test_parse_one_line passed" << endl;
+}
+
+void test_parse_many_lines()
+{
+    string filename = "tests/data/many.csv";
+    ifstream file(filename);
+    vector<vector<string>> result = CsvParser::parse(file);
+    assert(result.size() == 3);
+    assert(result[0].size() == 2);
+    assert(result[0][0] == "aaa");
+    assert(result[0][1] == "bbb");
+    assert(result[1].size() == 2);
+    assert(result[1][0] == "ccc");
+    assert(result[1][1] == "ddd");
+    assert(result[2].size() == 2);
+    assert(result[2][0] == "eee");
+    assert(result[2][1] == "fff");
 }
