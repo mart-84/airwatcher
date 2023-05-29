@@ -59,10 +59,11 @@ void test_dao()
         MesureDaoCsv mesureDaoCsv;
         IMesureDao &mesureDao = mesureDaoCsv;
         vector<Mesure *> &mesures = mesureDao.findAll();
-        for (Mesure *mesure : mesures)
-        {
-            cout << *mesure << endl;
-        }
+        // for (Mesure *mesure : mesures)
+        // {
+        //     cout << *mesure << endl;
+        // }
+        cout << "mesures.size() = " << mesures.size() << endl;
     }
 
     {

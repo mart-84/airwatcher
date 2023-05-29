@@ -22,7 +22,7 @@ using namespace std;
 #include "CsvParser.h"
 
 //------------------------------------------------------------- Constantes
-const char *CHEMIN_PARTICULIER = "dataset/sensors.csv";
+const char *CHEMIN_PARTICULIER = "dataset/users.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -58,6 +58,23 @@ ParticulierDaoCsv::~ParticulierDaoCsv()
         delete particulier;
     }
 } //----- Fin de ~ParticulierDaoCsv
+
+Particulier *ParticulierDaoCsv::findById(const string &id)
+{
+    for (Particulier *particulier : particuliers)
+    {
+        if (particulier->getIdentifiant() == id)
+        {
+            return particulier;
+        }
+    }
+    return nullptr;
+}
+
+vector<Particulier *> &ParticulierDaoCsv::findAll()
+{
+    return particuliers;
+}
 
 //------------------------------------------------------------------ PRIVE
 

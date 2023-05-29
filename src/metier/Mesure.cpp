@@ -72,9 +72,15 @@ void Mesure::setCapteur(Capteur *capt)
 ostream &operator<<(ostream &os, Mesure &mesure)
 {
     os << "date: " << mesure.date
-       << ", valeur: " << mesure.valeur
-       << ", attribut: " << mesure.attribut->getIdentifiant()
-       << ", capteur:" << mesure.capteur->getIdentifiant();
+       << ", valeur: " << mesure.valeur;
+    if (mesure.attribut != nullptr)
+    {
+        os << ", attribut: " << mesure.attribut->getIdentifiant();
+    }
+    if (mesure.capteur != nullptr)
+    {
+        os << ", capteur:" << mesure.capteur->getIdentifiant();
+    }
     return os;
 }
 

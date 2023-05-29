@@ -43,7 +43,7 @@ bool Particulier::getEstBanni()
     return estBanni;
 }
 
-vector<Capteur *> Particulier::getCapteurs()
+vector<Capteur *> &Particulier::getCapteurs()
 {
     return capteurs;
 }
@@ -75,11 +75,12 @@ ostream &operator<<(ostream &os, Particulier &particulier)
     os << "id: " << particulier.identifiant
        << ", points: " << particulier.points
        << ", banni: " << particulier.estBanni
-       << ", capteurs: " << endl;
-    for (size_t i = 0; i < particulier.capteurs.size(); i++)
+       << ", capteurs: {";
+    for (Capteur *capteur : particulier.getCapteurs())
     {
-        os << "\t" << particulier.capteurs[i]->getIdentifiant() << endl;
+        os << capteur->getIdentifiant() << "; ";
     }
+    os << "}";
     return os;
 } //----- Fin de operator <<
 

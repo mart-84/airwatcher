@@ -46,7 +46,7 @@ public:
 
     bool getEstBanni();
 
-    vector<Capteur *> getCapteurs();
+    vector<Capteur *> &getCapteurs();
 
     void setIdentifiant(string id);
 
