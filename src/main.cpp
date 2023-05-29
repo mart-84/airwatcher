@@ -18,8 +18,29 @@ void test_dao();
 
 int main(int argc, char **argv)
 {
+    // Initialisation des DAO CSV
+    // Récupération des données et création des objets
+    FournisseurDaoCsv fournisseurDaoCsv;
+    PurificateurDaoCsv purificateurDaoCsv;
+    AttributDaoCsv attributDaoCsv;
+    MesureDaoCsv mesureDaoCsv;
+    CapteurDaoCsv capteurDaoCsv;
+    ParticulierDaoCsv particulierDaoCsv;
 
-    test_dao();
+    // Création des associations entre les objets
+    fournisseurDaoCsv.associerPurificateurs(purificateurDaoCsv.findAll());
+    mesureDaoCsv.associerAttributs(attributDaoCsv.findAll());
+    mesureDaoCsv.associerCapteurs(capteurDaoCsv.findAll());
+    particulierDaoCsv.associerCapteurs(capteurDaoCsv.findAll());
+
+    for (Capteur *capteur : capteurDaoCsv.findAll())
+    {
+        cout << *capteur << endl;
+    }
+    for (Particulier *particulier : particulierDaoCsv.findAll())
+    {
+        cout << *particulier << endl;
+    }
 
     return 0;
 }

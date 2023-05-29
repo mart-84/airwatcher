@@ -111,6 +111,8 @@ ostream &operator<<(ostream &os, Capteur &capteur)
     {
         os << "agence gouvernementale";
     }
+    os << ", nb mesure: " << capteur.mesures.size();
+
     return os;
 }
 

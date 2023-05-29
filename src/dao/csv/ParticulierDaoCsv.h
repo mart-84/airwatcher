@@ -33,6 +33,11 @@ public:
 
     virtual ~ParticulierDaoCsv();
 
+    void associerCapteurs(vector<Capteur *> &capteurs);
+    // Mode d'emploi :
+    // Utilise la liste des capteurs créée par le Dao CapteurDaoCsv pour faire l'association
+    // entre les particuliers et leurs capteurs.
+
     //------------------------------------------------------------------ PRIVE
     virtual Particulier *findById(const string &id);
 
@@ -41,6 +46,7 @@ public:
 protected:
     //----------------------------------------------------- Attributs protégés
     vector<Particulier *> particuliers;
+    vector<string> capteur_ids;
 };
 
 //-------------------------------- Autres définitions dépendantes de <ParticulierDaoCsv>

@@ -45,6 +45,7 @@ FournisseurDaoCsv::FournisseurDaoCsv()
     {
         Fournisseur *fournisseur = new Fournisseur(line[0], nullptr);
         fournisseurs.push_back(fournisseur);
+        purificateur_ids.push_back(line[1]);
     }
 } //----- Fin de FournisseurDaoCsv
 
@@ -60,6 +61,20 @@ FournisseurDaoCsv::~FournisseurDaoCsv()
         delete fournisseur;
     }
 } //----- Fin de ~FournisseurDaoCsv
+
+void FournisseurDaoCsv::associerPurificateurs(vector<Purificateur *> &purificateurs)
+{
+    for (size_t i = 0; i < fournisseurs.size(); i++)
+    {
+        for (Purificateur *purificateur : purificateurs)
+        {
+            if (purificateur->getIdentifiant() == purificateur_ids[i])
+            {
+                fournisseurs[i]->setPurificateur(purificateur);
+            }
+        }
+    }
+}
 
 Fournisseur *FournisseurDaoCsv::findById(const string &id)
 {

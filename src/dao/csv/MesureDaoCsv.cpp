@@ -43,6 +43,8 @@ MesureDaoCsv::MesureDaoCsv()
     {
         Mesure *mesure = new Mesure(line[0], stoi(line[3]), nullptr, nullptr);
         mesures.push_back(mesure);
+        attribut_ids.push_back(line[2]);
+        capteur_ids.push_back(line[1]);
     }
 } //----- Fin de MesureDaoCsv
 
@@ -56,6 +58,35 @@ MesureDaoCsv::~MesureDaoCsv()
         delete mesure;
     }
 } //----- Fin de ~MesureDaoCsv
+
+void MesureDaoCsv::associerAttributs(vector<Attribut *> &attributs)
+{
+    for (size_t i = 0; i < mesures.size(); i++)
+    {
+        for (Attribut *attribut : attributs)
+        {
+            if (attribut->getIdentifiant() == attribut_ids[i])
+            {
+                mesures[i]->setAttribut(attribut);
+            }
+        }
+    }
+}
+
+void MesureDaoCsv::associerCapteurs(vector<Capteur *> &capteurs)
+{
+    for (size_t i = 0; i < mesures.size(); i++)
+    {
+        for (Capteur *capteur : capteurs)
+        {
+            if (capteur->getIdentifiant() == capteur_ids[i])
+            {
+                mesures[i]->setCapteur(capteur);
+                capteur->ajouterMesure(mesures[i]);
+            }
+        }
+    }
+}
 
 vector<Mesure *> &MesureDaoCsv::findAll()
 {

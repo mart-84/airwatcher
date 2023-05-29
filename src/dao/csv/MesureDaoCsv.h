@@ -33,12 +33,23 @@ public:
 
     virtual ~MesureDaoCsv();
 
-    //------------------------------------------------------------------ PRIVE
+    void associerAttributs(vector<Attribut *> &attributs);
+    // Mode d'emploi :
+    // Utilise la liste des attributs créée par le Dao AttributDaoCsv pour faire l'association
+    // entre les mesures et leurs attributs.
+
+    void associerCapteurs(vector<Capteur *> &capteurs);
+    // Mode d'emploi :
+    // Utilise la liste des capteurs créée par le Dao CapteurDaoCsv pour faire l'association
+    // entre les mesures et leurs capteurs.
+
     virtual vector<Mesure *> &findAll();
 
 protected:
     //----------------------------------------------------- Attributs protégés
     vector<Mesure *> mesures;
+    vector<string> attribut_ids;
+    vector<string> capteur_ids;
 };
 
 //-------------------------------- Autres définitions dépendantes de <MesureDaoCsv>

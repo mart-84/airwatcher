@@ -45,6 +45,7 @@ ParticulierDaoCsv::ParticulierDaoCsv()
     {
         Particulier *particulier = new Particulier(line[0], 0, false);
         particuliers.push_back(particulier);
+        capteur_ids.push_back(line[1]);
     }
 } //----- Fin de ParticulierDaoCsv
 
@@ -58,6 +59,21 @@ ParticulierDaoCsv::~ParticulierDaoCsv()
         delete particulier;
     }
 } //----- Fin de ~ParticulierDaoCsv
+
+void ParticulierDaoCsv::associerCapteurs(vector<Capteur *> &capteurs)
+{
+    for (size_t i = 0; i < particuliers.size(); i++)
+    {
+        for (Capteur *capteur : capteurs)
+        {
+            if (capteur->getIdentifiant() == capteur_ids[i])
+            {
+                particuliers[i]->ajouterCapteur(capteur);
+                capteur->setProprietaire(particuliers[i]);
+            }
+        }
+    }
+}
 
 Particulier *ParticulierDaoCsv::findById(const string &id)
 {

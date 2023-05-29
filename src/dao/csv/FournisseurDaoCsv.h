@@ -33,6 +33,11 @@ public:
 
     virtual ~FournisseurDaoCsv();
 
+    void associerPurificateurs(vector<Purificateur *> &purificateurs);
+    // Mode d'emploi :
+    // Utilise la liste des purificateurs créée par le Dao PurificateurDaoCsv pour faire l'association
+    // entre les fournisseurs et leurs purificateurs.
+
     virtual Fournisseur *findById(const string &);
 
     virtual vector<Fournisseur *> &findAll();
@@ -42,6 +47,7 @@ public:
 protected:
     //----------------------------------------------------- Attributs protégés
     vector<Fournisseur *> fournisseurs;
+    vector<string> purificateur_ids;
 };
 
 //-------------------------------- Autres définitions dépendantes de <FournisseurDaoCsv>
