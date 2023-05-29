@@ -57,7 +57,7 @@ public:
     void setCapteur(Capteur *capt);
 
     //------------------------------------------------- Surcharge d'opérateurs
-    friend ostream &operator<<(ostream &, Mesure);
+    friend ostream &operator<<(ostream &, Mesure &);
 
     Mesure &operator=(const Mesure &autreMesure);
     // Mode d'emploi :

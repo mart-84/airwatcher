@@ -49,10 +49,10 @@ void Fournisseur::setPurificateur(Purificateur *purif)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-ostream &operator<<(ostream &os, Fournisseur fournisseur)
+ostream &operator<<(ostream &os, Fournisseur &fournisseur)
 {
-    os << "Identifiant : " << fournisseur.getIdentifiant() << endl;
-    os << "Purificateur : " << fournisseur.getPurificateur() << endl;
+    os << "id: " << fournisseur.identifiant
+       << ", purificateur: " << fournisseur.purificateur;
     return os;
 } //----- Fin de operator <<
 

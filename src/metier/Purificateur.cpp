@@ -79,13 +79,13 @@ void Purificateur::setLongitude(double longi)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-ostream &operator<<(ostream &os, Purificateur purificateur)
+ostream &operator<<(ostream &os, Purificateur &purificateur)
 {
-    os << "Identifiant : " << purificateur.getIdentifiant()
-       << " Date de debut : " << purificateur.getDateDebut()
-       << " Date de fin : " << purificateur.getDateFin()
-       << " Latitude : " << purificateur.getLatitude()
-       << " Longitude : " << purificateur.getLongitude() << endl;
+    os << "id: " << purificateur.getIdentifiant()
+       << ", date de debut: " << purificateur.getDateDebut()
+       << ", date de fin: " << purificateur.getDateFin()
+       << ", latitude: " << purificateur.getLatitude()
+       << ", longitude: " << purificateur.getLongitude() << endl;
     return os;
 }
 

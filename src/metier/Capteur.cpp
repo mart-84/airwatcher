@@ -99,16 +99,17 @@ float Capteur::calculerSimilarite(Capteur &capteur)
 ostream &operator<<(ostream &os, Capteur &capteur)
 {
     os << "id: " << capteur.identifiant
-       << ",fiabilite: " << boolalpha << capteur.estFiable
-       << ",latitude: " << capteur.latitude
-       << ",longitude: " << capteur.longitude;
+       << ", fiabilite: " << boolalpha << capteur.estFiable
+       << ", latitude: " << capteur.latitude
+       << ", longitude: " << capteur.longitude
+       << ", proprietaire: ";
     if (capteur.proprietaire != nullptr)
     {
-        os << ",proprietaire: " << capteur.proprietaire->getIdentifiant();
+        os << capteur.proprietaire->getIdentifiant();
     }
     else
     {
-        os << ",proprietaire: agence gouvernementale";
+        os << "agence gouvernementale";
     }
     return os;
 }

@@ -69,12 +69,13 @@ void Particulier::ajouterCapteur(Capteur *capteur)
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-ostream &operator<<(ostream &os, Particulier particulier)
+ostream &operator<<(ostream &os, Particulier &particulier)
 {
-    os << "identifiant : " << particulier.identifiant
-       << " points : " << particulier.points
-       << " banni : " << particulier.estBanni
-       << " capteurs : " << endl;
+    os << boolalpha;
+    os << "id: " << particulier.identifiant
+       << ", points: " << particulier.points
+       << ", banni: " << particulier.estBanni
+       << ", capteurs: " << endl;
     for (size_t i = 0; i < particulier.capteurs.size(); i++)
     {
         os << "\t" << particulier.capteurs[i]->getIdentifiant() << endl;
