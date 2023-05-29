@@ -9,6 +9,8 @@ using namespace std;
 #include "dao/FournisseurDaoCsv.h"
 #include "dao/IMesureDao.h"
 #include "dao/MesureDaoCsv.h"
+#include "dao/IParticulierDao.h"
+#include "dao/ParticulierDaoCsv.h"
 
 void test_dao();
 
@@ -60,6 +62,16 @@ void test_dao()
         for (Mesure *mesure : mesures)
         {
             cout << *mesure << endl;
+        }
+    }
+
+    {
+        ParticulierDaoCsv particulierDaoCsv;
+        IParticulierDao &particulierDao = particulierDaoCsv;
+        vector<Particulier *> &particuliers = particulierDao.findAll();
+        for (Particulier *particulier : particuliers)
+        {
+            cout << *particulier << endl;
         }
     }
     cout << "---fin test dao---" << endl;
