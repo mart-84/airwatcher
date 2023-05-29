@@ -1,49 +1,48 @@
 /*************************************************************************
-                           FournisseurDaoCsv  -  description
+                           ParticulierDaoCsv  -  description
                              -------------------
     début                : 29/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               :
 *************************************************************************/
 
-//---------- Interface de la classe <FournisseurDaoCsv> (fichier FournisseurDaoCsv.h) ----------------
-#if !defined(FOURNISSEURDAOCSV_H)
-#define FOURNISSEURDAOCSV_H
+//---------- Interface de la classe <ParticulierDaoCsv> (fichier ParticulierDaoCsv.h) ----------------
+#if !defined(PARTICULIERDAOCSV_H)
+#define PARTICULIERDAOCSV_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
 using namespace std;
 
-#include "IFournisseurDao.h"
+#include "../IParticulierDao.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <FournisseurDaoCsv>
+// Rôle de la classe <ParticulierDaoCsv>
 //
-// Implémentation d'un Dao de Fournisseur sur des fichiers CSV
+// Implémentation d'un Dao de Particulier sur des fichiers CSV
 //------------------------------------------------------------------------
 
-class FournisseurDaoCsv : public IFournisseurDao
+class ParticulierDaoCsv : public IParticulierDao
 {
 public:
-    FournisseurDaoCsv();
+    ParticulierDaoCsv();
 
-    virtual ~FournisseurDaoCsv();
-
-    virtual Fournisseur *findById(const string &);
-
-    virtual vector<Fournisseur *> &findAll();
+    virtual ~ParticulierDaoCsv();
 
     //------------------------------------------------------------------ PRIVE
+    virtual Particulier *findById(const string &id);
+
+    virtual vector<Particulier *> &findAll();
 
 protected:
     //----------------------------------------------------- Attributs protégés
-    vector<Fournisseur *> fournisseurs;
+    vector<Particulier *> particuliers;
 };
 
-//-------------------------------- Autres définitions dépendantes de <FournisseurDaoCsv>
+//-------------------------------- Autres définitions dépendantes de <ParticulierDaoCsv>
 
-#endif // FOURNISSEURDAOCSV_H
+#endif // PARTICULIERDAOCSV_H

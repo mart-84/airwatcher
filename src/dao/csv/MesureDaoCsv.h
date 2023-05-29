@@ -1,45 +1,46 @@
 /*************************************************************************
-                           PurificateurDaoCsv  -  description
+                           MesureDaoCsv  -  description
                              -------------------
     début                : 29/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               :
 *************************************************************************/
 
-//---------- Interface de la classe <PurificateurDaoCsv> (fichier PurificateurDaoCsv.h) ----------------
-#if !defined(PURIFICATEURDAOCSV_H)
-#define PURIFICATEURDAOCSV_H
+//---------- Interface de la classe <MesureDaoCsv> (fichier MesureDaoCsv.h) ----------------
+#if !defined(MESUREDAOCSV_H)
+#define MESUREDAOCSV_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <vector>
 using namespace std;
 
-#include "IPurificateurDao.h"
+#include "../IMesureDao.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <PurificateurDaoCsv>
+// Rôle de la classe <MesureDaoCsv>
 //
-// Implémentation d'un Dao de Purificateur sur des fichiers CSV
+// Implémentation d'un Dao de Mesure sur des fichiers CSV
 //------------------------------------------------------------------------
 
-class PurificateurDaoCsv : public IPurificateurDao
+class MesureDaoCsv : public IMesureDao
 {
 public:
-    PurificateurDaoCsv();
+    MesureDaoCsv();
 
-    virtual ~PurificateurDaoCsv();
+    virtual ~MesureDaoCsv();
 
     //------------------------------------------------------------------ PRIVE
-    virtual Purificateur *findById(const string &id);
-
-    virtual vector<Purificateur *> &findAll();
+    virtual vector<Mesure *> &findAll();
 
 protected:
     //----------------------------------------------------- Attributs protégés
-    vector<Purificateur *> purificateurs;
+    vector<Mesure *> mesures;
 };
 
-#endif // PURIFICATEURDAOCSV_H
+//-------------------------------- Autres définitions dépendantes de <MesureDaoCsv>
+
+#endif // MESUREDAOCSV_H

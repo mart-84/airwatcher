@@ -1,49 +1,46 @@
 /*************************************************************************
-                           AttributDaoCsv  -  description
+                           PurificateurDaoCsv  -  description
                              -------------------
     début                : 29/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               :
 *************************************************************************/
 
-//---------- Interface de la classe <AttributDaoCsv> (fichier AttributDaoCsv.h) ----------------
-#if !defined(ATTRIBUTDAOCSV_H)
-#define ATTRIBUTDAOCSV_H
+//---------- Interface de la classe <PurificateurDaoCsv> (fichier PurificateurDaoCsv.h) ----------------
+#if !defined(PURIFICATEURDAOCSV_H)
+#define PURIFICATEURDAOCSV_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <vector>
 using namespace std;
 
-#include "IAttributDao.h"
+#include "../IPurificateurDao.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <AttributDaoCsv>
+// Rôle de la classe <PurificateurDaoCsv>
 //
-// Implémentation d'un Dao d'Attribut sur des fichiers CSV
+// Implémentation d'un Dao de Purificateur sur des fichiers CSV
 //------------------------------------------------------------------------
 
-class AttributDaoCsv : public IAttributDao
+class PurificateurDaoCsv : public IPurificateurDao
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    AttributDaoCsv();
+    PurificateurDaoCsv();
 
-    virtual ~AttributDaoCsv();
+    virtual ~PurificateurDaoCsv();
 
     //------------------------------------------------------------------ PRIVE
-    virtual Attribut *findByName(const string &);
+    virtual Purificateur *findById(const string &id);
 
-    virtual vector<Attribut *> &findAll();
+    virtual vector<Purificateur *> &findAll();
 
 protected:
     //----------------------------------------------------- Attributs protégés
-    vector<Attribut *> attributs;
+    vector<Purificateur *> purificateurs;
 };
 
-//-------------------------------- Autres définitions dépendantes de <AttributDaoCsv>
-
-#endif // ATTRIBUTDAOCSV_H
+#endif // PURIFICATEURDAOCSV_H

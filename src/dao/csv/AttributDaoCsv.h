@@ -1,45 +1,49 @@
 /*************************************************************************
-                           CapteurDaoCsv  -  description
+                           AttributDaoCsv  -  description
                              -------------------
     début                : 29/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               :
 *************************************************************************/
 
-//---------- Interface de la classe <CapteurDaoCsv> (fichier CapteurDaoCsv.h) ----------------
-#if !defined(CAPTEURDAOCSV_H)
-#define CAPTEURDAOCSV_H
+//---------- Interface de la classe <AttributDaoCsv> (fichier AttributDaoCsv.h) ----------------
+#if !defined(ATTRIBUTDAOCSV_H)
+#define ATTRIBUTDAOCSV_H
 
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 
-#include "ICapteurDao.h"
+#include "../IAttributDao.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <CapteurDaoCsv>
+// Rôle de la classe <AttributDaoCsv>
 //
-// Implémentation d'un Dao de Capteur sur des fichiers CSV
+// Implémentation d'un Dao d'Attribut sur des fichiers CSV
 //------------------------------------------------------------------------
 
-class CapteurDaoCsv : public ICapteurDao
+class AttributDaoCsv : public IAttributDao
 {
-public:
-    CapteurDaoCsv();
+    //----------------------------------------------------------------- PUBLIC
 
-    virtual ~CapteurDaoCsv();
+public:
+    AttributDaoCsv();
+
+    virtual ~AttributDaoCsv();
 
     //------------------------------------------------------------------ PRIVE
-    virtual Capteur *findById(const string &id);
+    virtual Attribut *findByName(const string &);
 
-    virtual vector<Capteur *> &findAll();
+    virtual vector<Attribut *> &findAll();
 
 protected:
     //----------------------------------------------------- Attributs protégés
-    vector<Capteur *> capteurs;
+    vector<Attribut *> attributs;
 };
 
-#endif // CAPTEURDAOCSV_H
+//-------------------------------- Autres définitions dépendantes de <AttributDaoCsv>
+
+#endif // ATTRIBUTDAOCSV_H

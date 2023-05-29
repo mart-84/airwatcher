@@ -2,17 +2,17 @@
 using namespace std;
 
 #include "dao/ICapteurDao.h"
-#include "dao/CapteurDaoCsv.h"
+#include "dao/csv/CapteurDaoCsv.h"
 #include "dao/IAttributDao.h"
-#include "dao/AttributDaoCsv.h"
+#include "dao/csv/AttributDaoCsv.h"
 #include "dao/IFournisseurDao.h"
-#include "dao/FournisseurDaoCsv.h"
+#include "dao/csv/FournisseurDaoCsv.h"
 #include "dao/IMesureDao.h"
-#include "dao/MesureDaoCsv.h"
+#include "dao/csv/MesureDaoCsv.h"
 #include "dao/IParticulierDao.h"
-#include "dao/ParticulierDaoCsv.h"
+#include "dao/csv/ParticulierDaoCsv.h"
 #include "dao/IPurificateurDao.h"
-#include "dao/PurificateurDaoCsv.h"
+#include "dao/csv/PurificateurDaoCsv.h"
 
 void test_dao();
 

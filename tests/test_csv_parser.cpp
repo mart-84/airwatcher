@@ -5,7 +5,7 @@
 #include <cassert>
 using namespace std;
 
-#include "../src/dao/CsvParser.h"
+#include "../src/dao/csv/CsvParser.h"
 
 void test_empty_file()
 {

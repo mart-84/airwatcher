@@ -1,45 +1,49 @@
 /*************************************************************************
-                           MesureDaoCsv  -  description
+                           FournisseurDaoCsv  -  description
                              -------------------
     début                : 29/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               :
 *************************************************************************/
 
-//---------- Interface de la classe <MesureDaoCsv> (fichier MesureDaoCsv.h) ----------------
-#if !defined(MESUREDAOCSV_H)
-#define MESUREDAOCSV_H
+//---------- Interface de la classe <FournisseurDaoCsv> (fichier FournisseurDaoCsv.h) ----------------
+#if !defined(FOURNISSEURDAOCSV_H)
+#define FOURNISSEURDAOCSV_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <vector>
 using namespace std;
 
-#include "IMesureDao.h"
+#include "../IFournisseurDao.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <MesureDaoCsv>
+// Rôle de la classe <FournisseurDaoCsv>
 //
-// Implémentation d'un Dao de Mesure sur des fichiers CSV
+// Implémentation d'un Dao de Fournisseur sur des fichiers CSV
 //------------------------------------------------------------------------
 
-class MesureDaoCsv : public IMesureDao
+class FournisseurDaoCsv : public IFournisseurDao
 {
 public:
-    MesureDaoCsv();
+    FournisseurDaoCsv();
 
-    virtual ~MesureDaoCsv();
+    virtual ~FournisseurDaoCsv();
+
+    virtual Fournisseur *findById(const string &);
+
+    virtual vector<Fournisseur *> &findAll();
 
     //------------------------------------------------------------------ PRIVE
-    virtual vector<Mesure *> &findAll();
 
 protected:
     //----------------------------------------------------- Attributs protégés
-    vector<Mesure *> mesures;
+    vector<Fournisseur *> fournisseurs;
 };
 
-//-------------------------------- Autres définitions dépendantes de <MesureDaoCsv>
+//-------------------------------- Autres définitions dépendantes de <FournisseurDaoCsv>
 
-#endif // MESUREDAOCSV_H
+#endif // FOURNISSEURDAOCSV_H
