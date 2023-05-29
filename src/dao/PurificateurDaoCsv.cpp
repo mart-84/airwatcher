@@ -1,0 +1,77 @@
+/*************************************************************************
+                           PurificateurDaoCsv  -  description
+                             -------------------
+    début                : 29/05/2023
+    copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
+    e-mail               :
+*************************************************************************/
+
+//---------- Réalisation de la classe <PurificateurDaoCsv> (fichier PurificateurDaoCsv.cpp) ------------
+
+//---------------------------------------------------------------- INCLUDE
+
+//-------------------------------------------------------- Include système
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+using namespace std;
+
+//------------------------------------------------------ Include personnel
+#include "PurificateurDaoCsv.h"
+#include "CsvParser.h"
+
+//------------------------------------------------------------- Constantes
+const char *CHEMIN_PURIFICATEUR = "dataset/cleaners.csv";
+
+//----------------------------------------------------------------- PUBLIC
+
+//----------------------------------------------------- Méthodes publiques
+PurificateurDaoCsv::PurificateurDaoCsv()
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <PurificateurDaoCsv> sur " << this << endl;
+#endif
+    ifstream file(CHEMIN_PURIFICATEUR);
+    if (!file.is_open())
+    {
+        cerr << "Impossible d'ouvrir le fichier " << CHEMIN_PURIFICATEUR << endl;
+        exit(1);
+    }
+
+    vector<vector<string>> lines(CsvParser::parse(file));
+
+    for (auto &line : lines)
+    {
+        Purificateur *purificateur = new Purificateur(line[0], line[3], line[4], stod(line[1]), stod(line[2]));
+        purificateurs.push_back(purificateur);
+    }
+} //----- Fin de PurificateurDaoCsv
+
+PurificateurDaoCsv::~PurificateurDaoCsv()
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <PurificateurDaoCsv> sur " << this << endl;
+#endif
+    for (Purificateur *purificateur : purificateurs)
+    {
+        delete purificateur;
+    }
+} //----- Fin de ~PurificateurDaoCsv
+
+Purificateur *PurificateurDaoCsv::findById(const string &id)
+{
+    for (Purificateur *purificateur : purificateurs)
+    {
+        if (purificateur->getIdentifiant() == id)
+        {
+            return purificateur;
+        }
+    }
+    return nullptr;
+}
+
+vector<Purificateur *> &PurificateurDaoCsv::findAll()
+{
+    return purificateurs;
+}

@@ -81,11 +81,11 @@ void Purificateur::setLongitude(double longi)
 //------------------------------------------------- Surcharge d'opérateurs
 ostream &operator<<(ostream &os, Purificateur &purificateur)
 {
-    os << "id: " << purificateur.getIdentifiant()
-       << ", date de debut: " << purificateur.getDateDebut()
-       << ", date de fin: " << purificateur.getDateFin()
-       << ", latitude: " << purificateur.getLatitude()
-       << ", longitude: " << purificateur.getLongitude() << endl;
+    os << "id: " << purificateur.identifiant
+       << ", date de debut: " << purificateur.dateDebut
+       << ", date de fin: " << purificateur.dateFin
+       << ", latitude: " << purificateur.latitude
+       << ", longitude: " << purificateur.longitude;
     return os;
 }
 
@@ -119,8 +119,7 @@ Purificateur::Purificateur()
 } //----- Fin de Purificateur
 
 Purificateur::Purificateur(string unIdentifiant, string uneDateDebut, string uneDateFin, double uneLatitude, double uneLongitude)
-// Algorithme :
-//
+    : identifiant(unIdentifiant), dateDebut(uneDateDebut), dateFin(uneDateFin), latitude(uneLatitude), longitude(uneLongitude)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Purificateur> sur " << this << endl;

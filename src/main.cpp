@@ -11,6 +11,8 @@ using namespace std;
 #include "dao/MesureDaoCsv.h"
 #include "dao/IParticulierDao.h"
 #include "dao/ParticulierDaoCsv.h"
+#include "dao/IPurificateurDao.h"
+#include "dao/PurificateurDaoCsv.h"
 
 void test_dao();
 
@@ -73,6 +75,16 @@ void test_dao()
         for (Particulier *particulier : particuliers)
         {
             cout << *particulier << endl;
+        }
+    }
+
+    {
+        PurificateurDaoCsv purificateurDaoCsv;
+        IPurificateurDao &purificateurDao = purificateurDaoCsv;
+        vector<Purificateur *> &purificateurs = purificateurDao.findAll();
+        for (Purificateur *purificateur : purificateurs)
+        {
+            cout << *purificateur << endl;
         }
     }
     cout << "---fin test dao---" << endl;
