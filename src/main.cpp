@@ -5,6 +5,8 @@ using namespace std;
 #include "dao/CapteurDaoCsv.h"
 #include "dao/IAttributDao.h"
 #include "dao/AttributDaoCsv.h"
+#include "dao/IFournisseurDao.h"
+#include "dao/FournisseurDaoCsv.h"
 
 void test_dao();
 
@@ -36,6 +38,16 @@ void test_dao()
         for (Attribut *attribut : attributs)
         {
             cout << *attribut << endl;
+        }
+    }
+
+    {
+        FournisseurDaoCsv fournisseurDaoCsv;
+        IFournisseurDao &fournisseurDao = fournisseurDaoCsv;
+        vector<Fournisseur *> &fournisseurs = fournisseurDao.findAll();
+        for (Fournisseur *fournisseur : fournisseurs)
+        {
+            cout << *fournisseur << endl;
         }
     }
     cout << "---fin test dao---" << endl;
