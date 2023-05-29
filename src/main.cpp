@@ -7,6 +7,8 @@ using namespace std;
 #include "dao/AttributDaoCsv.h"
 #include "dao/IFournisseurDao.h"
 #include "dao/FournisseurDaoCsv.h"
+#include "dao/IMesureDao.h"
+#include "dao/MesureDaoCsv.h"
 
 void test_dao();
 
@@ -48,6 +50,16 @@ void test_dao()
         for (Fournisseur *fournisseur : fournisseurs)
         {
             cout << *fournisseur << endl;
+        }
+    }
+
+    {
+        MesureDaoCsv mesureDaoCsv;
+        IMesureDao &mesureDao = mesureDaoCsv;
+        vector<Mesure *> &mesures = mesureDao.findAll();
+        for (Mesure *mesure : mesures)
+        {
+            cout << *mesure << endl;
         }
     }
     cout << "---fin test dao---" << endl;

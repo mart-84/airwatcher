@@ -78,7 +78,7 @@ public:
     // Contrat :
     //
 
-    Mesure(string day, int val, Attribut &attr, Capteur &capt);
+    Mesure(string day, int val, Attribut *attr, Capteur *capt);
     // Mode d'emploi :
     //
     // Contrat :

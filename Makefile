@@ -2,7 +2,9 @@ EXEC = airwatcher
 SRCS = src/metier/Attribut.cpp src/metier/Capteur.cpp src/metier/Fournisseur.cpp \
        src/metier/Mesure.cpp src/metier/Particulier.cpp src/metier/Purificateur.cpp \
 	   src/service/Service.cpp src/vue/Vue.cpp src/dao/CapteurDaoCsv.cpp \
-	   src/dao/CsvParser.cpp src/dao/AttributDaoCsv.cpp src/dao/FournisseurDaoCsv.cpp
+	   src/dao/CsvParser.cpp src/dao/AttributDaoCsv.cpp src/dao/FournisseurDaoCsv.cpp \
+	   src/dao/MesureDaoCsv.cpp src/dao/ParticulierDaoCsv.cpp src/dao/PurificateurDaoCsv.cpp
+
 MAIN = src/main.cpp
 
 ifeq ($(findstring test, $(MAKECMDGOALS)),)
