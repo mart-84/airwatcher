@@ -1,8 +1,8 @@
 EXEC = airwatcher
 SRCS = src/metier/Attribut.cpp src/metier/Capteur.cpp src/metier/Fournisseur.cpp \
        src/metier/Mesure.cpp src/metier/Particulier.cpp src/metier/Purificateur.cpp \
-	   src/service/Service.cpp src/vue/Vue.cpp src/dao/CapteurDao.cpp src/dao/Dao.cpp \
-	   src/dao/CsvParser.cpp
+	   src/service/Service.cpp src/vue/Vue.cpp src/dao/CapteurDaoCsv.cpp \
+	   src/dao/CsvParser.cpp src/dao/AttributDaoCsv.cpp
 MAIN = src/main.cpp
 
 ifeq ($(findstring test, $(MAKECMDGOALS)),)
@@ -16,8 +16,8 @@ TEST_EXEC = test
 PS = /
 OBJDIR = obj
 GCC = g++
-CFLAGS = -g -Wall
-LDFLAGS = -g -Wall
+CFLAGS = -g -Wall -O3
+LDFLAGS = -g -Wall -O3
 
 MOVE = mv -f
 RM = rm -rf

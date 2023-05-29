@@ -1,13 +1,15 @@
 #include <iostream>
 using namespace std;
 
-#include "dao/CapteurDao.h"
+#include "dao/ICapteurDao.h"
+#include "dao/CapteurDaoCsv.h"
+#include "dao/IAttributDao.h"
+#include "dao/AttributDaoCsv.h"
 
 void test_dao();
 
 int main(int argc, char **argv)
 {
-    cout << "AIRWATCHER 😋" << endl;
 
     test_dao();
 
@@ -17,11 +19,24 @@ int main(int argc, char **argv)
 void test_dao()
 {
     cout << "---test dao---" << endl;
-    CapteurDao capteur_dao;
-    vector<Capteur> &capteurs = capteur_dao.findAll();
-    for (Capteur &capteur : capteurs)
     {
-        cout << capteur << endl;
+        CapteurDaoCsv capteurDaoCsv;
+        ICapteurDao &capteurDao = capteurDaoCsv;
+        vector<Capteur *> &capteurs = capteurDao.findAll();
+        for (Capteur *capteur : capteurs)
+        {
+            cout << *capteur << endl;
+        }
+    }
+
+    {
+        AttributDaoCsv attributDaoCsv;
+        IAttributDao &attributDao = attributDaoCsv;
+        vector<Attribut *> &attributs = attributDao.findAll();
+        for (Attribut *attribut : attributs)
+        {
+            cout << *attribut << endl;
+        }
     }
     cout << "---fin test dao---" << endl;
 }

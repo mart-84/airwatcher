@@ -96,7 +96,7 @@ float Capteur::calculerSimilarite(Capteur &capteur)
 } //----- Fin de calculerSimilarite
 
 //------------------------------------------------- Surcharge d'opérateurs
-ostream &operator<<(ostream &os, Capteur capteur)
+ostream &operator<<(ostream &os, Capteur &capteur)
 {
     os << "id: " << capteur.identifiant
        << ",fiabilite: " << boolalpha << capteur.estFiable

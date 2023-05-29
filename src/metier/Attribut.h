@@ -44,12 +44,12 @@ public:
 
     void setIdentifiant(string id);
 
-    void setUnite(string u);
+    void setUnite(string unite);
 
     void setDescription(string desc);
 
     //------------------------------------------------- Surcharge d'opérateurs
-    friend ostream &operator<<(ostream &, Attribut);
+    friend ostream &operator<<(ostream &, Attribut &);
 
     Attribut &operator=(const Attribut &autreAttribut);
     // Mode d'emploi :
@@ -70,7 +70,7 @@ public:
     // Contrat :
     //
 
-    Attribut(string id, string u, string desc);
+    Attribut(string id, string unite, string desc);
     // Mode d'emploi :
     //
     // Contrat :

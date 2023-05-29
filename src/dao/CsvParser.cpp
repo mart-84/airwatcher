@@ -34,6 +34,7 @@ vector<vector<string>> CsvParser::parse(ifstream &file)
 {
     string line;
     vector<vector<string>> result;
+
     while (getline(file, line))
     {
         vector<string> values;
