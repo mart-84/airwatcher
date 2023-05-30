@@ -22,20 +22,19 @@ using namespace std;
 #include "CsvParser.h"
 
 //------------------------------------------------------------- Constantes
-const char *CHEMIN_PARTICULIER = "dataset/users.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-ParticulierDaoCsv::ParticulierDaoCsv()
+ParticulierDaoCsv::ParticulierDaoCsv(const string &filename)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <ParticulierDaoCsv> sur " << this << endl;
 #endif
-    ifstream file(CHEMIN_PARTICULIER);
+    ifstream file(filename);
     if (!file.is_open())
     {
-        cerr << "Impossible d'ouvrir le fichier " << CHEMIN_PARTICULIER << endl;
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
 

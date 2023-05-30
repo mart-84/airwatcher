@@ -22,20 +22,19 @@ using namespace std;
 #include "CsvParser.h"
 
 //------------------------------------------------------------- Constantes
-const char *CHEMIN_CAPTEUR = "dataset/sensors.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-CapteurDaoCsv::CapteurDaoCsv()
+CapteurDaoCsv::CapteurDaoCsv(const string &filename)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <CapteurDaoCsv> sur " << this << endl;
 #endif
-    ifstream file(CHEMIN_CAPTEUR);
+    ifstream file(filename);
     if (!file.is_open())
     {
-        cerr << "Impossible d'ouvrir le fichier " << CHEMIN_CAPTEUR << endl;
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
 

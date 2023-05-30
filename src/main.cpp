@@ -14,18 +14,16 @@ using namespace std;
 #include "dao/IPurificateurDao.h"
 #include "dao/csv/PurificateurDaoCsv.h"
 
-void test_dao();
-
 int main(int argc, char **argv)
 {
     // Initialisation des DAO CSV
     // Récupération des données et création des objets
-    FournisseurDaoCsv fournisseurDaoCsv;
-    PurificateurDaoCsv purificateurDaoCsv;
-    AttributDaoCsv attributDaoCsv;
-    MesureDaoCsv mesureDaoCsv;
-    CapteurDaoCsv capteurDaoCsv;
-    ParticulierDaoCsv particulierDaoCsv;
+    AttributDaoCsv attributDaoCsv("dataset/attributes.csv");
+    CapteurDaoCsv capteurDaoCsv("dataset/sensors.csv");
+    FournisseurDaoCsv fournisseurDaoCsv("dataset/providers.csv");
+    MesureDaoCsv mesureDaoCsv("dataset/measurements.csv");
+    ParticulierDaoCsv particulierDaoCsv("dataset/users.csv");
+    PurificateurDaoCsv purificateurDaoCsv("dataset/cleaners.csv");
 
     // Création des associations entre les objets
     fournisseurDaoCsv.associerPurificateurs(purificateurDaoCsv.findAll());
@@ -41,72 +39,10 @@ int main(int argc, char **argv)
     {
         cout << *particulier << endl;
     }
+    for (Mesure *mesure : mesureDaoCsv.findAll())
+    {
+        cout << *mesure << endl;
+    }
 
     return 0;
-}
-
-void test_dao()
-{
-    cout << "---test dao---" << endl;
-    {
-        CapteurDaoCsv capteurDaoCsv;
-        ICapteurDao &capteurDao = capteurDaoCsv;
-        vector<Capteur *> &capteurs = capteurDao.findAll();
-        for (Capteur *capteur : capteurs)
-        {
-            cout << *capteur << endl;
-        }
-    }
-
-    {
-        AttributDaoCsv attributDaoCsv;
-        IAttributDao &attributDao = attributDaoCsv;
-        vector<Attribut *> &attributs = attributDao.findAll();
-        for (Attribut *attribut : attributs)
-        {
-            cout << *attribut << endl;
-        }
-    }
-
-    {
-        FournisseurDaoCsv fournisseurDaoCsv;
-        IFournisseurDao &fournisseurDao = fournisseurDaoCsv;
-        vector<Fournisseur *> &fournisseurs = fournisseurDao.findAll();
-        for (Fournisseur *fournisseur : fournisseurs)
-        {
-            cout << *fournisseur << endl;
-        }
-    }
-
-    {
-        MesureDaoCsv mesureDaoCsv;
-        IMesureDao &mesureDao = mesureDaoCsv;
-        vector<Mesure *> &mesures = mesureDao.findAll();
-        // for (Mesure *mesure : mesures)
-        // {
-        //     cout << *mesure << endl;
-        // }
-        cout << "mesures.size() = " << mesures.size() << endl;
-    }
-
-    {
-        ParticulierDaoCsv particulierDaoCsv;
-        IParticulierDao &particulierDao = particulierDaoCsv;
-        vector<Particulier *> &particuliers = particulierDao.findAll();
-        for (Particulier *particulier : particuliers)
-        {
-            cout << *particulier << endl;
-        }
-    }
-
-    {
-        PurificateurDaoCsv purificateurDaoCsv;
-        IPurificateurDao &purificateurDao = purificateurDaoCsv;
-        vector<Purificateur *> &purificateurs = purificateurDao.findAll();
-        for (Purificateur *purificateur : purificateurs)
-        {
-            cout << *purificateur << endl;
-        }
-    }
-    cout << "---fin test dao---" << endl;
 }

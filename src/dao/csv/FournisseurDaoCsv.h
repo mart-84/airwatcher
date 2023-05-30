@@ -29,7 +29,7 @@ using namespace std;
 class FournisseurDaoCsv : public IFournisseurDao
 {
 public:
-    FournisseurDaoCsv();
+    FournisseurDaoCsv(const string &filename);
 
     virtual ~FournisseurDaoCsv();
 

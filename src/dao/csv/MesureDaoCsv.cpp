@@ -22,18 +22,17 @@ using namespace std;
 #include "CsvParser.h"
 
 //------------------------------------------------------------- Constantes
-const char *CHEMIN_MESURE = "dataset/measurements.csv";
 
 //----------------------------------------------------------------- PUBLIC
-MesureDaoCsv::MesureDaoCsv()
+MesureDaoCsv::MesureDaoCsv(const string &filename)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <MesureDaoCsv> sur " << this << endl;
 #endif
-    ifstream file(CHEMIN_MESURE);
+    ifstream file(filename);
     if (!file.is_open())
     {
-        cerr << "Impossible d'ouvrir le fichier " << CHEMIN_MESURE << endl;
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
 

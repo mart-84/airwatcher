@@ -28,7 +28,7 @@ using namespace std;
 class CapteurDaoCsv : public ICapteurDao
 {
 public:
-    CapteurDaoCsv();
+    CapteurDaoCsv(const string &filename);
 
     virtual ~CapteurDaoCsv();
 

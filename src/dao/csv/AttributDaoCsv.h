@@ -30,7 +30,7 @@ class AttributDaoCsv : public IAttributDao
     //----------------------------------------------------------------- PUBLIC
 
 public:
-    AttributDaoCsv();
+    AttributDaoCsv(const string &filename);
 
     virtual ~AttributDaoCsv();
 

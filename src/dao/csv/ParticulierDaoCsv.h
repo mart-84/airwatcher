@@ -29,7 +29,7 @@ using namespace std;
 class ParticulierDaoCsv : public IParticulierDao
 {
 public:
-    ParticulierDaoCsv();
+    ParticulierDaoCsv(const string &filename);
 
     virtual ~ParticulierDaoCsv();
 

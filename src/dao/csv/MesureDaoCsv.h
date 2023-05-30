@@ -29,7 +29,7 @@ using namespace std;
 class MesureDaoCsv : public IMesureDao
 {
 public:
-    MesureDaoCsv();
+    MesureDaoCsv(const string &filename);
 
     virtual ~MesureDaoCsv();
 

@@ -20,22 +20,21 @@ using namespace std;
 #include "CsvParser.h"
 
 //------------------------------------------------------------- Constantes
-const char *CHEMIN_FOURNISSEUR = "dataset/providers.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-FournisseurDaoCsv::FournisseurDaoCsv()
+FournisseurDaoCsv::FournisseurDaoCsv(const string &filename)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <FournisseurDaoCsv> sur " << this << endl;
 #endif
-    ifstream file(CHEMIN_FOURNISSEUR);
+    ifstream file(filename);
     if (!file.is_open())
     {
-        cerr << "Impossible d'ouvrir le fichier " << CHEMIN_FOURNISSEUR << endl;
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
 

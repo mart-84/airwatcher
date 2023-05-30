@@ -20,20 +20,19 @@ using namespace std;
 #include "CsvParser.h"
 
 //------------------------------------------------------------- Constantes
-const char *CHEMIN_ATTRIBUT = "dataset/attributes.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-AttributDaoCsv::AttributDaoCsv()
+AttributDaoCsv::AttributDaoCsv(const string &filename)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <AttributDaoCsv> sur " << this << endl;
 #endif
-    ifstream file(CHEMIN_ATTRIBUT);
+    ifstream file(filename);
     if (!file.is_open())
     {
-        cerr << "Impossible d'ouvrir le fichier " << CHEMIN_ATTRIBUT << endl;
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
 

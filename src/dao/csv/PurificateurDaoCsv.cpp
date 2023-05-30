@@ -22,20 +22,19 @@ using namespace std;
 #include "CsvParser.h"
 
 //------------------------------------------------------------- Constantes
-const char *CHEMIN_PURIFICATEUR = "dataset/cleaners.csv";
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-PurificateurDaoCsv::PurificateurDaoCsv()
+PurificateurDaoCsv::PurificateurDaoCsv(const string &filename)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <PurificateurDaoCsv> sur " << this << endl;
 #endif
-    ifstream file(CHEMIN_PURIFICATEUR);
+    ifstream file(filename);
     if (!file.is_open())
     {
-        cerr << "Impossible d'ouvrir le fichier " << CHEMIN_PURIFICATEUR << endl;
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
 

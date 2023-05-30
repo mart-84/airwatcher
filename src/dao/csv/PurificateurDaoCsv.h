@@ -29,7 +29,7 @@ using namespace std;
 class PurificateurDaoCsv : public IPurificateurDao
 {
 public:
-    PurificateurDaoCsv();
+    PurificateurDaoCsv(const string &filename);
 
     virtual ~PurificateurDaoCsv();
 
