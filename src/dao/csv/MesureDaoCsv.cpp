@@ -40,7 +40,7 @@ MesureDaoCsv::MesureDaoCsv(const string &filename)
 
     for (auto &line : lines)
     {
-        Mesure *mesure = new Mesure(line[0], stoi(line[3]), nullptr, nullptr);
+        Mesure *mesure = new Mesure(line[0], stod(line[3]), nullptr, nullptr);
         mesures.push_back(mesure);
         attribut_ids.push_back(line[2]);
         capteur_ids.push_back(line[1]);

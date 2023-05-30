@@ -33,7 +33,7 @@ string Mesure::getDate()
     return date;
 }
 
-int Mesure::getValeur()
+double Mesure::getValeur()
 {
     return valeur;
 }
@@ -53,7 +53,7 @@ void Mesure::setDate(string day)
     date = day;
 }
 
-void Mesure::setValeur(int val)
+void Mesure::setValeur(double val)
 {
     valeur = val;
 }
@@ -113,7 +113,7 @@ Mesure::Mesure()
 #endif
 } //----- Fin de Mesure
 
-Mesure::Mesure(string day, int val, Attribut *attr, Capteur *capt)
+Mesure::Mesure(string day, double val, Attribut *attr, Capteur *capt)
     : date(day), valeur(val), attribut(attr), capteur(capt)
 // Algorithme :
 //

@@ -42,7 +42,7 @@ public:
 
     string getDate();
 
-    int getValeur();
+    double getValeur();
 
     Attribut *getAttribut();
 
@@ -50,7 +50,7 @@ public:
 
     void setDate(string day);
 
-    void setValeur(int val);
+    void setValeur(double val);
 
     void setAttribut(Attribut *attr);
 
@@ -78,7 +78,7 @@ public:
     // Contrat :
     //
 
-    Mesure(string day, int val, Attribut *attr, Capteur *capt);
+    Mesure(string day, double val, Attribut *attr, Capteur *capt);
     // Mode d'emploi :
     //
     // Contrat :
@@ -97,7 +97,7 @@ protected:
 
     //----------------------------------------------------- Attributs protégés
     string date;
-    int valeur;
+    double valeur;
     Attribut *attribut;
     Capteur *capteur;
 };
