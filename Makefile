@@ -54,7 +54,7 @@ all: $(EXEC)
 $(EXEC): $(SRCS:%.cpp=$(OBJDIR)/%.o)
 	$(GCC) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-test: $(TEST_EXEC)
+tests: $(TEST_EXEC)
 	@echo Test build finished
 
 $(TEST_EXEC): $(TEST_SRCS:%.cpp=$(TEST_OBJDIR)/%.o) $(SRCS:%.cpp=$(OBJDIR)/%.o)
