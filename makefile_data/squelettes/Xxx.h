@@ -10,12 +10,7 @@
 #if !defined(XXX_H)
 #define XXX_H
 
-//--------------------------------------------------- Interfaces utilisées
 using namespace std;
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Xxx>
@@ -25,50 +20,12 @@ using namespace std;
 
 class Xxx
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //------------------------------------------------- Surcharge d'opérateurs
-    Xxx &operator=(const Xxx &autreXxx);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //-------------------------------------------- Constructeurs - destructeur
-    Xxx(const Xxx &autreXxx);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Xxx();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Xxx();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
 };
-
-//-------------------------------- Autres définitions dépendantes de <Xxx>
 
 #endif // XXX_H
