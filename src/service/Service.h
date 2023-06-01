@@ -1,9 +1,9 @@
 /*************************************************************************
                            Service  -  description
                              -------------------
-    début                : 23/05/2023 
+    début                : 23/05/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
-    e-mail               : 
+    e-mail               :
 *************************************************************************/
 
 //---------- Interface de la classe <Service> (fichier Service.h) ----------------
@@ -11,6 +11,12 @@
 #define Service_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "../dao/IAttributDao.h"
+#include "../dao/ICapteurDao.h"
+#include "../dao/IFournisseurDao.h"
+#include "../dao/IMesureDao.h"
+#include "../dao/IParticulierDao.h"
+#include "../dao/IPurificateurDao.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -36,39 +42,28 @@ public:
 
     int calculerIndiceATMO(int o3, int so2, int no2, int pm10);
 
-    //------------------------------------------------- Surcharge d'opérateurs
-    Service &operator=(const Service &autreService);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     //-------------------------------------------- Constructeurs - destructeur
-    Service(const Service &autreService);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Service();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    Service(IAttributDao &,
+            ICapteurDao &,
+            IFournisseurDao &,
+            IMesureDao &,
+            IParticulierDao &,
+            IPurificateurDao &);
 
     virtual ~Service();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     //------------------------------------------------------------------ PRIVE
 
 protected:
     //----------------------------------------------------- Méthodes protégées
-    
 
     //----------------------------------------------------- Attributs protégés
+    IAttributDao &attributDao;
+    ICapteurDao &capteurDao;
+    IFournisseurDao &fournisseurDao;
+    IMesureDao &mesureDao;
+    IParticulierDao &particulierDao;
+    IPurificateurDao &purificateurDao;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Service>

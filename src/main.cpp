@@ -14,6 +14,8 @@ using namespace std;
 #include "dao/IPurificateurDao.h"
 #include "dao/csv/PurificateurDaoCsv.h"
 
+#include "service/Service.h"
+
 int main(int argc, char **argv)
 {
     // Initialisation des DAO CSV
@@ -31,18 +33,12 @@ int main(int argc, char **argv)
     mesureDaoCsv.associerCapteurs(capteurDaoCsv.findAll());
     particulierDaoCsv.associerCapteurs(capteurDaoCsv.findAll());
 
-    for (Capteur *capteur : capteurDaoCsv.findAll())
-    {
-        cout << *capteur << endl;
-    }
-    for (Particulier *particulier : particulierDaoCsv.findAll())
-    {
-        cout << *particulier << endl;
-    }
-    for (Mesure *mesure : mesureDaoCsv.findAll())
-    {
-        cout << *mesure << endl;
-    }
+    Service service(attributDaoCsv,
+                    capteurDaoCsv,
+                    fournisseurDaoCsv,
+                    mesureDaoCsv,
+                    particulierDaoCsv,
+                    purificateurDaoCsv);
 
     return 0;
 }
