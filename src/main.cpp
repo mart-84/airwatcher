@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 #include "dao/ICapteurDao.h"
 #include "dao/csv/CapteurDaoCsv.h"
 #include "dao/IAttributDao.h"
@@ -13,8 +10,8 @@ using namespace std;
 #include "dao/csv/ParticulierDaoCsv.h"
 #include "dao/IPurificateurDao.h"
 #include "dao/csv/PurificateurDaoCsv.h"
-
 #include "service/Service.h"
+#include "vue/VueConsole.h"
 
 int main(int argc, char **argv)
 {
@@ -39,6 +36,9 @@ int main(int argc, char **argv)
                     mesureDaoCsv,
                     particulierDaoCsv,
                     purificateurDaoCsv);
+
+    VueConsole vue(service);
+    vue.afficherMenu();
 
     return 0;
 }

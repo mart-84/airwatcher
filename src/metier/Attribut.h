@@ -10,32 +10,18 @@
 #if !defined(ATTRIBUT_H)
 #define ATTRIBUT_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <string>
 using namespace std;
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Attribut>
 //
-//
+// Représente un attribut de qualité de l'air (O3, SO2, NO2, PM10, ...)
 //------------------------------------------------------------------------
 
 class Attribut
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     string getIdentifiant();
 
     string getUnite();
@@ -48,51 +34,18 @@ public:
 
     void setDescription(string desc);
 
-    //------------------------------------------------- Surcharge d'opérateurs
     friend ostream &operator<<(ostream &, Attribut &);
 
-    Attribut &operator=(const Attribut &autreAttribut);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //-------------------------------------------- Constructeurs - destructeur
-    Attribut(const Attribut &autreAttribut);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Attribut();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     Attribut(string id, string unite, string desc);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Attribut();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- ATTRIBUTs protégés
     string identifiant;
     string unite;
     string description;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Attribut>
 
 #endif // ATTRIBUT_H

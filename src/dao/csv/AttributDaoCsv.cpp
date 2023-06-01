@@ -8,22 +8,13 @@
 
 //---------- Réalisation de la classe <AttributDaoCsv> (fichier AttributDaoCsv.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 #include <fstream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "AttributDaoCsv.h"
 #include "CsvParser.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
 AttributDaoCsv::AttributDaoCsv(const string &filename)
 {
 #ifdef MAP
@@ -46,8 +37,6 @@ AttributDaoCsv::AttributDaoCsv(const string &filename)
 } //----- Fin de AttributDaoCsv
 
 AttributDaoCsv::~AttributDaoCsv()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <AttributDaoCsv> sur " << this << endl;
@@ -68,13 +57,9 @@ Attribut *AttributDaoCsv::findByName(const string &nom)
         }
     }
     return nullptr;
-}
+} //----- Fin de findByName
 
 vector<Attribut *> &AttributDaoCsv::findAll()
 {
     return attributs;
-}
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
+} //----- Fin de findAll

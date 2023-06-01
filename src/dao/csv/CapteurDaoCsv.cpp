@@ -8,24 +8,15 @@
 
 //---------- Réalisation de la classe <CapteurDaoCsv> (fichier CapteurDaoCsv.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "CapteurDaoCsv.h"
 #include "CsvParser.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
 CapteurDaoCsv::CapteurDaoCsv(const string &filename)
 {
 #ifdef MAP
@@ -77,7 +68,3 @@ vector<Capteur *> &CapteurDaoCsv::findAll()
 {
     return capteurs;
 } //----- Fin de findAll
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

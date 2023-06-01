@@ -8,25 +8,10 @@
 
 //---------- Réalisation de la classe <Mesure> (fichier Mesure.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "Mesure.h"
-
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-// type Mesure::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
 string Mesure::getDate()
 {
@@ -68,7 +53,6 @@ void Mesure::setCapteur(Capteur *capt)
     capteur = capt;
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
 ostream &operator<<(ostream &os, Mesure &mesure)
 {
     os << "date: " << mesure.date
@@ -82,31 +66,9 @@ ostream &operator<<(ostream &os, Mesure &mesure)
         os << ", capteur:" << mesure.capteur->getIdentifiant();
     }
     return os;
-}
-
-Mesure &Mesure::operator=(const Mesure &autreMesure)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Mesure> sur " << this << " et " << &autreMesure << endl;
-#endif
-    return *this;
-} //----- Fin de operator =
-
-//-------------------------------------------- Constructeurs - destructeur
-Mesure::Mesure(const Mesure &autreMesure)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Mesure> sur " << this << " et " << &autreMesure << endl;
-#endif
-} //----- Fin de Mesure (constructeur de copie)
+} //----- Fin de operator <<
 
 Mesure::Mesure()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Mesure> sur " << this << endl;
@@ -115,8 +77,6 @@ Mesure::Mesure()
 
 Mesure::Mesure(string day, double val, Attribut *attr, Capteur *capt)
     : date(day), valeur(val), attribut(attr), capteur(capt)
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Mesure> sur " << this << endl;
@@ -125,14 +85,8 @@ Mesure::Mesure(string day, double val, Attribut *attr, Capteur *capt)
 } //----- Fin de Mesure
 
 Mesure::~Mesure()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Mesure> sur " << this << endl;
 #endif
 } //----- Fin de ~Mesure
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

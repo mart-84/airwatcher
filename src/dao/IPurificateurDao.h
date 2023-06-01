@@ -28,7 +28,6 @@ class IPurificateurDao
 public:
     virtual ~IPurificateurDao(){};
 
-    //----------------------------------------------------- Méthodes publiques
     virtual Purificateur *findById(const string &id) = 0;
     // Mode d'emploi :
     // Renvoie le purificateur avec l'id spécifie. Si le purificateur n'est pas trouvé, renvoie null

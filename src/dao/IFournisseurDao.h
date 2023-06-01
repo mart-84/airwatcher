@@ -28,7 +28,6 @@ class IFournisseurDao
 public:
     virtual ~IFournisseurDao(){};
 
-    //----------------------------------------------------- Méthodes publiques
     virtual Fournisseur *findById(const string &) = 0;
     // Mode d'emploi :
     // Renvoie le fournisseur avec l'id spécifié. Si le fournisseur n'est pas trouvé, renvoie null

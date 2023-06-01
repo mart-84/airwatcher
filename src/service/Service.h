@@ -10,7 +10,6 @@
 #if !defined(Service_H)
 #define Service_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include "../dao/IAttributDao.h"
 #include "../dao/ICapteurDao.h"
 #include "../dao/IFournisseurDao.h"
@@ -18,31 +17,18 @@
 #include "../dao/IParticulierDao.h"
 #include "../dao/IPurificateurDao.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
 //------------------------------------------------------------------------
 // Rôle de la classe <Service>
 //
-//
+// Service métier général de l'application
+// Est au sommet de la hiérarchie des dépendances
 //------------------------------------------------------------------------
 
 class Service
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     int calculerIndiceATMO(int o3, int so2, int no2, int pm10);
 
-    //-------------------------------------------- Constructeurs - destructeur
     Service(IAttributDao &,
             ICapteurDao &,
             IFournisseurDao &,
@@ -52,12 +38,7 @@ public:
 
     virtual ~Service();
 
-    //------------------------------------------------------------------ PRIVE
-
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
     IAttributDao &attributDao;
     ICapteurDao &capteurDao;
     IFournisseurDao &fournisseurDao;
@@ -65,7 +46,5 @@ protected:
     IParticulierDao &particulierDao;
     IPurificateurDao &purificateurDao;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Service>
 
 #endif // Service_H

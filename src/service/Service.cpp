@@ -8,20 +8,11 @@
 
 //---------- Réalisation de la classe <Service> (fichier Service.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "Service.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
 int Service::calculerIndiceATMO(int o3, int so2, int no2, int pm10)
 {
     int atmo = 0;
@@ -48,9 +39,8 @@ int Service::calculerIndiceATMO(int o3, int so2, int no2, int pm10)
     }
 
     return atmo;
-}
+} //----- Fin de calculerIndiceATMO
 
-//-------------------------------------------- Constructeurs - destructeur
 Service::Service(IAttributDao &attDao,
                  ICapteurDao &capDao,
                  IFournisseurDao &fouDao,
@@ -58,8 +48,6 @@ Service::Service(IAttributDao &attDao,
                  IParticulierDao &parDao,
                  IPurificateurDao &purDao)
     : attributDao(attDao), capteurDao(capDao), fournisseurDao(fouDao), mesureDao(mesDao), particulierDao(parDao), purificateurDao(purDao)
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Service> sur " << this << endl;
@@ -67,14 +55,8 @@ Service::Service(IAttributDao &attDao,
 } //----- Fin de Service
 
 Service::~Service()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Service> sur " << this << endl;
 #endif
 } //----- Fin de ~Service
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

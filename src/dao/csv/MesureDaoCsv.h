@@ -10,15 +10,10 @@
 #if !defined(MESUREDAOCSV_H)
 #define MESUREDAOCSV_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <vector>
 using namespace std;
 
 #include "../IMesureDao.h"
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <MesureDaoCsv>
@@ -46,12 +41,9 @@ public:
     virtual vector<Mesure *> &findAll();
 
 protected:
-    //----------------------------------------------------- Attributs protégés
     vector<Mesure *> mesures;
     vector<string> attribut_ids;
     vector<string> capteur_ids;
 };
-
-//-------------------------------- Autres définitions dépendantes de <MesureDaoCsv>
 
 #endif // MESUREDAOCSV_H

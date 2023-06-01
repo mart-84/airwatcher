@@ -10,14 +10,9 @@
 #if !defined(CAPTEURDAOCSV_H)
 #define CAPTEURDAOCSV_H
 
-//--------------------------------------------------- Interfaces utilisées
 using namespace std;
 
 #include "../ICapteurDao.h"
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <CapteurDaoCsv>
@@ -32,13 +27,11 @@ public:
 
     virtual ~CapteurDaoCsv();
 
-    //------------------------------------------------------------------ PRIVE
     virtual Capteur *findById(const string &id);
 
     virtual vector<Capteur *> &findAll();
 
 protected:
-    //----------------------------------------------------- Attributs protégés
     vector<Capteur *> capteurs;
 };
 

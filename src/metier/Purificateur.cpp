@@ -8,25 +8,10 @@
 
 //---------- Réalisation de la classe <Purificateur> (fichier Purificateur.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "Purificateur.h"
-
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-// type Purificateur::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
 string Purificateur::getIdentifiant()
 {
@@ -78,7 +63,6 @@ void Purificateur::setLongitude(double longi)
     longitude = longi;
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
 ostream &operator<<(ostream &os, Purificateur &purificateur)
 {
     os << "id: " << purificateur.identifiant
@@ -87,31 +71,9 @@ ostream &operator<<(ostream &os, Purificateur &purificateur)
        << ", latitude: " << purificateur.latitude
        << ", longitude: " << purificateur.longitude;
     return os;
-}
-
-Purificateur &Purificateur::operator=(const Purificateur &autrePurificateur)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Purificateur> sur " << this << " et " << &autrePurificateur << endl;
-#endif
-    return *this;
-} //----- Fin de operator =
-
-//-------------------------------------------- Constructeurs - destructeur
-Purificateur::Purificateur(const Purificateur &autrePurificateur)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Purificateur> sur " << this << " et " << &autrePurificateur << endl;
-#endif
-} //----- Fin de Purificateur (constructeur de copie)
+} //----- Fin de operator <<
 
 Purificateur::Purificateur()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Purificateur> sur " << this << endl;
@@ -134,7 +96,3 @@ Purificateur::~Purificateur()
     cout << "Appel au destructeur de <Purificateur> sur " << this << endl;
 #endif
 } //----- Fin de ~Purificateur
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

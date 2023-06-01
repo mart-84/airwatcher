@@ -8,25 +8,10 @@
 
 //---------- Réalisation de la classe <Capteur> (fichier Capteur.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "Capteur.h"
-
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-// type Capteur::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
 string Capteur::getIdentifiant()
 {
@@ -95,7 +80,6 @@ float Capteur::calculerSimilarite(Capteur &capteur)
     return 0.0;
 } //----- Fin de calculerSimilarite
 
-//------------------------------------------------- Surcharge d'opérateurs
 ostream &operator<<(ostream &os, Capteur &capteur)
 {
     os << "id: " << capteur.identifiant
@@ -114,26 +98,7 @@ ostream &operator<<(ostream &os, Capteur &capteur)
     os << ", nb mesure: " << capteur.mesures.size();
 
     return os;
-}
-
-Capteur &Capteur::operator=(const Capteur &autreCapteur)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Capteur> sur " << this << " et " << &autreCapteur << endl;
-#endif
-    return *this;
-} //----- Fin de operator =
-
-//-------------------------------------------- Constructeurs - destructeur
-// Capteur::Capteur(const Capteur &autreCapteur)
-// {
-// #ifdef MAP
-//     cout << "Appel au constructeur de copie de <Capteur> sur " << this << " et " << &autreCapteur << endl;
-// #endif
-
-// } //----- Fin de Capteur (constructeur de copie)
+} //----- Fin de operator<<
 
 Capteur::Capteur()
 // Algorithme :
@@ -155,14 +120,8 @@ Capteur::Capteur(string id, bool fiable, double lat, double longi)
 } //----- Fin de Capteur
 
 Capteur::~Capteur()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Capteur> sur " << this << endl;
 #endif
 } //----- Fin de ~Capteur
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

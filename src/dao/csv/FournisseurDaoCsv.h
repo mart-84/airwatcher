@@ -10,15 +10,10 @@
 #if !defined(FOURNISSEURDAOCSV_H)
 #define FOURNISSEURDAOCSV_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <vector>
 using namespace std;
 
 #include "../IFournisseurDao.h"
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <FournisseurDaoCsv>
@@ -42,14 +37,9 @@ public:
 
     virtual vector<Fournisseur *> &findAll();
 
-    //------------------------------------------------------------------ PRIVE
-
 protected:
-    //----------------------------------------------------- Attributs protégés
     vector<Fournisseur *> fournisseurs;
     vector<string> purificateur_ids;
 };
-
-//-------------------------------- Autres définitions dépendantes de <FournisseurDaoCsv>
 
 #endif // FOURNISSEURDAOCSV_H

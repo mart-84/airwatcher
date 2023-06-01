@@ -27,7 +27,6 @@ class IMesureDao
 public:
     virtual ~IMesureDao(){};
 
-    //----------------------------------------------------- Méthodes publiques
     virtual vector<Mesure *> &findAll() = 0;
     // Mode d'emploi :
     // Renvoie la liste de toutes les mesures

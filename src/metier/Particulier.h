@@ -10,36 +10,23 @@
 #if !defined(PARTICULIER_H)
 #define PARTICULIER_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <vector>
 using namespace std;
 
 #include "Capteur.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 class Capteur;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Particulier>
 //
-//
+// Représente un particulier qui possède un ou plusieurs capteurs
 //------------------------------------------------------------------------
 
 class Particulier
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     string getIdentifiant();
 
     int getPoints();
@@ -56,52 +43,19 @@ public:
 
     void ajouterCapteur(Capteur *capt);
 
-    //------------------------------------------------- Surcharge d'opérateurs
     friend ostream &operator<<(ostream &, Particulier &);
 
-    Particulier &operator=(const Particulier &autreParticulier);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //-------------------------------------------- Constructeurs - destructeur
-    Particulier(const Particulier &autreParticulier);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Particulier();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     Particulier(string id, int pts, bool banni);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Particulier();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
     string identifiant;
     int points;
     bool estBanni;
     vector<Capteur *> capteurs;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Particulier>
 
 #endif // PARTICULIER_H

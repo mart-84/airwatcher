@@ -10,7 +10,6 @@
 #if !defined(CAPTEUR_H)
 #define CAPTEUR_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <vector>
 using namespace std;
@@ -18,30 +17,18 @@ using namespace std;
 #include "Mesure.h"
 #include "Particulier.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 class Mesure;
 class Particulier;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Capteur>
 //
-//
+// Représente un capteur physique
 //------------------------------------------------------------------------
 
 class Capteur
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     string getIdentifiant();
 
     bool getEstFiable();
@@ -68,46 +55,15 @@ public:
 
     float calculerSimilarite(Capteur &capteur);
 
-    //------------------------------------------------- Surcharge d'opérateurs
     friend ostream &operator<<(ostream &, Capteur &);
 
-    Capteur &operator=(const Capteur &autreCapteur);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //-------------------------------------------- Constructeurs - destructeur
-    // Capteur(const Capteur &autreCapteur);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Capteur();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     Capteur(string id, bool fiable, double lat, double longi);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Capteur();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
     string identifiant;
     bool estFiable;
     double latitude;
@@ -115,7 +71,5 @@ protected:
     vector<Mesure *> mesures;
     Particulier *proprietaire = nullptr;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Capteur>
 
 #endif // CAPTEUR_H

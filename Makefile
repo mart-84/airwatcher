@@ -1,7 +1,7 @@
 EXEC = airwatcher
 SRCS = src/metier/Attribut.cpp src/metier/Capteur.cpp src/metier/Fournisseur.cpp \
        src/metier/Mesure.cpp src/metier/Particulier.cpp src/metier/Purificateur.cpp \
-	   src/service/Service.cpp src/vue/Vue.cpp \
+	   src/service/Service.cpp src/vue/VueConsole.cpp \
 	   src/dao/csv/CsvParser.cpp src/dao/csv/AttributDaoCsv.cpp src/dao/csv/FournisseurDaoCsv.cpp \
 	   src/dao/csv/MesureDaoCsv.cpp src/dao/csv/ParticulierDaoCsv.cpp \
 	   src/dao/csv/PurificateurDaoCsv.cpp src/dao/csv/CapteurDaoCsv.cpp 

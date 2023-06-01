@@ -10,15 +10,10 @@
 #if !defined(PURIFICATEURDAOCSV_H)
 #define PURIFICATEURDAOCSV_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <vector>
 using namespace std;
 
 #include "../IPurificateurDao.h"
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <PurificateurDaoCsv>
@@ -33,13 +28,11 @@ public:
 
     virtual ~PurificateurDaoCsv();
 
-    //------------------------------------------------------------------ PRIVE
     virtual Purificateur *findById(const string &id);
 
     virtual vector<Purificateur *> &findAll();
 
 protected:
-    //----------------------------------------------------- Attributs protégés
     vector<Purificateur *> purificateurs;
 };
 

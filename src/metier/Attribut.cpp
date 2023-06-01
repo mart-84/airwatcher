@@ -8,25 +8,10 @@
 
 //---------- Réalisation de la classe <Attribut> (fichier Attribut.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "Attribut.h"
-
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-// type Attribut::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
 string Attribut::getIdentifiant()
 {
@@ -58,38 +43,15 @@ void Attribut::setDescription(string desc)
     description = desc;
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
 ostream &operator<<(ostream &os, Attribut &attr)
 {
     os << "id: " << attr.identifiant
        << ", unité: " << attr.unite
        << ", description: " << attr.description;
     return os;
-}
-
-Attribut &Attribut::operator=(const Attribut &autreAttribut)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel a l'operateur d'affectation de <Attribut> sur " << this << " et " << &autreAttribut << endl;
-#endif
-    return *this;
-} //----- Fin de operator =
-
-//-------------------------------------------- Constructeurs - destructeur
-Attribut::Attribut(const Attribut &autreAttribut)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Attribut> sur " << this << " et " << &autreAttribut << endl;
-#endif
-} //----- Fin de Attribut (constructeur de copie)
+} //----- Fin de operator <<
 
 Attribut::Attribut()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Attribut> sur " << this << endl;
@@ -98,8 +60,6 @@ Attribut::Attribut()
 
 Attribut::Attribut(string id, string u, string desc)
     : identifiant(id), unite(u), description(desc)
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Attribut> sur " << this << endl;
@@ -107,14 +67,8 @@ Attribut::Attribut(string id, string u, string desc)
 } //----- Fin de Attribut
 
 Attribut::~Attribut()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Attribut> sur " << this << endl;
 #endif
 } //----- Fin de ~Attribut
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

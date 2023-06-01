@@ -8,25 +8,14 @@
 
 //---------- Réalisation de la classe <FournisseurDaoCsv> (fichier FournisseurDaoCsv.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 #include <fstream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "FournisseurDaoCsv.h"
 #include "CsvParser.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
 FournisseurDaoCsv::FournisseurDaoCsv(const string &filename)
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <FournisseurDaoCsv> sur " << this << endl;
@@ -49,8 +38,6 @@ FournisseurDaoCsv::FournisseurDaoCsv(const string &filename)
 } //----- Fin de FournisseurDaoCsv
 
 FournisseurDaoCsv::~FournisseurDaoCsv()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <FournisseurDaoCsv> sur " << this << endl;
@@ -73,7 +60,7 @@ void FournisseurDaoCsv::associerPurificateurs(vector<Purificateur *> &purificate
             }
         }
     }
-}
+} //----- Fin de associerPurificateurs
 
 Fournisseur *FournisseurDaoCsv::findById(const string &id)
 {
@@ -85,13 +72,9 @@ Fournisseur *FournisseurDaoCsv::findById(const string &id)
         }
     }
     return nullptr;
-}
+} //----- Fin de findById
 
 vector<Fournisseur *> &FournisseurDaoCsv::findAll()
 {
     return fournisseurs;
-}
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
+} //----- Fin de findAll

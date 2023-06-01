@@ -10,15 +10,10 @@
 #if !defined(CSVPARSER_H)
 #define CSVPARSER_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include <string>
 #include <fstream>
 using namespace std;
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <CsvParser>
@@ -28,16 +23,7 @@ using namespace std;
 
 class CsvParser
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     static vector<vector<string>> parse(ifstream &file);
     // Mode d'emploi :
     // Parse le fichier CSV et retourne un vecteur de vecteur de string
@@ -46,14 +32,7 @@ public:
     // Contrat :
     // file doit être ouvert en lecture
 
-    //------------------------------------------------------------------ PRIVE
-
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
 };
-
-//-------------------------------- Autres définitions dépendantes de <CsvParser>
 
 #endif // CSVPARSER_H

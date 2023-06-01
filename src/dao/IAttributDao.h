@@ -28,7 +28,6 @@ class IAttributDao
 public:
     virtual ~IAttributDao(){};
 
-    //----------------------------------------------------- Méthodes publiques
     virtual Attribut *findByName(const string &) = 0;
     // Mode d'emploi :
     // Renvoie l'attribut avec le nom spécifié. Si l'attribut n'est pas trouvé, renvoie null

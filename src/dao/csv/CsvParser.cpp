@@ -8,27 +8,12 @@
 
 //---------- Réalisation de la classe <CsvParser> (fichier CsvParser.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
-//------------------------------------------------------ Include personnel
 #include "CsvParser.h"
-
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
-// type CsvParser::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
 vector<vector<string>> CsvParser::parse(ifstream &file)
 {
@@ -48,8 +33,4 @@ vector<vector<string>> CsvParser::parse(ifstream &file)
     }
 
     return result;
-}
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
+} //----- Fin de parse

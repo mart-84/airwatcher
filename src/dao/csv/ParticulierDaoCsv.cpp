@@ -8,24 +8,15 @@
 
 //---------- Réalisation de la classe <ParticulierDaoCsv> (fichier ParticulierDaoCsv.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "ParticulierDaoCsv.h"
 #include "CsvParser.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
 ParticulierDaoCsv::ParticulierDaoCsv(const string &filename)
 {
 #ifdef MAP
@@ -72,7 +63,7 @@ void ParticulierDaoCsv::associerCapteurs(vector<Capteur *> &capteurs)
             }
         }
     }
-}
+} //----- Fin de associerCapteurs
 
 Particulier *ParticulierDaoCsv::findById(const string &id)
 {
@@ -84,13 +75,9 @@ Particulier *ParticulierDaoCsv::findById(const string &id)
         }
     }
     return nullptr;
-}
+} //----- Fin de findById
 
 vector<Particulier *> &ParticulierDaoCsv::findAll()
 {
     return particuliers;
-}
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
+} //----- Fin de findAll

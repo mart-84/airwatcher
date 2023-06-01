@@ -10,36 +10,24 @@
 #if !defined(MESURE_H)
 #define MESURE_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <string>
 using namespace std;
 
 #include "Attribut.h"
 #include "Capteur.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 class Capteur;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Mesure>
 //
-//
+// Représente une mesure effectuée par un capteur pour un seul attribut à
+// une date donnée
 //------------------------------------------------------------------------
 
 class Mesure
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     string getDate();
 
     double getValeur();
@@ -56,52 +44,19 @@ public:
 
     void setCapteur(Capteur *capt);
 
-    //------------------------------------------------- Surcharge d'opérateurs
     friend ostream &operator<<(ostream &, Mesure &);
 
-    Mesure &operator=(const Mesure &autreMesure);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //-------------------------------------------- Constructeurs - destructeur
-    Mesure(const Mesure &autreMesure);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Mesure();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     Mesure(string day, double val, Attribut *attr, Capteur *capt);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Mesure();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
     string date;
     double valeur;
     Attribut *attribut;
     Capteur *capteur;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Mesure>
 
 #endif // MESURE_H

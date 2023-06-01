@@ -10,14 +10,9 @@
 #if !defined(ATTRIBUTDAOCSV_H)
 #define ATTRIBUTDAOCSV_H
 
-//--------------------------------------------------- Interfaces utilisées
 using namespace std;
 
 #include "../IAttributDao.h"
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <AttributDaoCsv>
@@ -27,23 +22,17 @@ using namespace std;
 
 class AttributDaoCsv : public IAttributDao
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
     AttributDaoCsv(const string &filename);
 
     virtual ~AttributDaoCsv();
 
-    //------------------------------------------------------------------ PRIVE
     virtual Attribut *findByName(const string &);
 
     virtual vector<Attribut *> &findAll();
 
 protected:
-    //----------------------------------------------------- Attributs protégés
     vector<Attribut *> attributs;
-};
-
-//-------------------------------- Autres définitions dépendantes de <AttributDaoCsv>
+}; //----- Fin de AttributDaoCsv
 
 #endif // ATTRIBUTDAOCSV_H

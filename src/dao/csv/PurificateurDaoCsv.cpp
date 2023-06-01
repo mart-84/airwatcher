@@ -8,24 +8,15 @@
 
 //---------- Réalisation de la classe <PurificateurDaoCsv> (fichier PurificateurDaoCsv.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "PurificateurDaoCsv.h"
 #include "CsvParser.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
-
-//----------------------------------------------------- Méthodes publiques
 PurificateurDaoCsv::PurificateurDaoCsv(const string &filename)
 {
 #ifdef MAP
@@ -68,9 +59,9 @@ Purificateur *PurificateurDaoCsv::findById(const string &id)
         }
     }
     return nullptr;
-}
+} //----- Fin de findById
 
 vector<Purificateur *> &PurificateurDaoCsv::findAll()
 {
     return purificateurs;
-}
+} //----- Fin de findAll

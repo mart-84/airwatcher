@@ -10,33 +10,20 @@
 #if !defined(FOURNISSEUR_H)
 #define FOURNISSEUR_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <string>
 using namespace std;
 
 #include "Purificateur.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
 //------------------------------------------------------------------------
 // Rôle de la classe <Fournisseur>
 //
-//
+// Représente un fournisseur de purificateur d'air
 //------------------------------------------------------------------------
 
 class Fournisseur
 {
-    //----------------------------------------------------------------- PUBLIC
-
 public:
-    //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
     string getIdentifiant();
 
     Purificateur *getPurificateur();
@@ -45,50 +32,17 @@ public:
 
     void setPurificateur(Purificateur *purif);
 
-    //------------------------------------------------- Surcharge d'opérateurs
     friend ostream &operator<<(ostream &, Fournisseur &);
 
-    Fournisseur &operator=(const Fournisseur &autreFournisseur);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //-------------------------------------------- Constructeurs - destructeur
-    Fournisseur(const Fournisseur &autreFournisseur);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Fournisseur();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     Fournisseur(string id, Purificateur *purif);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Fournisseur();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //------------------------------------------------------------------ PRIVE
 
 protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
     string identifiant;
     Purificateur *purificateur;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Fournisseur>
 
 #endif // FOURNISSEUR_H

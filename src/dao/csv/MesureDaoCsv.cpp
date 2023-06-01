@@ -8,22 +8,15 @@
 
 //---------- Réalisation de la classe <MesureDaoCsv> (fichier MesureDaoCsv.cpp) ------------
 
-//---------------------------------------------------------------- INCLUDE
-
-//-------------------------------------------------------- Include système
 #include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
 using namespace std;
 
-//------------------------------------------------------ Include personnel
 #include "MesureDaoCsv.h"
 #include "CsvParser.h"
 
-//------------------------------------------------------------- Constantes
-
-//----------------------------------------------------------------- PUBLIC
 MesureDaoCsv::MesureDaoCsv(const string &filename)
 {
 #ifdef MAP
@@ -70,7 +63,7 @@ void MesureDaoCsv::associerAttributs(vector<Attribut *> &attributs)
             }
         }
     }
-}
+} //----- Fin de associerAttributs
 
 void MesureDaoCsv::associerCapteurs(vector<Capteur *> &capteurs)
 {
@@ -85,13 +78,9 @@ void MesureDaoCsv::associerCapteurs(vector<Capteur *> &capteurs)
             }
         }
     }
-}
+} //----- Fin de associerCapteurs
 
 vector<Mesure *> &MesureDaoCsv::findAll()
 {
     return mesures;
-}
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
+} //----- Fin de findAll

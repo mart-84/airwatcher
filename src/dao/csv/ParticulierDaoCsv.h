@@ -10,15 +10,10 @@
 #if !defined(PARTICULIERDAOCSV_H)
 #define PARTICULIERDAOCSV_H
 
-//--------------------------------------------------- Interfaces utilisées
 #include <vector>
 using namespace std;
 
 #include "../IParticulierDao.h"
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <ParticulierDaoCsv>
@@ -38,17 +33,13 @@ public:
     // Utilise la liste des capteurs créée par le Dao CapteurDaoCsv pour faire l'association
     // entre les particuliers et leurs capteurs.
 
-    //------------------------------------------------------------------ PRIVE
     virtual Particulier *findById(const string &id);
 
     virtual vector<Particulier *> &findAll();
 
 protected:
-    //----------------------------------------------------- Attributs protégés
     vector<Particulier *> particuliers;
     vector<string> capteur_ids;
 };
-
-//-------------------------------- Autres définitions dépendantes de <ParticulierDaoCsv>
 
 #endif // PARTICULIERDAOCSV_H
