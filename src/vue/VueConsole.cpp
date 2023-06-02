@@ -32,3 +32,17 @@ VueConsole::~VueConsole()
     cout << "Appel au destructeur de <VueConsole> sur " << this << endl;
 #endif
 } //----- Fin de ~VueConsole
+
+int VueConsole::saisirEntier()
+{
+    int entier;
+    cin >> entier;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Veuillez entrer un entier : ";
+        cin >> entier;
+    }
+    return entier;
+} //----- Fin de saisirEntier

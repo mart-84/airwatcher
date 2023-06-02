@@ -31,6 +31,8 @@ public:
     virtual ~VueConsole();
 
 protected:
+    int saisirEntier();
+
     Service &service;
 };
 
