@@ -27,6 +27,8 @@ public:
 
     virtual ~CapteurDaoCsv();
 
+    virtual void update(Capteur &capteur);
+
     virtual Capteur *findById(const string &id);
 
     virtual vector<Capteur *> &findAll();

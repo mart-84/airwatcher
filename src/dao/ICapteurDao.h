@@ -28,6 +28,8 @@ class ICapteurDao
 public:
     virtual ~ICapteurDao(){};
 
+    virtual void update(Capteur &capteur) = 0;
+
     virtual Capteur *findById(const string &id) = 0;
     // Mode d'emploi :
     // Renvoie le capteur avec l'id spécifie. Si le capteur n'est pas trouvé, renvoie null

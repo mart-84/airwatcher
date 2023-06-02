@@ -41,6 +41,28 @@ int Service::calculerIndiceATMO(int o3, int so2, int no2, int pm10)
     return atmo;
 } //----- Fin de calculerIndiceATMO
 
+Capteur *Service::obtenirCapteur(string idCapteur)
+{
+    return capteurDao.findById(idCapteur);
+} //----- Fin de obtenirCapteur
+
+
+void Service::marquerCapteurNonFiable(Capteur & capteur){
+    capteur.setEstFiable(false);
+    capteurDao.update(capteur);
+    if (capteur.getProprietaire() != nullptr)
+    {
+        capteur.getProprietaire()->setEstBanni(true);
+        particulierDao.update(*capteur.getProprietaire());
+        for (Capteur *c : capteur.getProprietaire()->getCapteurs())
+        {
+            c->setEstFiable(false);
+            capteurDao.update(*c);
+        }
+    }
+
+} //----- Fin de marquerCommeNonFIable
+
 Service::Service(IAttributDao &attDao,
                  ICapteurDao &capDao,
                  IFournisseurDao &fouDao,

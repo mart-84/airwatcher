@@ -29,6 +29,12 @@ class Service
 public:
     int calculerIndiceATMO(int o3, int so2, int no2, int pm10);
 
+    Capteur *obtenirCapteur(string idCapteur);
+
+    
+
+    void marquerCapteurNonFiable(Capteur & capteur);
+
     Service(IAttributDao &,
             ICapteurDao &,
             IFournisseurDao &,

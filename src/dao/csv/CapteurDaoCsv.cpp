@@ -28,12 +28,26 @@ CapteurDaoCsv::CapteurDaoCsv(const string &filename)
         cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
-
     vector<vector<string>> lines(CsvParser::parse(file));
+
+    ifstream fileBanned("dataset/banned-sensors.csv");
+    vector<vector<string>> linesBanned;
+    if (fileBanned.is_open())
+    {
+        linesBanned = CsvParser::parse(fileBanned);
+    }
 
     for (auto &line : lines)
     {
         Capteur *capteur = new Capteur(line[0], true, stod(line[1]), stod(line[2]));
+        for (auto &lineBanned : linesBanned)
+        {
+            if (lineBanned[0] == line[0])
+            {
+                capteur->setEstFiable(false);
+                break;
+            }
+        }
         capteurs.push_back(capteur);
     }
 } //----- Fin de CapteurDaoCsv
@@ -48,6 +62,20 @@ CapteurDaoCsv::~CapteurDaoCsv()
         delete capteur;
     }
 } //----- Fin de ~CapteurDaoCsv
+
+void CapteurDaoCsv::update(Capteur &capteur)
+{
+    const string filename = "dataset/banned-sensors.csv";
+    ofstream file(filename);
+
+    if (!file.is_open()) 
+    {
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
+        exit(1);
+    }
+
+    file << capteur.getIdentifiant() << endl;
+} //----- Fin de update
 
 Capteur *CapteurDaoCsv::findById(const string &id)
 // Algorithme :

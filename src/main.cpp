@@ -13,6 +13,9 @@
 #include "service/Service.h"
 #include "vue/VueConsole.h"
 
+#include <iostream>
+using namespace std;
+
 int main(int argc, char **argv)
 {
     // Initialisation des DAO CSV
@@ -39,6 +42,7 @@ int main(int argc, char **argv)
 
     VueConsole vue(service);
     vue.afficherMenu();
+    vue.consulterDonneesCapteur();
 
     return 0;
 }

@@ -28,8 +28,14 @@ ParticulierDaoCsv::ParticulierDaoCsv(const string &filename)
         cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
-
     vector<vector<string>> lines(CsvParser::parse(file));
+
+    ifstream fileBanned("dataset/banned-users.csv");
+    vector<vector<string>> linesBanned;
+    if (fileBanned.is_open())
+    {
+        linesBanned = CsvParser::parse(fileBanned);
+    }
 
     for (auto &line : lines)
     {
@@ -49,6 +55,20 @@ ParticulierDaoCsv::~ParticulierDaoCsv()
         delete particulier;
     }
 } //----- Fin de ~ParticulierDaoCsv
+
+void ParticulierDaoCsv::update(Particulier &particulier)
+{
+    const string filename = "dataset/banned-users.csv";
+    ofstream file(filename);
+
+    if (!file.is_open()) 
+    {
+        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
+        exit(1);
+    }
+
+    file << particulier.getIdentifiant() << endl;
+} //----- Fin de update
 
 void ParticulierDaoCsv::associerCapteurs(vector<Capteur *> &capteurs)
 {

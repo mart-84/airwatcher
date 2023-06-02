@@ -28,6 +28,8 @@ class IParticulierDao
 public:
     virtual ~IParticulierDao(){};
 
+    virtual void update(Particulier &particulier) = 0;
+
     virtual Particulier *findById(const string &id) = 0;
     // Mode d'emploi :
     // Renvoie le particulier avec l'id spécifie. Si le particulier n'est pas trouvé, renvoie null

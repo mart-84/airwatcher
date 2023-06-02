@@ -28,6 +28,8 @@ public:
 
     virtual ~ParticulierDaoCsv();
 
+    virtual void update(Particulier &particulier);
+
     void associerCapteurs(vector<Capteur *> &capteurs);
     // Mode d'emploi :
     // Utilise la liste des capteurs créée par le Dao CapteurDaoCsv pour faire l'association

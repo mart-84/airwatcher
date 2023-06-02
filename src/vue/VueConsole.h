@@ -26,6 +26,8 @@ class VueConsole
 public:
     void afficherMenu();
 
+    void consulterDonneesCapteur();
+
     VueConsole(Service &);
 
     virtual ~VueConsole();
