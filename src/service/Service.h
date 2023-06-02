@@ -17,6 +17,9 @@
 #include "../dao/IParticulierDao.h"
 #include "../dao/IPurificateurDao.h"
 
+#include <array>
+#include <algorithm>
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Service>
 //
@@ -31,9 +34,9 @@ public:
 
     Capteur *obtenirCapteur(string idCapteur);
 
-    
-
     void marquerCapteurNonFiable(Capteur & capteur);
+
+    array<double, 3> statistiquesZoneCirculaire(double longitude, double latitude, int rayon, string date_debut, string date_fin = "", double* tps = nullptr);
 
     Service(IAttributDao &,
             ICapteurDao &,

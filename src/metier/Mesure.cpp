@@ -53,6 +53,23 @@ void Mesure::setCapteur(Capteur *capt)
     capteur = capt;
 }
 
+bool Mesure::compareDate(Mesure &mesure)
+{
+    int self_annee = stoi(date.substr(0, 4));
+    int self_mois = stoi(date.substr(5, 2));
+    int self_jour = stoi(date.substr(8, 2));
+    int self_heure = stoi(date.substr(11, 2));
+    int self_minute = stoi(date.substr(14, 2));
+
+    int other_annee = stoi(mesure.date.substr(0, 4));
+    int other_mois = stoi(mesure.date.substr(5, 2));
+    int other_jour = stoi(mesure.date.substr(8, 2));
+    int other_heure = stoi(mesure.date.substr(11, 2));
+    int other_minute = stoi(mesure.date.substr(14, 2));
+
+    return self_annee < other_annee || self_mois < other_mois || self_jour < other_jour || self_heure < other_heure || self_minute < other_minute;
+}
+
 ostream &operator<<(ostream &os, Mesure &mesure)
 {
     os << "date: " << mesure.date

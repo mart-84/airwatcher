@@ -33,6 +33,8 @@ public:
 
     virtual vector<Capteur *> &findAll();
 
+    virtual vector<Capteur*> getCapteursZoneCirculaire(double longitude, double latitude, int rayon);
+
 protected:
     vector<Capteur *> capteurs;
 };

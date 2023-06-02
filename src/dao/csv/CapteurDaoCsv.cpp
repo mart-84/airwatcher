@@ -17,6 +17,21 @@ using namespace std;
 #include "CapteurDaoCsv.h"
 #include "CsvParser.h"
 
+vector<Capteur*> CapteurDaoCsv::getCapteursZoneCirculaire(double longitude, double latitude, int rayon)
+{
+    vector<Capteur*> capteurs;
+
+    for (Capteur* capteur : this->capteurs)
+    {
+        if (capteur->estDansZoneCirculaire(longitude, latitude, rayon) && capteur->getEstFiable())
+        {
+            capteurs.push_back(capteur);
+        }
+    }
+
+    return capteurs;
+}
+
 CapteurDaoCsv::CapteurDaoCsv(const string &filename)
 {
 #ifdef MAP
