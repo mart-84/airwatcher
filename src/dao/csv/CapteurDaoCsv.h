@@ -23,7 +23,7 @@ using namespace std;
 class CapteurDaoCsv : public ICapteurDao
 {
 public:
-    CapteurDaoCsv(const string &filename);
+    CapteurDaoCsv(const string &filename, const string &fBanned);
 
     virtual ~CapteurDaoCsv();
 
@@ -37,6 +37,7 @@ public:
 
 protected:
     vector<Capteur *> capteurs;
+    const string filenameBanned;
 };
 
 #endif // CAPTEURDAOCSV_H

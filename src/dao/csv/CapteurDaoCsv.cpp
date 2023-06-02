@@ -32,7 +32,8 @@ vector<Capteur*> CapteurDaoCsv::getCapteursZoneCirculaire(double longitude, doub
     return capteurs;
 }
 
-CapteurDaoCsv::CapteurDaoCsv(const string &filename)
+CapteurDaoCsv::CapteurDaoCsv(const string &filename, const string &fBanned)
+    : filenameBanned(fBanned)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <CapteurDaoCsv> sur " << this << endl;
@@ -45,7 +46,7 @@ CapteurDaoCsv::CapteurDaoCsv(const string &filename)
     }
     vector<vector<string>> lines(CsvParser::parse(file));
 
-    ifstream fileBanned("dataset/banned-sensors.csv");
+    ifstream fileBanned(fBanned);
     vector<vector<string>> linesBanned;
     if (fileBanned.is_open())
     {
@@ -82,12 +83,11 @@ void CapteurDaoCsv::update(Capteur &capteur)
 {
     if (!capteur.getEstFiable())
     {
-        const string filename = "dataset/banned-sensors.csv";
-        ofstream file(filename, ios::app);
+        ofstream file(filenameBanned, ios::app);
 
         if (!file.is_open()) 
         {
-            cerr << "Impossible d'ouvrir le fichier " << filename << endl;
+            cerr << "Impossible d'ouvrir le fichier " << filenameBanned << endl;
             exit(1);
         }
 
