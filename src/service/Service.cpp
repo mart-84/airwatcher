@@ -9,6 +9,7 @@
 //---------- Réalisation de la classe <Service> (fichier Service.cpp) ------------
 
 #include <iostream>
+#include <chrono>
 using namespace std;
 
 #include "Service.h"
@@ -56,7 +57,8 @@ Capteur *Service::obtenirCapteur(string idCapteur)
     return capteur;
 } //----- Fin de obtenirCapteur
 
-void Service::marquerCapteurNonFiable(Capteur & capteur){
+void Service::marquerCapteurNonFiable(Capteur &capteur)
+{
     capteur.setEstFiable(false);
     capteurDao.update(capteur);
     if (capteur.getProprietaire() != nullptr)
@@ -72,20 +74,18 @@ void Service::marquerCapteurNonFiable(Capteur & capteur){
 
 } //----- Fin de marquerCommeNonFIable
 
-array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double latitude, int rayon, string date_debut, string date_fin, double* tps)
+array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double latitude, int rayon, string date_debut, string date_fin)
 {
-    double start = clock();
-
     auto capteurs = this->capteurDao.getCapteursZoneCirculaire(longitude, latitude, rayon);
 
-    if(capteurs.size() == 0)
+    if (capteurs.size() == 0)
     {
         return array<double, 3>({0., 0., 0.});
     }
 
     vector<double> indices;
 
-    for(auto capteur : capteurs)
+    for (auto capteur : capteurs)
     {
 
         if (capteur->getProprietaire() != nullptr)
@@ -96,33 +96,33 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
         auto mesures = capteur->getMesures();
 
         int o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
-        for(unsigned int i = 0; i < mesures.size(); ++i)
+        for (unsigned int i = 0; i < mesures.size(); ++i)
         {
-            if(mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
+            if (mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
             {
                 break;
             }
 
             auto id = mesures[i]->getAttribut()->getIdentifiant();
-            
-            if(id == "O3") 
+
+            if (id == "O3")
             {
                 o3 = mesures[i]->getValeur();
             }
-            else if(id == "SO2") 
+            else if (id == "SO2")
             {
                 so2 = mesures[i]->getValeur();
             }
-            else if(id == "NO2") 
+            else if (id == "NO2")
             {
                 no2 = mesures[i]->getValeur();
             }
-            else if(id == "PM10") 
+            else if (id == "PM10")
             {
                 pm10 = mesures[i]->getValeur();
             }
 
-            if(i % 4 == 0 && o3 != -1 && so2 != -1 && no2 != -1 && pm10 != -1)
+            if (i % 4 == 0 && o3 != -1 && so2 != -1 && no2 != -1 && pm10 != -1)
             {
                 indices.push_back(calculerIndiceATMO(o3, so2, no2, pm10));
                 o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
@@ -131,7 +131,7 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
     }
 
     double moyenne = 0.;
-    for(auto indice : indices)
+    for (auto indice : indices)
     {
         moyenne += indice;
     }
@@ -139,21 +139,13 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
     double mediane = 0.;
     sort(indices.begin(), indices.end());
-    if(indices.size() % 2 == 0)
+    if (indices.size() % 2 == 0)
     {
         mediane = (indices[indices.size() / 2 - 1] + indices[indices.size() / 2]) / 2;
     }
     else
     {
         mediane = indices[indices.size() / 2];
-    }
-
-    double end = clock();
-    double time = (end - start) / CLOCKS_PER_SEC;
-
-    if(tps != nullptr)
-    {
-        *tps = time;
     }
 
     return array<double, 3>({double(capteurs.size()), moyenne, mediane});

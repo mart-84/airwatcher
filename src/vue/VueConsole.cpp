@@ -10,101 +10,90 @@
 
 #include <iostream>
 #include <limits>
+#include <chrono>
 using namespace std;
 
 #include "VueConsole.h"
 
 void VueConsole::afficherMenu()
 {
-    cout << "+-------------------------------------------------+" << endl;
-    cout << "|                    AirWatcher                   |" << endl;
-    cout << "+-------------------------------------------------+" << endl;
-
-    cout << endl;
-
-    cout << "Choisissez votre role :" << endl;
-    cout << "1. Agence gouvernementale" << endl;
-    cout << "2. Fournisseur de purificateur" << endl;
-    cout << "3. Particulier" << endl;
-
-    cout << endl;
+    cout << "+-------------------------------------------------+" << endl
+         << "|                    AirWatcher                   |" << endl
+         << "+-------------------------------------------------+" << endl
+         << endl
+         << "Choisissez votre role :" << endl
+         << "1. Agence gouvernementale" << endl
+         << "2. Fournisseur de purificateur" << endl
+         << "3. Particulier" << endl
+         << endl;
 
     int choix = saisirEntier();
-
-    switch(choix) 
+    switch (choix)
     {
-        case 1:
-            afficherMenuAgence();
-            break;
+    case 1:
+        afficherMenuAgence();
+        break;
 
-        default: 
-            cout << "Choix invalide ou fonctionnalitee pas encore implementee." << endl;
-            afficherMenu();
-            break;
+    default:
+        cout << "Choix invalide ou fonctionnalitee pas encore implementee." << endl;
+        afficherMenu();
+        break;
     }
 } //----- Fin de afficherMenu
 
 void VueConsole::afficherMenuAgence()
 {
-    cout << "+-------------------------------------------------+" << endl;
-    cout << "|       Bienvenue sur l'espace de l'agence        |" << endl;
-    cout << "+-------------------------------------------------+" << endl;
-
-    cout << endl;
-
-    cout << "Menu :" << endl;
-
-    cout << "1. Consulter les donnees d'un capteur" << endl;
-    cout << "2. Consulter les donnees d'un purificateur" << endl;
-    cout << "3. Consulter les statistiques" << endl;
-
-    cout << endl;
+    cout << "+-------------------------------------------------+" << endl
+         << "|       Bienvenue sur l'espace de l'agence        |" << endl
+         << "+-------------------------------------------------+" << endl
+         << endl
+         << "Menu :" << endl
+         << "1. Consulter les donnees d'un capteur" << endl
+         << "2. Consulter les donnees d'un purificateur" << endl
+         << "3. Consulter les statistiques" << endl
+         << endl;
 
     int choix = saisirEntier();
-
-    switch(choix) 
+    switch (choix)
     {
-        case 1:
-            consulterDonneesCapteur();
-            break;
+    case 1:
+        consulterDonneesCapteur();
+        break;
 
-        case 3:
-            afficherMenuStatistiques();
-            break;
+    case 3:
+        afficherMenuStatistiques();
+        break;
 
-        default: 
-            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
-            afficherMenuAgence();
-            break;
+    default:
+        cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+        afficherMenuAgence();
+        break;
     }
 } //----- Fin de afficherMenuAgence
 
 void VueConsole::afficherMenuStatistiques()
 {
-    cout << "Quel type d'informations souhaitez-vous consulter ?" << endl;
-
-    cout << "1. Statistiques sur l'impact des purificateurs sur la qualite de l'air" << endl;
-    cout << "2. Statistiques sur la qualite de l'air pour une zone circulaire" << endl;
-    cout << "3. Retour menu principal" << endl;
-
-    cout << endl;
+    cout << "Quel type d'informations souhaitez-vous consulter ?" << endl
+         << "1. Statistiques sur l'impact des purificateurs sur la qualite de l'air" << endl
+         << "2. Statistiques sur la qualite de l'air pour une zone circulaire" << endl
+         << "3. Retour menu principal" << endl
+         << endl;
 
     int choix = saisirEntier();
-
-    switch(choix) 
+    switch (choix)
     {
-        case 2:
-            afficherMenuStatistiquesZoneCirculaire();
-            break;
+    case 2:
+        afficherMenuStatistiquesZoneCirculaire();
+        break;
 
-        case 3: 
-            afficherMenuAgence();
-            break;
+    case 3:
+        afficherMenuAgence();
+        break;
 
-        default: 
-            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
-            afficherMenuStatistiques();
-            break;
+    default:
+        cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+        afficherMenuStatistiques();
+        break;
     }
 
 } //----- Fin de afficherMenuStatistiques
@@ -113,7 +102,7 @@ void VueConsole::afficherMenuStatistiquesZoneCirculaire()
 {
     double latitude, longitude;
     int rayon;
-    std::string date_debut, date_fin;
+    string date_debut, date_fin;
 
     cout << "Veuillez indiquer les informations de la zone geographique : " << endl;
     cout << "Latitude : ";
@@ -126,59 +115,66 @@ void VueConsole::afficherMenuStatistiquesZoneCirculaire()
     rayon = saisirEntier();
 
     cout << "Date de debut (format : AAAA-MM-JJ hh:mm:ss) : ";
-    cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');
-    std::getline(cin, date_debut);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, date_debut);
 
     cout << "Date de fin (format : AAAA-MM-JJ hh:mm:ss) (optionnelle) : ";
-    std::getline(cin, date_fin);
+    getline(cin, date_fin);
 
     cout << endl;
 
-    double temps = 0.;
-    auto donnees = service.statistiquesZoneCirculaire(latitude, longitude, rayon, date_debut, date_fin, &temps);
+    auto start = chrono::high_resolution_clock::now();
+    auto donnees = service.statistiquesZoneCirculaire(latitude, longitude, rayon, date_debut, date_fin);
+    auto end = chrono::high_resolution_clock::now();
 
-    if(donnees[0] == 0. && donnees[1] == 0. && donnees[2] == 0.)
+    if (donnees[0] == 0. && donnees[1] == 0. && donnees[2] == 0.)
     {
         cout << "Aucune donnee trouvee pour ces parametres." << endl;
         cout << endl;
     }
     else
     {
-        cout << "(les donnees ont ete generees en : " << temps << "ms)" << endl << endl;
+        double temps = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+        cout << "(les donnees ont ete generees en : " << temps << "ms)" << endl
+             << endl;
 
         cout << "Voici nos resultats pour la zone de centre (" << latitude << "; " << longitude << ") et pour rayon " << rayon << " km, le " << date_debut;
 
-        if(date_fin != "")
+        if (date_fin != "")
         {
             cout << " jusqu'au " << date_fin;
         }
 
-        cout << "." << endl << endl;
+        cout << "." << endl
+             << endl;
 
-        cout << "Nombre de capteurs trouvees : " << donnees[0] << endl << endl;
+        cout << "Nombre de capteurs trouvees : " << donnees[0] << endl
+             << endl;
 
         cout << "+-------------------------------------------------+" << endl;
         cout << "|         Statistique         |      Valeur       +" << endl;
         cout << "+-------------------------------------------------+" << endl;
         cout << "| Moyenne indice ATMO         | " << donnees[1] << endl;
         cout << "| Mediane indice ATMO         | " << donnees[2] << endl;
-        cout << "+-------------------------------------------------+" << endl << endl;
+        cout << "+-------------------------------------------------+" << endl
+             << endl;
     }
 
-    cout << "1. Retour menu principal" << endl << endl;
+    cout << "1. Retour menu principal" << endl
+         << endl;
 
     int choix = saisirEntier();
 
-    switch(choix) 
+    switch (choix)
     {
-        case 1: 
-            afficherMenuStatistiques();
-            break;
+    case 1:
+        afficherMenuStatistiques();
+        break;
 
-        default: 
-            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
-            afficherMenuStatistiquesZoneCirculaire();
-            break;
+    default:
+        cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+        afficherMenuStatistiquesZoneCirculaire();
+        break;
     }
 
 } //----- Fin de afficherMenuStatistiquesZoneCirculaire
@@ -189,7 +185,7 @@ void VueConsole::consulterDonneesCapteur()
     string idCapteur;
     cin >> idCapteur;
 
-    double start = clock();
+    auto start = chrono::high_resolution_clock::now();
 
     Capteur *capteur = service.obtenirCapteur(idCapteur);
     if (capteur == nullptr)
@@ -216,12 +212,11 @@ void VueConsole::consulterDonneesCapteur()
     const unsigned int max = 10;
     cout << "Mesures (les " << max << " premieres):" << endl;
     vector<Mesure *> mesure = capteur->getMesures();
-    unsigned int i;
     float moyenneO3 = 0;
     float moyenneSO2 = 0;
     float moyenneNO2 = 0;
     float moyennePM10 = 0;
-    for (i = 0; i < max && i < mesure.size() / 4; i++)
+    for (unsigned int i = 0; i < max && i < mesure.size() / 4; i++)
     {
         moyenneO3 += mesure[4 * i]->getValeur();
         moyenneSO2 += mesure[4 * i + 1]->getValeur();
@@ -236,17 +231,18 @@ void VueConsole::consulterDonneesCapteur()
              << "indice ATMO : " << atmo
              << endl;
     }
-    cout << endl;
-    cout << "Resume : " << endl;
-    cout << "moyenne d'O3 : " << moyenneO3 / max << endl;
-    cout << "moyenne de SO2 : " << moyenneSO2 / max << endl;
-    cout << "moyenne de NO2 : " << moyenneNO2 / max << endl;
-    cout << "moyenne de PM10 : " << moyennePM10 / max << endl;
-    cout << "indice ATMO : " << service.calculerIndiceATMO(moyenneO3 / max, moyenneSO2 / max, moyenneNO2 / max, moyennePM10 / max) << endl;
+    cout << endl
+         << "Resume des mesures : " << endl
+         << "moyenne d'O3 : " << moyenneO3 / max << endl
+         << "moyenne de SO2 : " << moyenneSO2 / max << endl
+         << "moyenne de NO2 : " << moyenneNO2 / max << endl
+         << "moyenne de PM10 : " << moyennePM10 / max << endl
+         << "indice ATMO moyen : " << service.calculerIndiceATMO(moyenneO3 / max, moyenneSO2 / max, moyenneNO2 / max, moyennePM10 / max) << endl;
 
-    double end = clock();
-    double time = (end - start) / CLOCKS_PER_SEC * 1000;
-    cout << "Temps d'exécution : " << time << " ms" << endl;
+    auto end = chrono::high_resolution_clock::now();
+    double time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    cout << endl
+         << "(les donnees ont ete generees en : " << time << "ms)" << endl;
 
     cout << endl;
     cout << "Menu : " << endl;

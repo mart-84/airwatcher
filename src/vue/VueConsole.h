@@ -25,8 +25,11 @@ class VueConsole
 {
 public:
     void afficherMenu();
+
     void afficherMenuAgence();
+
     void afficherMenuStatistiques();
+
     void afficherMenuStatistiquesZoneCirculaire();
 
     void consulterDonneesCapteur();
@@ -37,6 +40,7 @@ public:
 
 protected:
     int saisirEntier();
+
     double saisirDouble();
 
     Service &service;
