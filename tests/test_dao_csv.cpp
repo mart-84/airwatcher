@@ -27,7 +27,7 @@ void test_attribut_dao()
 void test_capteur_dao()
 {
     string filename = "tests/data/sensors.csv";
-    CapteurDaoCsv capteurDaoCsv(filename);
+    CapteurDaoCsv capteurDaoCsv(filename, "");
     vector<Capteur *> capteurs = capteurDaoCsv.findAll();
     assert(capteurs.size() == 2);
     assert(capteurs[0]->getIdentifiant() == "Sensor0");
@@ -73,7 +73,7 @@ void test_mesure_dao()
 void test_particulier_dao()
 {
     string filename = "tests/data/users.csv";
-    ParticulierDaoCsv particulierDaoCsv(filename);
+    ParticulierDaoCsv particulierDaoCsv(filename, "", "");
     vector<Particulier *> particuliers = particulierDaoCsv.findAll();
     assert(particuliers.size() == 1);
     assert(particuliers[0]->getIdentifiant() == "User0");
@@ -126,7 +126,7 @@ void test_association_mesure_attribut()
 void test_association_mesure_capteur()
 {
     MesureDaoCsv mesureDaoCsv("tests/data/measurements.csv");
-    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv");
+    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv", "");
     mesureDaoCsv.associerCapteurs(capteurDaoCsv.findAll());
     vector<Mesure *> mesures = mesureDaoCsv.findAll();
     Capteur *capteur = mesures[0]->getCapteur();
@@ -153,8 +153,8 @@ void test_association_mesure_capteur()
 
 void test_association_particulier_capteur()
 {
-    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv");
-    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv");
+    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv", "", "");
+    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv", "");
     particulierDaoCsv.associerCapteurs(capteurDaoCsv.findAll());
     vector<Particulier *> particuliers = particulierDaoCsv.findAll();
     Capteur *capteur = particuliers[0]->getCapteurs()[0];
