@@ -17,6 +17,9 @@
 #include "../dao/IParticulierDao.h"
 #include "../dao/IPurificateurDao.h"
 
+#include <array>
+#include <algorithm>
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Service>
 //
@@ -28,6 +31,8 @@ class Service
 {
 public:
     int calculerIndiceATMO(int o3, int so2, int no2, int pm10);
+
+    std::array<double, 3> statistiquesZoneCirculaire(double longitude, double latitude, int rayon, std::string date_debut, std::string date_fin = "", double* tps = nullptr);
 
     Service(IAttributDao &,
             ICapteurDao &,

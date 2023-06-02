@@ -13,6 +13,8 @@
 #include "service/Service.h"
 #include "vue/VueConsole.h"
 
+#include <iostream>
+
 int main(int argc, char **argv)
 {
     // Initialisation des DAO CSV

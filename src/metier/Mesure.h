@@ -44,6 +44,8 @@ public:
 
     void setCapteur(Capteur *capt);
 
+    bool compareDate(Mesure &mesure);
+
     friend ostream &operator<<(ostream &, Mesure &);
 
     Mesure();

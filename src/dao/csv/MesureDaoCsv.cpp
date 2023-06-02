@@ -84,3 +84,16 @@ vector<Mesure *> &MesureDaoCsv::findAll()
 {
     return mesures;
 } //----- Fin de findAll
+
+vector<Mesure *> MesureDaoCsv::findByCapteurId(const string &capteurId)
+{
+    vector<Mesure *> mesuresCapteur;
+    for (Mesure *mesure : mesures)
+    {
+        if (mesure->getCapteur()->getIdentifiant() == capteurId)
+        {
+            mesuresCapteur.push_back(mesure);
+        }
+    }
+    return mesuresCapteur;
+} //----- Fin de findByCapteurId

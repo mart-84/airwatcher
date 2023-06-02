@@ -41,6 +41,82 @@ int Service::calculerIndiceATMO(int o3, int so2, int no2, int pm10)
     return atmo;
 } //----- Fin de calculerIndiceATMO
 
+std::array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double latitude, int rayon, std::string date_debut, std::string date_fin, double* tps)
+{
+    double start = clock();
+
+    auto capteurs = this->capteurDao.getCapteursZoneCirculaire(longitude, latitude, rayon);
+
+    std::vector<double> indices;
+
+    for(auto capteur : capteurs)
+    {
+        auto mesures = this->mesureDao.findByCapteurId(capteur->getIdentifiant());
+
+        int o3, so2, no2, pm10;
+        for(int i = 0; i < mesures.size(); ++i)
+        {
+            if(mesures[i]->getDate() < date_debut || (date_fin != "" && mesures[i]->getDate() > date_fin))
+            {
+                break;
+            }
+
+            auto id = mesures[i]->getAttribut()->getIdentifiant();
+            
+            if(id == "O3") 
+            {
+                o3 = mesures[i]->getValeur();
+            }
+            else if(id == "SO2") 
+            {
+                so2 = mesures[i]->getValeur();
+            }
+            else if(id == "NO2") 
+            {
+                no2 = mesures[i]->getValeur();
+            }
+            else if(id == "PM10") 
+            {
+                pm10 = mesures[i]->getValeur();
+            }
+
+            if(i % 4 == 0 && o3 != -1 && so2 != -1 && no2 != -1 && pm10 != -1)
+            {
+                indices.push_back(calculerIndiceATMO(o3, so2, no2, pm10));
+                o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
+            }
+        }
+    }
+
+    double moyenne = 0.;
+    for(auto indice : indices)
+    {
+        moyenne += indice;
+    }
+    moyenne /= indices.size();
+
+    double mediane = 0.;
+    std::sort(indices.begin(), indices.end());
+    if(indices.size() % 2 == 0)
+    {
+        mediane = (indices[indices.size() / 2 - 1] + indices[indices.size() / 2]) / 2;
+    }
+    else
+    {
+        mediane = indices[indices.size() / 2];
+    }
+
+    double end = clock();
+    double time = (end - start) / CLOCKS_PER_SEC;
+
+    if(tps != nullptr)
+    {
+        *tps = time;
+    }
+
+    return std::array<double, 3>({double(capteurs.size()), moyenne, mediane});
+} //----- Fin de statistiquesZoneCirculaire
+
 Service::Service(IAttributDao &attDao,
                  ICapteurDao &capDao,
                  IFournisseurDao &fouDao,
