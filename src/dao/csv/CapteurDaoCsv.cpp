@@ -80,16 +80,19 @@ CapteurDaoCsv::~CapteurDaoCsv()
 
 void CapteurDaoCsv::update(Capteur &capteur)
 {
-    const string filename = "dataset/banned-sensors.csv";
-    ofstream file(filename);
-
-    if (!file.is_open()) 
+    if (!capteur.getEstFiable())
     {
-        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
-        exit(1);
-    }
+        const string filename = "dataset/banned-sensors.csv";
+        ofstream file(filename, ios::app);
 
-    file << capteur.getIdentifiant() << endl;
+        if (!file.is_open()) 
+        {
+            cerr << "Impossible d'ouvrir le fichier " << filename << endl;
+            exit(1);
+        }
+
+        file << capteur.getIdentifiant() << endl;
+    }
 } //----- Fin de update
 
 Capteur *CapteurDaoCsv::findById(const string &id)

@@ -37,9 +37,30 @@ ParticulierDaoCsv::ParticulierDaoCsv(const string &filename)
         linesBanned = CsvParser::parse(fileBanned);
     }
 
+    ifstream filePoints("dataset/points-users.csv");
+    vector<vector<string>> linesPoints;
+    if (filePoints.is_open())
+    {
+        linesPoints = CsvParser::parse(filePoints);
+    }
+
     for (auto &line : lines)
     {
         Particulier *particulier = new Particulier(line[0], 0, false);
+        for (auto &lineBanned : linesBanned)
+        {
+            if (lineBanned[0] == line[0])
+            {
+                particulier->setEstBanni(true);
+            }
+        }
+        for (auto &linePoints : linesPoints)
+        {
+            if (linePoints[0] == line[0])
+            {
+                particulier->setPoints(stoi(linePoints[1]));
+            }
+        }
         particuliers.push_back(particulier);
         capteur_ids.push_back(line[1]);
     }
@@ -58,16 +79,29 @@ ParticulierDaoCsv::~ParticulierDaoCsv()
 
 void ParticulierDaoCsv::update(Particulier &particulier)
 {
-    const string filename = "dataset/banned-users.csv";
-    ofstream file(filename);
+    if (particulier.getEstBanni())
+    {
+        const string filename = "dataset/banned-users.csv";
+        ofstream file(filename, ios::app);
+        if (!file.is_open()) 
+        {
+            cerr << "Impossible d'ouvrir le fichier " << filename << endl;
+            exit(1);
+        }
+        file << particulier.getIdentifiant() << endl;
+    }
 
+    const string filename = "dataset/points-users.csv";
+    ofstream file(filename, ios::trunc);
     if (!file.is_open()) 
     {
         cerr << "Impossible d'ouvrir le fichier " << filename << endl;
         exit(1);
     }
-
-    file << particulier.getIdentifiant() << endl;
+    for (Particulier *particulier : particuliers)
+    {
+        file << particulier->getIdentifiant() << ";" << particulier->getPoints() << endl;
+    }
 } //----- Fin de update
 
 void ParticulierDaoCsv::associerCapteurs(vector<Capteur *> &capteurs)

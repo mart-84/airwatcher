@@ -53,6 +53,14 @@ void Particulier::ajouterCapteur(Capteur *capteur)
     capteurs.push_back(capteur);
 }
 
+void Particulier::ajouterPoint()
+{
+    if (!estBanni)
+    {
+        points++;
+    }
+}
+
 ostream &operator<<(ostream &os, Particulier &particulier)
 {
     os << boolalpha;

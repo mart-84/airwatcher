@@ -9,6 +9,7 @@
 //---------- Réalisation de la classe <Capteur> (fichier Capteur.cpp) ------------
 
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 #include "Capteur.h"

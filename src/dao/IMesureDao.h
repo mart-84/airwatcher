@@ -28,8 +28,6 @@ public:
     virtual ~IMesureDao(){};
 
     virtual vector<Mesure *> &findAll() = 0;
-
-    virtual vector<Mesure *> findByCapteurId(const string &id) = 0;
     // Mode d'emploi :
     // Renvoie la liste de toutes les mesures
 };
