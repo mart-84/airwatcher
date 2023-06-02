@@ -82,6 +82,12 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
     for(auto capteur : capteurs)
     {
+
+        if (capteur->getProprietaire() != nullptr)
+        {
+            capteur->getProprietaire()->ajouterPoint();
+            particulierDao.update(*capteur->getProprietaire());
+        }
         auto mesures = capteur->getMesures();
 
         int o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
