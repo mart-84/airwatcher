@@ -43,6 +43,8 @@ public:
 
     void ajouterCapteur(Capteur *capt);
 
+    void ajouterPoint();
+    
     friend ostream &operator<<(ostream &, Particulier &);
 
     Particulier();

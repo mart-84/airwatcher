@@ -43,7 +43,17 @@ int Service::calculerIndiceATMO(int o3, int so2, int no2, int pm10)
 
 Capteur *Service::obtenirCapteur(string idCapteur)
 {
-    return capteurDao.findById(idCapteur);
+    Capteur *capteur = capteurDao.findById(idCapteur);
+    if (capteur == nullptr)
+    {
+        return nullptr;
+    }
+    if (capteur->getProprietaire() != nullptr)
+    {
+        capteur->getProprietaire()->ajouterPoint();
+        particulierDao.update(*capteur->getProprietaire());
+    }
+    return capteur;
 } //----- Fin de obtenirCapteur
 
 void Service::marquerCapteurNonFiable(Capteur & capteur){
@@ -72,10 +82,10 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
     for(auto capteur : capteurs)
     {
-        auto mesures = this->mesureDao.findByCapteurId(capteur->getIdentifiant());
+        auto mesures = capteur->getMesures();
 
-        int o3, so2, no2, pm10;
-        for(int i = 0; i < mesures.size(); ++i)
+        int o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
+        for(unsigned int i = 0; i < mesures.size(); ++i)
         {
             if(mesures[i]->getDate() < date_debut || (date_fin != "" && mesures[i]->getDate() > date_fin))
             {

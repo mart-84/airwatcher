@@ -40,8 +40,6 @@ public:
 
     virtual vector<Mesure *> &findAll();
 
-    virtual vector<Mesure *> findByCapteurId(const string &id);
-
 protected:
     vector<Mesure *> mesures;
     vector<string> attribut_ids;
