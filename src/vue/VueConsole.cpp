@@ -1,12 +1,12 @@
 /*************************************************************************
                            VueConsole  -  description
                              -------------------
-    début                : 01/06/2023
+    debut                : 01/06/2023
     copyright            : (C) 2023 par Martin Bonnefoy, Ambre Hutier, Fatih Kilic, Alexis Bruneau
     e-mail               :
 *************************************************************************/
 
-//---------- Réalisation de la classe <VueConsole> (fichier VueConsole.cpp) ------------
+//---------- Realisation de la classe <VueConsole> (fichier VueConsole.cpp) ------------
 
 #include <iostream>
 #include <limits>
@@ -16,8 +16,172 @@ using namespace std;
 
 void VueConsole::afficherMenu()
 {
-    cout << "Bienvenue sur Airwatcher !" << endl;
+    cout << "+-------------------------------------------------+" << endl;
+    cout << "|                    AirWatcher                   |" << endl;
+    cout << "+-------------------------------------------------+" << endl;
+
+    cout << endl;
+
+    cout << "Choisissez votre role :" << endl;
+    cout << "1. Agence gouvernementale" << endl;
+    cout << "2. Fournisseur de purificateur" << endl;
+    cout << "3. Particulier" << endl;
+
+    cout << endl;
+
+    int choix = saisirEntier();
+
+    switch(choix) 
+    {
+        case 1:
+            afficherMenuAgence();
+            break;
+
+        default: 
+            cout << "Choix invalide ou fonctionnalitee pas encore implementee." << endl;
+            afficherMenu();
+            break;
+    }
 } //----- Fin de afficherMenu
+
+void VueConsole::afficherMenuAgence()
+{
+    cout << "+-------------------------------------------------+" << endl;
+    cout << "|       Bienvenue sur l'espace de l'agence        |" << endl;
+    cout << "+-------------------------------------------------+" << endl;
+
+    cout << endl;
+
+    cout << "Menu :" << endl;
+
+    cout << "1. Consulter les donnees d'un capteur" << endl;
+    cout << "2. Consulter les donnees d'un purificateur" << endl;
+    cout << "3. Consulter les statistiques" << endl;
+
+    cout << endl;
+
+    int choix = saisirEntier();
+
+    switch(choix) 
+    {
+        case 1:
+            consulterDonneesCapteur();
+            break;
+
+        case 3:
+            afficherMenuStatistiques();
+            break;
+
+        default: 
+            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+            afficherMenuAgence();
+            break;
+    }
+} //----- Fin de afficherMenuAgence
+
+void VueConsole::afficherMenuStatistiques()
+{
+    cout << "Quel type d'informations souhaitez-vous consulter ?" << endl;
+
+    cout << "1. Statistiques sur l'impact des purificateurs sur la qualite de l'air" << endl;
+    cout << "2. Statistiques sur la qualite de l'air pour une zone circulaire" << endl;
+    cout << "3. Retour menu principal" << endl;
+
+    cout << endl;
+
+    int choix = saisirEntier();
+
+    switch(choix) 
+    {
+        case 2:
+            afficherMenuStatistiquesZoneCirculaire();
+            break;
+
+        case 3: 
+            afficherMenuAgence();
+            break;
+
+        default: 
+            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+            afficherMenuStatistiques();
+            break;
+    }
+
+} //----- Fin de afficherMenuStatistiques
+
+void VueConsole::afficherMenuStatistiquesZoneCirculaire()
+{
+    double latitude, longitude;
+    int rayon;
+    std::string date_debut, date_fin;
+
+    cout << "Veuillez indiquer les informations de la zone geographique : " << endl;
+    cout << "Latitude : ";
+    latitude = saisirDouble();
+
+    cout << "Longitude : ";
+    longitude = saisirDouble();
+
+    cout << "Rayon : ";
+    rayon = saisirEntier();
+
+    cout << "Date de debut (format : AAAA-MM-JJ hh:mm:ss) : ";
+    cin.ignore (std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(cin, date_debut);
+
+    cout << "Date de fin (format : AAAA-MM-JJ hh:mm:ss) (optionnelle) : ";
+    std::getline(cin, date_fin);
+
+    cout << endl;
+
+    double temps = 0.;
+    auto donnees = service.statistiquesZoneCirculaire(latitude, longitude, rayon, date_debut, date_fin, &temps);
+
+    if(donnees[0] == 0. && donnees[1] == 0. && donnees[2] == 0.)
+    {
+        cout << "Aucune donnee trouvee pour ces parametres." << endl;
+        cout << endl;
+    }
+    else
+    {
+        cout << "(les donnees ont ete generees en : " << temps << "ms)" << endl << endl;
+
+        cout << "Voici nos resultats pour la zone de centre (" << latitude << "; " << longitude << ") et pour rayon " << rayon << " km, le " << date_debut;
+
+        if(date_fin != "")
+        {
+            cout << " jusqu'au " << date_fin;
+        }
+
+        cout << "." << endl << endl;
+
+        cout << "Nombre de capteurs trouvees : " << donnees[0] << endl << endl;
+
+        cout << "+-------------------------------------------------+" << endl;
+        cout << "|         Statistique         |      Valeur       +" << endl;
+        cout << "+-------------------------------------------------+" << endl;
+        cout << "| Moyenne indice ATMO         | " << donnees[1] << endl;
+        cout << "| Mediane indice ATMO         | " << donnees[2] << endl;
+        cout << "+-------------------------------------------------+" << endl << endl;
+    }
+
+    cout << "1. Retour menu principal" << endl << endl;
+
+    int choix = saisirEntier();
+
+    switch(choix) 
+    {
+        case 1: 
+            afficherMenuStatistiques();
+            break;
+
+        default: 
+            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+            afficherMenuStatistiquesZoneCirculaire();
+            break;
+    }
+
+} //----- Fin de afficherMenuStatistiquesZoneCirculaire
 
 void VueConsole::consulterDonneesCapteur()
 {
@@ -37,18 +201,18 @@ void VueConsole::consulterDonneesCapteur()
     }
     if (capteur->getProprietaire() != nullptr)
     {
-        cout << "Ce capteur appartient à un individu privé." << endl;
+        cout << "Ce capteur appartient a un individu prive." << endl;
     }
     else
     {
-        cout << "Ce capteur appartient à l'agence." << endl;
+        cout << "Ce capteur appartient a l'agence." << endl;
     }
 
-    cout << "Les données du capteur : " << endl;
+    cout << "Les donnees du capteur : " << endl;
     cout << "Latitude : " << capteur->getLatitude() << endl;
     cout << "Longitude : " << capteur->getLongitude() << endl;
     const unsigned int max = 10;
-    cout << "Mesures (les " << max << " premières):" << endl;
+    cout << "Mesures (les " << max << " premieres):" << endl;
     vector<Mesure *> mesure = capteur->getMesures();
     unsigned int i;
     float moyenneO3 = 0;
@@ -71,7 +235,7 @@ void VueConsole::consulterDonneesCapteur()
              << endl;
     }
     cout << endl;
-    cout << "Résumé : " << endl;
+    cout << "Resume : " << endl;
     cout << "moyenne d'O3 : " << moyenneO3 / max << endl;
     cout << "moyenne de SO2 : " << moyenneSO2 / max << endl;
     cout << "moyenne de NO2 : " << moyenneNO2 / max << endl;
@@ -88,10 +252,10 @@ void VueConsole::consulterDonneesCapteur()
     {
     case 1:
         service.marquerCapteurNonFiable(*capteur);
-        cout << "Le capteur a été marqué comme non fiable." << endl;
+        cout << "Le capteur a ete marque comme non fiable." << endl;
         break;
     case 2:
-        cout << "Cette fonctionnalité n'est pas encore implémentée." << endl;
+        cout << "Cette fonctionnalite n'est pas encore implementee." << endl;
         break;
     }
 } //----- Fin de consulterDonneesCapteur
@@ -119,8 +283,22 @@ int VueConsole::saisirEntier()
     {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Veuillez entrer un entier : ";
+        cout << "> ";
         cin >> entier;
     }
     return entier;
 } //----- Fin de saisirEntier
+
+double VueConsole::saisirDouble()
+{
+    double d;
+    cin >> d;
+    while (cin.fail())
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "> ";
+        cin >> d;
+    }
+    return d;
+} //----- Fin de saisirDouble

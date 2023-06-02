@@ -78,6 +78,11 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
     auto capteurs = this->capteurDao.getCapteursZoneCirculaire(longitude, latitude, rayon);
 
+    if(capteurs.size() == 0)
+    {
+        return array<double, 3>({0., 0., 0.});
+    }
+
     vector<double> indices;
 
     for(auto capteur : capteurs)
@@ -87,7 +92,7 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
         int o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
         for(unsigned int i = 0; i < mesures.size(); ++i)
         {
-            if(mesures[i]->getDate() < date_debut || (date_fin != "" && mesures[i]->getDate() > date_fin))
+            if(mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
             {
                 break;
             }

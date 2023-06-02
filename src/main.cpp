@@ -42,7 +42,6 @@ int main(int argc, char **argv)
 
     VueConsole vue(service);
     vue.afficherMenu();
-    vue.consulterDonneesCapteur();
 
     return 0;
 }
