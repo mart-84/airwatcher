@@ -189,6 +189,8 @@ void VueConsole::consulterDonneesCapteur()
     string idCapteur;
     cin >> idCapteur;
 
+    double start = clock();
+
     Capteur *capteur = service.obtenirCapteur(idCapteur);
     if (capteur == nullptr)
     {
@@ -241,6 +243,10 @@ void VueConsole::consulterDonneesCapteur()
     cout << "moyenne de NO2 : " << moyenneNO2 / max << endl;
     cout << "moyenne de PM10 : " << moyennePM10 / max << endl;
     cout << "indice ATMO : " << service.calculerIndiceATMO(moyenneO3 / max, moyenneSO2 / max, moyenneNO2 / max, moyennePM10 / max) << endl;
+
+    double end = clock();
+    double time = (end - start) / CLOCKS_PER_SEC * 1000;
+    cout << "Temps d'exécution : " << time << " ms" << endl;
 
     cout << endl;
     cout << "Menu : " << endl;

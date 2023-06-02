@@ -17,7 +17,8 @@ using namespace std;
 #include "ParticulierDaoCsv.h"
 #include "CsvParser.h"
 
-ParticulierDaoCsv::ParticulierDaoCsv(const string &filename)
+ParticulierDaoCsv::ParticulierDaoCsv(const string &filename,const string & fPoint,const string & fBanned)
+    :filenamePoint(fPoint),filenameBanned(fBanned)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <ParticulierDaoCsv> sur " << this << endl;
@@ -30,14 +31,14 @@ ParticulierDaoCsv::ParticulierDaoCsv(const string &filename)
     }
     vector<vector<string>> lines(CsvParser::parse(file));
 
-    ifstream fileBanned("dataset/banned-users.csv");
+    ifstream fileBanned(filenameBanned);
     vector<vector<string>> linesBanned;
     if (fileBanned.is_open())
     {
         linesBanned = CsvParser::parse(fileBanned);
     }
 
-    ifstream filePoints("dataset/points-users.csv");
+    ifstream filePoints(filenamePoint);
     vector<vector<string>> linesPoints;
     if (filePoints.is_open())
     {
@@ -81,21 +82,19 @@ void ParticulierDaoCsv::update(Particulier &particulier)
 {
     if (particulier.getEstBanni())
     {
-        const string filename = "dataset/banned-users.csv";
-        ofstream file(filename, ios::app);
+        ofstream file(filenameBanned, ios::app);
         if (!file.is_open()) 
         {
-            cerr << "Impossible d'ouvrir le fichier " << filename << endl;
+            cerr << "Impossible d'ouvrir le fichier " << filenameBanned << endl;
             exit(1);
         }
         file << particulier.getIdentifiant() << endl;
     }
 
-    const string filename = "dataset/points-users.csv";
-    ofstream file(filename, ios::trunc);
+    ofstream file(filenamePoint, ios::trunc);
     if (!file.is_open()) 
     {
-        cerr << "Impossible d'ouvrir le fichier " << filename << endl;
+        cerr << "Impossible d'ouvrir le fichier " << filenamePoint << endl;
         exit(1);
     }
     for (Particulier *particulier : particuliers)

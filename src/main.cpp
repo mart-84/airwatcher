@@ -21,10 +21,10 @@ int main(int argc, char **argv)
     // Initialisation des DAO CSV
     // Récupération des données et création des objets
     AttributDaoCsv attributDaoCsv("dataset/attributes.csv");
-    CapteurDaoCsv capteurDaoCsv("dataset/sensors.csv");
+    CapteurDaoCsv capteurDaoCsv("dataset/sensors.csv", "dataset/banned-sensors.csv");
     FournisseurDaoCsv fournisseurDaoCsv("dataset/providers.csv");
     MesureDaoCsv mesureDaoCsv("dataset/measurements.csv");
-    ParticulierDaoCsv particulierDaoCsv("dataset/users.csv");
+    ParticulierDaoCsv particulierDaoCsv("dataset/users.csv", "dataset/points-users.csv", "dataset/banned-users.csv");
     PurificateurDaoCsv purificateurDaoCsv("dataset/cleaners.csv");
 
     // Création des associations entre les objets

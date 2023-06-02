@@ -24,7 +24,7 @@ using namespace std;
 class ParticulierDaoCsv : public IParticulierDao
 {
 public:
-    ParticulierDaoCsv(const string &filename);
+    ParticulierDaoCsv(const string &filename, const string &filenamePoint, const string &filenameBanned);
 
     virtual ~ParticulierDaoCsv();
 
@@ -42,6 +42,8 @@ public:
 protected:
     vector<Particulier *> particuliers;
     vector<string> capteur_ids;
+    const string filenamePoint;
+    const string filenameBanned;
 };
 
 #endif // PARTICULIERDAOCSV_H
