@@ -5,3 +5,8 @@ airwatcher.exe
 test
 test.exe
 .vscode/
+.xmake/
+build/
+main.exe
+test.exe
+xmake.lua
