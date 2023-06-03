@@ -87,15 +87,14 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
     for (auto capteur : capteurs)
     {
-
         if (capteur->getProprietaire() != nullptr)
         {
             capteur->getProprietaire()->ajouterPoint();
             particulierDao.update(*capteur->getProprietaire());
         }
+
         auto mesures = capteur->getMesures();
 
-        int o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
         for (unsigned int i = 0; i < mesures.size(); ++i)
         {
             if (mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
@@ -103,29 +102,19 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
                 break;
             }
 
-            auto id = mesures[i]->getAttribut()->getIdentifiant();
+            for(unsigned int i = 0; i < mesures.size() / 4; ++i)
+            {
+                if(mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
+                {
+                    break;
+                }
 
-            if (id == "O3")
-            {
-                o3 = mesures[i]->getValeur();
-            }
-            else if (id == "SO2")
-            {
-                so2 = mesures[i]->getValeur();
-            }
-            else if (id == "NO2")
-            {
-                no2 = mesures[i]->getValeur();
-            }
-            else if (id == "PM10")
-            {
-                pm10 = mesures[i]->getValeur();
-            }
+                double o3 = mesures[i * 4]->getValeur();
+                double so2 = mesures[i * 4 + 1]->getValeur();
+                double no2 = mesures[i * 4 + 2]->getValeur();
+                double pm10 = mesures[i * 4 + 3]->getValeur();
 
-            if (i % 4 == 0 && o3 != -1 && so2 != -1 && no2 != -1 && pm10 != -1)
-            {
                 indices.push_back(calculerIndiceATMO(o3, so2, no2, pm10));
-                o3 = -1, so2 = -1, no2 = -1, pm10 = -1;
             }
         }
     }
