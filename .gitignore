@@ -4,7 +4,7 @@ airwatcher
 airwatcher.exe
 test
 test.exe
-.vscode/
+.vscode/*
 .xmake/
 build/
 main.exe

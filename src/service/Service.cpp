@@ -76,7 +76,16 @@ void Service::marquerCapteurNonFiable(Capteur &capteur)
 
 array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double latitude, int rayon, string date_debut, string date_fin)
 {
+    std::cout << "test 1" << std::endl;
+
+    this->capteurDao.findAll();
+
+    std::cout << "test 1.5" << std::endl;
+
     auto capteurs = this->capteurDao.getCapteursZoneCirculaire(longitude, latitude, rayon);
+
+    std::cout << "test 2" << std::endl;
+    std::flush(std::cout);
 
     if (capteurs.size() == 0)
     {
@@ -109,10 +118,10 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
                     break;
                 }
 
-                double o3 = mesures[i * 4]->getValeur();
-                double so2 = mesures[i * 4 + 1]->getValeur();
-                double no2 = mesures[i * 4 + 2]->getValeur();
-                double pm10 = mesures[i * 4 + 3]->getValeur();
+                int o3 = static_cast<int>(mesures[i * 4]->getValeur());
+                int so2 = static_cast<int>(mesures[i * 4 + 1]->getValeur());
+                int no2 = static_cast<int>(mesures[i * 4 + 2]->getValeur());
+                int pm10 = static_cast<int>(mesures[i * 4 + 3]->getValeur());
 
                 indices.push_back(calculerIndiceATMO(o3, so2, no2, pm10));
             }

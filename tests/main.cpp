@@ -2,6 +2,7 @@
 
 #include "test_csv_parser.cpp"
 #include "test_dao_csv.cpp"
+#include "test_service.cpp"
 
 int main(int argc, char **argv)
 {
@@ -23,6 +24,11 @@ int main(int argc, char **argv)
     REGISTER_TEST(test_association_mesure_attribut)
     REGISTER_TEST(test_association_mesure_capteur)
     REGISTER_TEST(test_association_particulier_capteur)
+
+    // service statistiques zone circulaire tests
+    REGISTER_TEST(test_service_zone_rayon_nulle)
+    REGISTER_TEST(test_service_zone_rayon_univers)
+    REGISTER_TEST(test_service_zone_deux_capteurs)
 
     RUN_TESTS()
 
