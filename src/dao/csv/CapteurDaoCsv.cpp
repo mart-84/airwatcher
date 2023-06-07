@@ -17,11 +17,11 @@ using namespace std;
 #include "CapteurDaoCsv.h"
 #include "CsvParser.h"
 
-vector<Capteur*> CapteurDaoCsv::getCapteursZoneCirculaire(double longitude, double latitude, int rayon)
+vector<Capteur *> CapteurDaoCsv::getCapteursZoneCirculaire(double latitude, double longitude, int rayon)
 {
-    vector<Capteur*> capteurs;
+    vector<Capteur *> capteurs;
 
-    for (Capteur* capteur : this->capteurs)
+    for (Capteur *capteur : this->capteurs)
     {
         if (capteur->estDansZoneCirculaire(longitude, latitude, rayon) && capteur->getEstFiable())
         {
@@ -85,7 +85,7 @@ void CapteurDaoCsv::update(Capteur &capteur)
     {
         ofstream file(filenameBanned, ios::app);
 
-        if (!file.is_open()) 
+        if (!file.is_open())
         {
             cerr << "Impossible d'ouvrir le fichier " << filenameBanned << endl;
             exit(1);

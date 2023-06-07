@@ -124,7 +124,7 @@ void VueConsole::afficherMenuStatistiquesZoneCirculaire()
     cout << endl;
 
     auto start = chrono::high_resolution_clock::now();
-    auto donnees = service.statistiquesZoneCirculaire(longitude, latitude , rayon, date_debut, date_fin);
+    auto donnees = service.statistiquesZoneCirculaire(longitude, latitude, rayon, date_debut, date_fin);
     auto end = chrono::high_resolution_clock::now();
 
     if (donnees[0] == 0. && donnees[1] == 0. && donnees[2] == 0.)
@@ -211,23 +211,29 @@ void VueConsole::consulterDonneesCapteur()
     cout << "Longitude : " << capteur->getLongitude() << endl;
     const unsigned int max = 10;
     cout << "Mesures (les " << max << " premieres):" << endl;
-    vector<Mesure *> mesure = capteur->getMesures();
+    vector<Mesure *> mesures = capteur->getMesures();
     float moyenneO3 = 0;
     float moyenneSO2 = 0;
     float moyenneNO2 = 0;
     float moyennePM10 = 0;
-    for (unsigned int i = 0; i < max && i < mesure.size() / 4; i++)
+    for (unsigned int i = 0; i < max && i < mesures.size() / 4; i++)
     {
-        moyenneO3 += mesure[4 * i]->getValeur();
-        moyenneSO2 += mesure[4 * i + 1]->getValeur();
-        moyenneNO2 += mesure[4 * i + 2]->getValeur();
-        moyennePM10 += mesure[4 * i + 3]->getValeur();
-        int atmo = service.calculerIndiceATMO(mesure[4 * i]->getValeur(), mesure[4 * i + 1]->getValeur(), mesure[4 * i + 2]->getValeur(), mesure[4 * i + 3]->getValeur());
-        cout << "date : " << mesure[4 * i]->getDate() << " "
-             << "valeur d'O3 : " << mesure[4 * i]->getValeur() << " "
-             << "valeur de s02 : " << mesure[4 * i + 1]->getValeur() << " "
-             << "valeur de no2 : " << mesure[4 * i + 2]->getValeur() << " "
-             << "valeur de pm10 : " << mesure[4 * i + 3]->getValeur() << " "
+        double o3 = mesures[i * 4]->getValeur();
+        double so2 = mesures[i * 4 + 1]->getValeur();
+        double no2 = mesures[i * 4 + 2]->getValeur();
+        double pm10 = mesures[i * 4 + 3]->getValeur();
+
+        moyenneO3 += o3;
+        moyenneSO2 += so2;
+        moyenneNO2 += no2;
+        moyennePM10 += pm10;
+
+        int atmo = service.calculerIndiceATMO(o3, so2, no2, pm10);
+        cout << "date : " << mesures[4 * i]->getDate() << " "
+             << "valeur d'O3 : " << mesures[4 * i]->getValeur() << " "
+             << "valeur de s02 : " << mesures[4 * i + 1]->getValeur() << " "
+             << "valeur de no2 : " << mesures[4 * i + 2]->getValeur() << " "
+             << "valeur de pm10 : " << mesures[4 * i + 3]->getValeur() << " "
              << "indice ATMO : " << atmo
              << endl;
     }

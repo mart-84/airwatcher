@@ -165,3 +165,158 @@ void test_association_particulier_capteur()
     assert(capteur->getProprietaire() == particuliers[0]);
     assert(particuliers[0]->getCapteurs().size() == 1);
 }
+
+void test_attribut_find_by_name()
+{
+    AttributDaoCsv attributDaoCsv("tests/data/attributes.csv");
+    Attribut *attribut = attributDaoCsv.findByName("O3");
+    assert(attribut->getIdentifiant() == "O3");
+    assert(attribut->getUnite() == "µg/m3");
+    assert(attribut->getDescription() == "concentration d'ozone");
+}
+
+void test_attribut_find_by_name_non_existing()
+{
+    AttributDaoCsv attributDaoCsv("tests/data/attributes.csv");
+    Attribut *attribut = attributDaoCsv.findByName("A");
+    assert(attribut == nullptr);
+}
+
+void test_capteur_find_by_id()
+{
+    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv", "");
+    Capteur *capteur = capteurDaoCsv.findById("Sensor0");
+    assert(capteur->getIdentifiant() == "Sensor0");
+    assert(capteur->getLatitude() == 44);
+    assert(capteur->getLongitude() == -1);
+}
+
+void test_capteur_find_by_id_non_existing()
+{
+    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv", "");
+    Capteur *capteur = capteurDaoCsv.findById("A");
+    assert(capteur == nullptr);
+}
+
+void test_capteur_dans_zone_circulaire()
+{
+    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv", "");
+    vector<Capteur *> capteurs = capteurDaoCsv.getCapteursZoneCirculaire(44.1, -1, 500);
+    assert(capteurs.size() == 2);
+    assert(capteurs[0]->getIdentifiant() == "Sensor0");
+    assert(capteurs[0]->getLatitude() == 44);
+    assert(capteurs[0]->getLongitude() == -1);
+    assert(capteurs[1]->getIdentifiant() == "Sensor36");
+    assert(capteurs[1]->getLatitude() == 45.2);
+    assert(capteurs[1]->getLongitude() == 3.2);
+}
+
+void test_capteur_dans_zone_circulaire_vide()
+{
+    CapteurDaoCsv capteurDaoCsv("tests/data/sensors.csv", "");
+    vector<Capteur *> capteurs = capteurDaoCsv.getCapteursZoneCirculaire(44.1, -1, 0);
+    assert(capteurs.size() == 0);
+}
+
+void test_fournisseur_find_by_id()
+{
+    FournisseurDaoCsv fournisseurDaoCsv("tests/data/users.csv");
+    Fournisseur *fournisseur = fournisseurDaoCsv.findById("User0");
+    assert(fournisseur->getIdentifiant() == "User0");
+}
+
+void test_fournisseur_find_by_id_non_existing()
+{
+    FournisseurDaoCsv fournisseurDaoCsv("tests/data/users.csv");
+    Fournisseur *fournisseur = fournisseurDaoCsv.findById("A");
+    assert(fournisseur == nullptr);
+}
+
+void test_particulier_find_by_id()
+{
+    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv", "", "");
+    Particulier *particulier = particulierDaoCsv.findById("User0");
+    assert(particulier->getIdentifiant() == "User0");
+    assert(particulier->getCapteurs().size() == 0);
+}
+
+void test_particulier_with_points()
+{
+    ofstream ofs;
+    ofs.open("tests/data/points-users.csv", ofstream::out | ofstream::trunc);
+    ofs << "User0;100" << endl;
+    ofs.close();
+
+    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv", "tests/data/points-users.csv", "");
+    Particulier *particulier = particulierDaoCsv.findById("User0");
+    assert(particulier->getIdentifiant() == "User0");
+    assert(particulier->getPoints() == 100);
+}
+
+void test_particulier_banned()
+{
+    ofstream ofs;
+    ofs.open("tests/data/banned-users.csv", ofstream::out | ofstream::trunc);
+    ofs << "User0" << endl;
+    ofs.close();
+
+    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv", "", "tests/data/banned-users.csv");
+    Particulier *particulier = particulierDaoCsv.findById("User0");
+    assert(particulier->getIdentifiant() == "User0");
+    assert(particulier->getEstBanni() == true);
+}
+
+void test_particulier_find_by_id_non_existing()
+{
+    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv", "", "");
+    Particulier *particulier = particulierDaoCsv.findById("A");
+    assert(particulier == nullptr);
+}
+
+void test_particulier_update_points()
+{
+    ofstream ofs;
+    ofs.open("tests/data/points-users.csv", ofstream::out | ofstream::trunc);
+    ofs.close();
+
+    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv", "tests/data/points-users.csv", "");
+    Particulier *particulier = particulierDaoCsv.findById("User0");
+    particulier->ajouterPoint();
+    particulierDaoCsv.update(*particulier);
+
+    ifstream ifs("tests/data/points-users.csv");
+    string line;
+    getline(ifs, line);
+    assert(line == "User0;1");
+}
+
+void test_particulier_update_banned()
+{
+    ofstream ofs;
+    ofs.open("tests/data/banned-users.csv", ofstream::out | ofstream::trunc);
+    ofs.close();
+
+    ParticulierDaoCsv particulierDaoCsv("tests/data/users.csv", "", "tests/data/banned-users.csv");
+    Particulier *particulier = particulierDaoCsv.findById("User0");
+    particulier->setEstBanni(true);
+    particulierDaoCsv.update(*particulier);
+
+    ifstream ifs("tests/data/banned-users.csv");
+    string line;
+    getline(ifs, line);
+    assert(line == "User0");
+}
+
+void test_purificateur_find_by_id()
+{
+    PurificateurDaoCsv purificateurDaoCsv("tests/data/cleaners.csv");
+    Purificateur *purificateur = purificateurDaoCsv.findById("Cleaner0");
+    assert(purificateur->getIdentifiant() == "Cleaner0");
+}
+
+void test_purificateur_find_by_id_non_existing()
+{
+    PurificateurDaoCsv purificateurDaoCsv("tests/data/cleaners.csv");
+    Purificateur *purificateur = purificateurDaoCsv.findById("A");
+    assert(purificateur == nullptr);
+}

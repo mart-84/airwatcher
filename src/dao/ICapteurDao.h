@@ -38,7 +38,7 @@ public:
     // Mode d'emploi :
     // Renvoie la liste de tous les capteurs
 
-    virtual vector<Capteur*> getCapteursZoneCirculaire(double longitude, double latitude, int rayon) = 0;
+    virtual vector<Capteur *> getCapteursZoneCirculaire(double latitude, double longitude, int rayon) = 0;
 };
 
 #endif // ICapteurDao_H

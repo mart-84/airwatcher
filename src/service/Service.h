@@ -30,7 +30,7 @@
 class Service
 {
 public:
-    int calculerIndiceATMO(int o3, int so2, int no2, int pm10);
+    int calculerIndiceATMO(double o3, double so2, double no2, double pm10);
 
     Capteur *obtenirCapteur(string idCapteur);
 

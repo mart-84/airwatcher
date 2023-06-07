@@ -14,7 +14,7 @@ using namespace std;
 
 #include "Service.h"
 
-int Service::calculerIndiceATMO(int o3, int so2, int no2, int pm10)
+int Service::calculerIndiceATMO(double o3, double so2, double no2, double pm10)
 {
     int atmo = 0;
 
@@ -79,10 +79,7 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
     this->capteurDao.findAll();
 
-
-    auto capteurs = this->capteurDao.getCapteursZoneCirculaire(longitude, latitude, rayon);
-
-    std::flush(std::cout);
+    auto capteurs = this->capteurDao.getCapteursZoneCirculaire(latitude, longitude, rayon);
 
     if (capteurs.size() == 0)
     {
@@ -97,7 +94,6 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
         {
             capteur->getProprietaire()->ajouterPoint();
             particulierDao.update(*capteur->getProprietaire());
-            
         }
 
         auto mesures = capteur->getMesures();
@@ -109,17 +105,17 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
                 break;
             }
 
-            for(unsigned int i = 0; i < mesures.size() / 4; ++i)
+            for (unsigned int i = 0; i < mesures.size() / 4; ++i)
             {
-                if(mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
+                if (mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
                 {
                     break;
                 }
 
-                int o3 = static_cast<int>(mesures[i * 4]->getValeur());
-                int so2 = static_cast<int>(mesures[i * 4 + 1]->getValeur());
-                int no2 = static_cast<int>(mesures[i * 4 + 2]->getValeur());
-                int pm10 = static_cast<int>(mesures[i * 4 + 3]->getValeur());
+                double o3 = mesures[i * 4]->getValeur();
+                double so2 = mesures[i * 4 + 1]->getValeur();
+                double no2 = mesures[i * 4 + 2]->getValeur();
+                double pm10 = mesures[i * 4 + 3]->getValeur();
 
                 indices.push_back(calculerIndiceATMO(o3, so2, no2, pm10));
             }
