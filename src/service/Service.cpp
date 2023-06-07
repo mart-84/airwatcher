@@ -76,15 +76,12 @@ void Service::marquerCapteurNonFiable(Capteur &capteur)
 
 array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double latitude, int rayon, string date_debut, string date_fin)
 {
-    std::cout << "test 1" << std::endl;
 
     this->capteurDao.findAll();
 
-    std::cout << "test 1.5" << std::endl;
 
     auto capteurs = this->capteurDao.getCapteursZoneCirculaire(longitude, latitude, rayon);
 
-    std::cout << "test 2" << std::endl;
     std::flush(std::cout);
 
     if (capteurs.size() == 0)
@@ -100,6 +97,7 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
         {
             capteur->getProprietaire()->ajouterPoint();
             particulierDao.update(*capteur->getProprietaire());
+            
         }
 
         auto mesures = capteur->getMesures();

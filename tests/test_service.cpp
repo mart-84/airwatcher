@@ -36,6 +36,7 @@ void contexte_service(std::function<void(Service&)> callback)
                     mesureDaoCsv,
                     particulierDaoCsv,
                     purificateurDaoCsv);
+    callback(service);
 }
 
 void test_service_zone_rayon_nulle()
@@ -50,6 +51,8 @@ void test_service_zone_rayon_univers()
 {
     contexte_service([](Service& service) {
         auto donnees = service.statistiquesZoneCirculaire(0, 0, 100000000, "2019-01-01 12:00:00");
+        
+        std::cout << donnees[0] << std::endl;
         assert(donnees[0] == 100);
     });
 }

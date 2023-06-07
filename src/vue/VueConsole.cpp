@@ -124,7 +124,7 @@ void VueConsole::afficherMenuStatistiquesZoneCirculaire()
     cout << endl;
 
     auto start = chrono::high_resolution_clock::now();
-    auto donnees = service.statistiquesZoneCirculaire(latitude, longitude, rayon, date_debut, date_fin);
+    auto donnees = service.statistiquesZoneCirculaire(longitude, latitude , rayon, date_debut, date_fin);
     auto end = chrono::high_resolution_clock::now();
 
     if (donnees[0] == 0. && donnees[1] == 0. && donnees[2] == 0.)
@@ -152,7 +152,7 @@ void VueConsole::afficherMenuStatistiquesZoneCirculaire()
              << endl;
 
         cout << "+-------------------------------------------------+" << endl;
-        cout << "|         Statistique         |      Valeur       +" << endl;
+        cout << "|         Statistique         |      Valeur       |" << endl;
         cout << "+-------------------------------------------------+" << endl;
         cout << "| Moyenne indice ATMO         | " << donnees[1] << endl;
         cout << "| Mediane indice ATMO         | " << donnees[2] << endl;
@@ -247,7 +247,7 @@ void VueConsole::consulterDonneesCapteur()
     cout << endl;
     cout << "Menu : " << endl;
     cout << "1. Marquer comme non fiable" << endl;
-    cout << "2. Consulter la liste des capteurs simialires" << endl;
+    cout << "2. Consulter la liste des capteurs similaires" << endl;
     cout << "3. Retour au menu" << endl;
     int choix = saisirEntier();
     switch (choix)
