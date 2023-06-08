@@ -100,18 +100,13 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
         for (unsigned int i = 0; i < mesures.size(); ++i)
         {
-            if (mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
+            if (mesures[i]->compareDate(date_debut) > 0 || (!date_fin.empty() && mesures[i]->compareDate(date_fin)<=0))
             {
                 break;
             }
 
             for (unsigned int i = 0; i < mesures.size() / 4; ++i)
             {
-                if (mesures[i]->getDate() < date_debut || (!date_fin.empty() && mesures[i]->getDate() > date_fin))
-                {
-                    break;
-                }
-
                 double o3 = mesures[i * 4]->getValeur();
                 double so2 = mesures[i * 4 + 1]->getValeur();
                 double no2 = mesures[i * 4 + 2]->getValeur();
