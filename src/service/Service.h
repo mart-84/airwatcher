@@ -31,6 +31,8 @@ class Service
 {
 public:
     int calculerIndiceATMO(double o3, double so2, double no2, double pm10);
+    // Mode d'emploi :
+    // Renvoie l'indice ATMO entre 0 et 5 (bon à extrêmement mauvais) en fonction des valeurs des polluants
 
     Capteur *obtenirCapteur(string idCapteur);
 

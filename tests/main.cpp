@@ -2,7 +2,7 @@
 
 #include "test_csv_parser.cpp"
 #include "test_dao_csv.cpp"
-#include "test_service.cpp"
+#include "test_service_calcul_atmo.cpp"
 
 int main(int argc, char **argv)
 {
@@ -42,6 +42,11 @@ int main(int argc, char **argv)
     REGISTER_TEST(test_particulier_update_banned)
     REGISTER_TEST(test_purificateur_find_by_id)
     REGISTER_TEST(test_purificateur_find_by_id_non_existing)
+
+    // service calcul indice atmo tests
+    REGISTER_TEST(test_atmo_bon)
+    REGISTER_TEST(test_atmo_moyen)
+    REGISTER_TEST(test_atmo_extremement_mauvais)
 
     // service statistiques zone circulaire tests
     // REGISTER_TEST(test_service_zone_rayon_nul)
