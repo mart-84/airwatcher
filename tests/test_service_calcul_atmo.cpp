@@ -7,6 +7,7 @@ using namespace std;
 #include "fakeDao/FakeMesureDao.h"
 #include "fakeDao/FakeParticulierDao.h"
 #include "fakeDao/FakePurificateurDao.h"
+#include "../src/service/Service.h"
 
 void test_atmo_bon()
 {

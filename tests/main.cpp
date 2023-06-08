@@ -2,6 +2,7 @@
 
 #include "test_csv_parser.cpp"
 #include "test_dao_csv.cpp"
+#include "test_service_stats_zone_circulaire.cpp"
 #include "test_service_calcul_atmo.cpp"
 
 int main(int argc, char **argv)
@@ -49,9 +50,10 @@ int main(int argc, char **argv)
     REGISTER_TEST(test_atmo_extremement_mauvais)
 
     // service statistiques zone circulaire tests
-    // REGISTER_TEST(test_service_zone_rayon_nul)
-    // REGISTER_TEST(test_service_zone_rayon_univers)
-    // REGISTER_TEST(test_service_zone_deux_capteurs)
+    REGISTER_TEST(test_zone_rayon_nul)
+    REGISTER_TEST(test_zone_un_capteur)
+    REGISTER_TEST(test_zone_tous_capteurs)
+    REGISTER_TEST(test_zone_capteurs_bannis)
 
     RUN_TESTS()
 

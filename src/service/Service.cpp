@@ -86,7 +86,7 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
         return array<double, 3>({0., 0., 0.});
     }
 
-    vector<double> indices;
+    vector<int> indicesATMO;
 
     for (auto capteur : capteurs)
     {
@@ -100,7 +100,7 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
 
         for (unsigned int i = 0; i < mesures.size(); ++i)
         {
-            if (mesures[i]->compareDate(date_debut) > 0 || (!date_fin.empty() && mesures[i]->compareDate(date_fin)<=0))
+            if (mesures[i]->compareDate(date_debut) > 0 || (!date_fin.empty() && mesures[i]->compareDate(date_fin) <= 0))
             {
                 break;
             }
@@ -112,27 +112,27 @@ array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double la
                 double no2 = mesures[i * 4 + 2]->getValeur();
                 double pm10 = mesures[i * 4 + 3]->getValeur();
 
-                indices.push_back(calculerIndiceATMO(o3, so2, no2, pm10));
+                indicesATMO.push_back(calculerIndiceATMO(o3, so2, no2, pm10));
             }
         }
     }
 
     double moyenne = 0.;
-    for (auto indice : indices)
+    for (auto indice : indicesATMO)
     {
         moyenne += indice;
     }
-    moyenne /= indices.size();
+    moyenne /= indicesATMO.size();
 
     double mediane = 0.;
-    sort(indices.begin(), indices.end());
-    if (indices.size() % 2 == 0)
+    sort(indicesATMO.begin(), indicesATMO.end());
+    if (indicesATMO.size() % 2 == 0)
     {
-        mediane = (indices[indices.size() / 2 - 1] + indices[indices.size() / 2]) / 2;
+        mediane = (indicesATMO[indicesATMO.size() / 2 - 1] + indicesATMO[indicesATMO.size() / 2]) / 2;
     }
     else
     {
-        mediane = indices[indices.size() / 2];
+        mediane = indicesATMO[indicesATMO.size() / 2];
     }
 
     return array<double, 3>({double(capteurs.size()), moyenne, mediane});

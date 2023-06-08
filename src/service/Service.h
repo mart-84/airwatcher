@@ -39,6 +39,8 @@ public:
     void marquerCapteurNonFiable(Capteur &capteur);
 
     array<double, 3> statistiquesZoneCirculaire(double longitude, double latitude, int rayon, string date_debut, string date_fin = "");
+    // Mode d'emploi :
+    // Renvoie un tableau contenant le nombre de mesures, la moyenne et la médiane des mesures de la zone circulaire
 
     Service(IAttributDao &,
             ICapteurDao &,
