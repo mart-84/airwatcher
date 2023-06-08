@@ -46,6 +46,8 @@ public:
 
     bool compareDate(Mesure &mesure);
 
+    int compareDate(string other);
+
     friend ostream &operator<<(ostream &, Mesure &);
 
     Mesure();
