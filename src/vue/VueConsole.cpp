@@ -259,6 +259,10 @@ void VueConsole::consulterDonneesCapteur()
     case 2:
         cout << "Cette fonctionnalite n'est pas encore implementee." << endl;
         break;
+    case 3:
+        afficherMenuAgence();
+        break;
+
     }
 } //----- Fin de consulterDonneesCapteur
 
