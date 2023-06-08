@@ -19,8 +19,8 @@ TEST_EXEC = test
 PS = /
 OBJDIR = obj
 GCC = g++
-CFLAGS = -g -Wall -O3
-LDFLAGS = -g -Wall -O3
+CFLAGS = -g -Wall -Werror -Wpedantic -O3
+LDFLAGS = -g -Wall -Werror -Wpedantic -O3
 
 MOVE = mv -f
 RM = rm -rf

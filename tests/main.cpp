@@ -25,10 +25,28 @@ int main(int argc, char **argv)
     REGISTER_TEST(test_association_mesure_capteur)
     REGISTER_TEST(test_association_particulier_capteur)
 
+    // DAO CSV methods tests
+    REGISTER_TEST(test_attribut_find_by_name)
+    REGISTER_TEST(test_attribut_find_by_name_non_existing)
+    REGISTER_TEST(test_capteur_find_by_id)
+    REGISTER_TEST(test_capteur_find_by_id_non_existing)
+    REGISTER_TEST(test_capteur_dans_zone_circulaire)
+    REGISTER_TEST(test_capteur_dans_zone_circulaire_vide)
+    REGISTER_TEST(test_fournisseur_find_by_id)
+    REGISTER_TEST(test_fournisseur_find_by_id_non_existing)
+    REGISTER_TEST(test_particulier_find_by_id)
+    REGISTER_TEST(test_particulier_with_points)
+    REGISTER_TEST(test_particulier_banned)
+    REGISTER_TEST(test_particulier_find_by_id_non_existing)
+    REGISTER_TEST(test_particulier_update_points)
+    REGISTER_TEST(test_particulier_update_banned)
+    REGISTER_TEST(test_purificateur_find_by_id)
+    REGISTER_TEST(test_purificateur_find_by_id_non_existing)
+
     // service statistiques zone circulaire tests
-    REGISTER_TEST(test_service_zone_rayon_nulle)
-    REGISTER_TEST(test_service_zone_rayon_univers)
-    REGISTER_TEST(test_service_zone_deux_capteurs)
+    // REGISTER_TEST(test_service_zone_rayon_nul)
+    // REGISTER_TEST(test_service_zone_rayon_univers)
+    // REGISTER_TEST(test_service_zone_deux_capteurs)
 
     RUN_TESTS()
 

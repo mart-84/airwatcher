@@ -17,8 +17,8 @@ using namespace std;
 #include "ParticulierDaoCsv.h"
 #include "CsvParser.h"
 
-ParticulierDaoCsv::ParticulierDaoCsv(const string &filename,const string & fPoint,const string & fBanned)
-    :filenamePoint(fPoint),filenameBanned(fBanned)
+ParticulierDaoCsv::ParticulierDaoCsv(const string &filename, const string &fPoint, const string &fBanned)
+    : filenamePoint(fPoint), filenameBanned(fBanned)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <ParticulierDaoCsv> sur " << this << endl;
@@ -80,10 +80,10 @@ ParticulierDaoCsv::~ParticulierDaoCsv()
 
 void ParticulierDaoCsv::update(Particulier &particulier)
 {
-    if (particulier.getEstBanni())
+    if (particulier.getEstBanni() && filenameBanned != "")
     {
         ofstream file(filenameBanned, ios::app);
-        if (!file.is_open()) 
+        if (!file.is_open())
         {
             cerr << "Impossible d'ouvrir le fichier " << filenameBanned << endl;
             exit(1);
@@ -91,8 +91,12 @@ void ParticulierDaoCsv::update(Particulier &particulier)
         file << particulier.getIdentifiant() << endl;
     }
 
+    if (filenamePoint == "")
+    {
+        return;
+    }
     ofstream file(filenamePoint, ios::trunc);
-    if (!file.is_open()) 
+    if (!file.is_open())
     {
         cerr << "Impossible d'ouvrir le fichier " << filenamePoint << endl;
         exit(1);
