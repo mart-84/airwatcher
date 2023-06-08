@@ -4,6 +4,7 @@
 #include "test_dao_csv.cpp"
 #include "test_service_stats_zone_circulaire.cpp"
 #include "test_service_calcul_atmo.cpp"
+#include "test_service_modif_capteur.cpp"
 
 int main(int argc, char **argv)
 {
@@ -54,6 +55,12 @@ int main(int argc, char **argv)
     REGISTER_TEST(test_zone_un_capteur)
     REGISTER_TEST(test_zone_tous_capteurs)
     REGISTER_TEST(test_zone_capteurs_bannis)
+
+    // service modification capteur tests
+    REGISTER_TEST(test_marquer_capteur_non_fiable)
+    REGISTER_TEST(test_marquer_capteur_non_fiable_avec_proprietaire)
+    REGISTER_TEST(test_marquer_capteur_non_fiable_avec_proprietaire_et_autres_capteurs)
+    REGISTER_TEST(test_ajout_point)
 
     RUN_TESTS()
 
