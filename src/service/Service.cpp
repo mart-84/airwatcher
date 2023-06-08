@@ -77,9 +77,9 @@ void Service::marquerCapteurNonFiable(Capteur &capteur)
 array<double, 3> Service::statistiquesZoneCirculaire(double longitude, double latitude, int rayon, string date_debut, string date_fin)
 {
 
-    this->capteurDao.findAll();
+    capteurDao.findAll();
 
-    auto capteurs = this->capteurDao.getCapteursZoneCirculaire(latitude, longitude, rayon);
+    auto capteurs = capteurDao.getCapteursZoneCirculaire(latitude, longitude, rayon);
 
     if (capteurs.size() == 0)
     {

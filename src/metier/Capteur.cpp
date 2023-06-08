@@ -81,10 +81,9 @@ float Capteur::calculerSimilarite(Capteur &capteur)
     return 0.0;
 } //----- Fin de calculerSimilarite
 
-bool Capteur::estDansZoneCirculaire(double longitude, double latitude, int rayon)
+bool Capteur::estDansZoneCirculaire(double latitude, double longitude, int rayon)
 {
-    double distance = sqrt(pow((this->longitude - longitude) * 78, 2) + pow((this->latitude - latitude) * 78, 2));
-
+    double distance = sqrt(pow((this->latitude - latitude) * 78, 2) + pow((this->longitude - longitude) * 78, 2));
     return distance <= rayon;
 } //----- Fin de estDansZoneCirculaire
 

@@ -19,17 +19,17 @@ using namespace std;
 
 vector<Capteur *> CapteurDaoCsv::getCapteursZoneCirculaire(double latitude, double longitude, int rayon)
 {
-    vector<Capteur *> capteurs;
+    vector<Capteur *> capteursZoneCirculaire;
 
-    for (Capteur *capteur : this->capteurs)
+    for (Capteur *capteur : capteurs)
     {
-        if (capteur->estDansZoneCirculaire(longitude, latitude, rayon) && capteur->getEstFiable())
+        if (capteur->estDansZoneCirculaire(latitude, longitude, rayon) && capteur->getEstFiable())
         {
-            capteurs.push_back(capteur);
+            capteursZoneCirculaire.push_back(capteur);
         }
     }
 
-    return capteurs;
+    return capteursZoneCirculaire;
 }
 
 CapteurDaoCsv::CapteurDaoCsv(const string &filename, const string &fBanned)

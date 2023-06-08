@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <cassert>
+#include <fstream>
 using namespace std;
 
 #include "../src/dao/csv/AttributDaoCsv.h"

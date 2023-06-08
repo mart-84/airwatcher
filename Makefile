@@ -12,7 +12,9 @@ ifeq ($(findstring test, $(MAKECMDGOALS)),)
 SRCS += $(MAIN)
 endif
 
-TEST_SRCS = tests/main.cpp
+TEST_SRCS = tests/main.cpp tests/fakeDao/FakeAttributDao.cpp tests/fakeDao/FakeCapteurDao.cpp \
+			tests/fakeDao/FakeFournisseurDao.cpp tests/fakeDao/FakeMesureDao.cpp \
+			tests/fakeDao/FakeParticulierDao.cpp tests/fakeDao/FakePurificateurDao.cpp 
 TEST_OBJDIR = obj_tests
 TEST_EXEC = test
 

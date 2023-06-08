@@ -55,7 +55,7 @@ public:
 
     float calculerSimilarite(Capteur &capteur);
 
-    bool estDansZoneCirculaire(double longitude, double latitude, int rayon);
+    bool estDansZoneCirculaire(double latitude, double longitude, int rayon);
 
     friend ostream &operator<<(ostream &, Capteur &);
 
