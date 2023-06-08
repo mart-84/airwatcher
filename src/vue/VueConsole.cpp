@@ -20,24 +20,27 @@ void VueConsole::afficherMenu()
     cout << "+-------------------------------------------------+" << endl
          << "|                    AirWatcher                   |" << endl
          << "+-------------------------------------------------+" << endl
-         << endl
-         << "Choisissez votre role :" << endl
-         << "1. Agence gouvernementale" << endl
-         << "2. Fournisseur de purificateur" << endl
-         << "3. Particulier" << endl
          << endl;
-
-    int choix = saisirEntier();
-    switch (choix)
+    while (true)
     {
-    case 1:
-        afficherMenuAgence();
-        break;
+        cout << "Choisissez votre role :" << endl
+             << "1. Agence gouvernementale" << endl
+             << "2. Fournisseur de purificateur" << endl
+             << "3. Particulier" << endl
+             << endl;
 
-    default:
-        cout << "Choix invalide ou fonctionnalitee pas encore implementee." << endl;
-        afficherMenu();
-        break;
+        int choix = saisirEntier();
+        switch (choix)
+        {
+        case 1:
+            afficherMenuAgence();
+            break;
+
+        default:
+            cout << "Choix invalide ou fonctionnalitee pas encore implementee." << endl
+                 << endl;
+            break;
+        }
     }
 } //----- Fin de afficherMenu
 
@@ -46,54 +49,64 @@ void VueConsole::afficherMenuAgence()
     cout << "+-------------------------------------------------+" << endl
          << "|       Bienvenue sur l'espace de l'agence        |" << endl
          << "+-------------------------------------------------+" << endl
-         << endl
-         << "Menu :" << endl
-         << "1. Consulter les donnees d'un capteur" << endl
-         << "2. Consulter les donnees d'un purificateur" << endl
-         << "3. Consulter les statistiques" << endl
          << endl;
-
-    int choix = saisirEntier();
-    switch (choix)
+    while (true)
     {
-    case 1:
-        consulterDonneesCapteur();
-        break;
+        cout << "Menu principal de l'agence :" << endl
+             << "1. Consulter les donnees d'un capteur" << endl
+             << "2. Consulter les donnees d'un purificateur" << endl
+             << "3. Consulter les statistiques" << endl
+             << "4. Quitter" << endl
+             << endl;
 
-    case 3:
-        afficherMenuStatistiques();
-        break;
+        int choix = saisirEntier();
+        switch (choix)
+        {
+        case 1:
+            consulterDonneesCapteur();
+            break;
 
-    default:
-        cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
-        afficherMenuAgence();
-        break;
+        case 3:
+            afficherMenuStatistiques();
+            break;
+
+        case 4:
+            exit(0);
+            break;
+
+        default:
+            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+            break;
+        }
     }
 } //----- Fin de afficherMenuAgence
 
 void VueConsole::afficherMenuStatistiques()
 {
-    cout << "Quel type d'informations souhaitez-vous consulter ?" << endl
-         << "1. Statistiques sur l'impact des purificateurs sur la qualite de l'air" << endl
-         << "2. Statistiques sur la qualite de l'air pour une zone circulaire" << endl
-         << "3. Retour menu principal" << endl
-         << endl;
-
-    int choix = saisirEntier();
-    switch (choix)
+    while (true)
     {
-    case 2:
-        afficherMenuStatistiquesZoneCirculaire();
-        break;
+        cout << "Quel type d'informations souhaitez-vous consulter ?" << endl
+             << "1. Statistiques sur l'impact des purificateurs sur la qualite de l'air" << endl
+             << "2. Statistiques sur la qualite de l'air pour une zone circulaire" << endl
+             << "3. Retour menu principal" << endl
+             << endl;
 
-    case 3:
-        afficherMenuAgence();
-        break;
+        int choix = saisirEntier();
+        switch (choix)
+        {
+        case 2:
+            afficherMenuStatistiquesZoneCirculaire();
+            return;
+            break;
 
-    default:
-        cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
-        afficherMenuStatistiques();
-        break;
+        case 3:
+            return;
+            break;
+
+        default:
+            cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
+            break;
+        }
     }
 
 } //----- Fin de afficherMenuStatistiques
@@ -158,23 +171,6 @@ void VueConsole::afficherMenuStatistiquesZoneCirculaire()
         cout << "| Mediane indice ATMO         | " << donnees[2] << endl;
         cout << "+-------------------------------------------------+" << endl
              << endl;
-    }
-
-    cout << "1. Retour menu principal" << endl
-         << endl;
-
-    int choix = saisirEntier();
-
-    switch (choix)
-    {
-    case 1:
-        afficherMenuStatistiques();
-        break;
-
-    default:
-        cout << "Choix invalide ou fonctionnalitee pas encore implementee" << endl;
-        afficherMenuStatistiquesZoneCirculaire();
-        break;
     }
 
 } //----- Fin de afficherMenuStatistiquesZoneCirculaire
@@ -250,25 +246,28 @@ void VueConsole::consulterDonneesCapteur()
     cout << endl
          << "(les donnees ont ete generees en : " << time << "ms)" << endl;
 
-    cout << endl;
-    cout << "Menu : " << endl;
-    cout << "1. Marquer comme non fiable" << endl;
-    cout << "2. Consulter la liste des capteurs similaires" << endl;
-    cout << "3. Retour au menu" << endl;
-    int choix = saisirEntier();
-    switch (choix)
+    while (true)
     {
-    case 1:
-        service.marquerCapteurNonFiable(*capteur);
-        cout << "Le capteur a ete marque comme non fiable." << endl;
-        break;
-    case 2:
-        cout << "Cette fonctionnalite n'est pas encore implementee." << endl;
-        break;
-    case 3:
-        afficherMenuAgence();
-        break;
-
+        cout << endl;
+        cout << "Menu : " << endl;
+        cout << "1. Marquer comme non fiable" << endl;
+        cout << "2. Consulter la liste des capteurs similaires" << endl;
+        cout << "3. Retour au menu" << endl;
+        int choix = saisirEntier();
+        switch (choix)
+        {
+        case 1:
+            service.marquerCapteurNonFiable(*capteur);
+            cout << "Le capteur a ete marque comme non fiable." << endl;
+            return;
+            break;
+        case 3:
+            return;
+            break;
+        default:
+            cout << "Cette fonctionnalite n'est pas encore implementee." << endl;
+            break;
+        }
     }
 } //----- Fin de consulterDonneesCapteur
 
